@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" width="400" height="400">
+  <style>
+    @keyframes pulse-badge {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-3px) rotate(-2deg); }
+      40% { transform: translateX(3px) rotate(2deg); }
+      60% { transform: translateX(-2px) rotate(-1deg); }
+      80% { transform: translateX(2px) rotate(1deg); }
+    }
+    .body-group { animation: shake 2.5s ease-in-out infinite; }
+    .badge { animation: pulse-badge 1.2s ease-in-out infinite; transform-origin: 72px 20px; }
+    .wave1 { animation: pulse-badge 1.2s ease-in-out infinite 0.1s; transform-origin: 72px 36px; }
+    .wave2 { animation: pulse-badge 1.2s ease-in-out infinite 0.2s; transform-origin: 76px 36px; }
+  </style>
+
+  <g class="body-group">
+    <!-- corpo -->
+    <circle cx="50" cy="52" r="36" fill="#1C1F38" stroke="#C8F135" stroke-width="2.5"/>
+    <!-- olhos surpresos -->
+    <ellipse cx="40" cy="48" rx="5" ry="6" fill="#C8F135"/>
+    <ellipse cx="60" cy="48" rx="5" ry="6" fill="#C8F135"/>
+    <circle cx="41.5" cy="47" r="2" fill="#0D0F1A"/>
+    <circle cx="61.5" cy="47" r="2" fill="#0D0F1A"/>
+    <circle cx="43" cy="45.5" r="1" fill="white" opacity="0.6"/>
+    <circle cx="63" cy="45.5" r="1" fill="white" opacity="0.6"/>
+    <!-- boca aberta / surpreso -->
+    <ellipse cx="50" cy="62" rx="6" ry="4" fill="#C8F135" opacity="0.85"/>
+    <!-- ponto de origem -->
+    <circle cx="50" cy="16" r="5" fill="#C8F135"/>
+    <!-- ponto de destino -->
+    <circle cx="50" cy="88" r="5" fill="#6366F1"/>
+  </g>
+
+  <!-- ondas de notificação -->
+  <path class="wave1" d="M72 28 Q80 36 72 44" stroke="#C8F135" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+  <path class="wave2" d="M76 24 Q88 36 76 48" stroke="#C8F135" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.25"/>
+
+  <!-- badge de alerta -->
+  <g class="badge">
+    <circle cx="72" cy="20" r="9" fill="#C8F135"/>
+    <text x="72" y="24.5" text-anchor="middle" font-size="12" font-weight="900" fill="#0D0F1A" font-family="sans-serif">!</text>
+  </g>
+</svg>

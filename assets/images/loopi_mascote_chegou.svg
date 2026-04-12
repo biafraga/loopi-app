@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" width="400" height="400">
+  <style>
+    @keyframes float-happy {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      30% { transform: translateY(-8px) rotate(2deg); }
+      70% { transform: translateY(-4px) rotate(-1deg); }
+    }
+    @keyframes star-spin {
+      from { transform: rotate(0deg) scale(1); opacity: 0.6; }
+      50% { transform: rotate(180deg) scale(1.3); opacity: 1; }
+      to { transform: rotate(360deg) scale(1); opacity: 0.6; }
+    }
+    @keyframes star-spin2 {
+      from { transform: rotate(0deg) scale(1); opacity: 0.4; }
+      50% { transform: rotate(-180deg) scale(1.2); opacity: 0.8; }
+      to { transform: rotate(-360deg) scale(1); opacity: 0.4; }
+    }
+    .body-group { animation: float-happy 2.5s ease-in-out infinite; }
+    .star1 { animation: star-spin 3s ease-in-out infinite; transform-origin: 20px 20px; }
+    .star2 { animation: star-spin2 2.5s ease-in-out infinite 0.3s; transform-origin: 77px 18px; }
+  </style>
+
+  <!-- estrelinhas -->
+  <path class="star1" d="M20 20 L22 14 L24 20 L30 22 L24 24 L22 30 L20 24 L14 22 Z" fill="#C8F135"/>
+  <path class="star2" d="M77 18 L78.5 13 L80 18 L85 19.5 L80 21 L78.5 26 L77 21 L72 19.5 Z" fill="#C8F135"/>
+
+  <g class="body-group">
+    <!-- corpo com borda indigo (chegou!) -->
+    <circle cx="50" cy="52" r="36" fill="#1C1F38" stroke="#6366F1" stroke-width="2.5"/>
+    <!-- olhos felizes (^ ^) -->
+    <path d="M35 47 Q40 41 45 47" stroke="#C8F135" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <path d="M55 47 Q60 41 65 47" stroke="#C8F135" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <!-- sorriso grande -->
+    <path d="M37 60 Q50 73 63 60" stroke="#C8F135" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <!-- bochechas rosadas -->
+    <ellipse cx="36" cy="58" rx="5" ry="3" fill="#6366F1" opacity="0.3"/>
+    <ellipse cx="64" cy="58" rx="5" ry="3" fill="#6366F1" opacity="0.3"/>
+    <!-- checkmark no topo (chegou!) -->
+    <circle cx="50" cy="16" r="7" fill="#6366F1"/>
+    <path d="M46 16 L49 19 L55 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
