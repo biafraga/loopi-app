@@ -1,10 +1,11 @@
-import { StyleSheet, View, Image, Text } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { LoopiColors } from "../constants/Colors";
 import LoopiButton from "./components/LoopiButton";
-import { LoopiColors } from "./constants/Colors";
 
 export default function OnBoarding(){
     return(
-        <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
             <Image 
                 source={require("../assets/images/loopi_logo.png")} 
                 style={styles.logo} 
@@ -21,12 +22,14 @@ export default function OnBoarding(){
           onPress={() => console.log("Indo para o Cadastro")} 
         />
         
-        <Text style={styles.linkText} onPress={() => console.log("Indo para o Login")}>
-          Já tenho conta
-        </Text>
+        <LoopiButton 
+            textButton="Já tenho conta" 
+            variant="outline" // Olha a mágica aqui!
+            onPress={() => console.log("Indo para o Login")} 
+          />
       </View>
 
-        </View>
+      </SafeAreaView>
     );
 }
 
@@ -46,6 +49,7 @@ const styles = StyleSheet.create({
   slogan: {
     color: LoopiColors.textColor,
     fontSize: 16,
+    fontFamily: "Nunito_700Bold",
     marginBottom: 60,
     opacity: 0.8,
   },
