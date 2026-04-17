@@ -1,5 +1,13 @@
 import { Pressable, StyleSheet, Text } from "react-native";
-import { LoopiColors } from "../../constants/Colors";
+
+const DARK_PRIMARY= "#0D0F1A";
+const CARD= "#141629";
+const BORDER= "#1C1F38";
+const PRIMARY= "#C8F135";
+const SECONDARY= "#6366F1";
+const TEXT_COLOR= "#F4F4FF";
+const FADED_TEXT_COLOR= "#ACACAC";
+
 
 export default function LoopiButton({ textButton, onPress, variant = "primary" }){
 
@@ -16,7 +24,7 @@ export default function LoopiButton({ textButton, onPress, variant = "primary" }
 
 const styles= StyleSheet.create({
     button:{
-        backgroundColor: LoopiColors.primary,
+        backgroundColor: PRIMARY,
         padding: 16,
         marginHorizontal: 50,
         borderRadius: 30,
@@ -25,17 +33,17 @@ const styles= StyleSheet.create({
     },
 
     title:{
-        color: LoopiColors.darkPrimary,
-        fontSize: 18,
+        color: DARK_PRIMARY,
+        fontSize: 20,
         fontWeight: "bold",
         fontFamily: "DMSans_700Bold",
     },
     buttonOutline: {
         backgroundColor: "transparent",
         borderWidth: 2,
-        borderColor: LoopiColors.border,
+        borderColor: BORDER,
     },
     titleOutline: {
-        color: LoopiColors.fadedTextColor,
+        color: FADED_TEXT_COLOR,
     },
 })

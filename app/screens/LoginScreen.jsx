@@ -2,15 +2,23 @@ import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "rea
 import { SafeAreaView } from "react-native-safe-area-context";
 import LabeledInput from "../components/LabeledInput";
 import LoopiButton from "../components/LoopiButton";
-import { LoopiColors } from "../constants/Colors";
+
+const DARK_PRIMARY= "#0D0F1A";
+const CARD= "#141629";
+const BORDER= "#1C1F38";
+const PRIMARY= "#C8F135";
+const SECONDARY= "#6366F1";
+const TEXT_COLOR= "#F4F4FF";
+const FADED_TEXT_COLOR= "#ACACAC";
+
 
 export default function LoginScreen (){
     return(
         <SafeAreaView style={styles.safeArea}>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
-                
+                <View style={styles.form}>
                 <Image 
-                    source={require("../assets/images/loopi_logo.png")} 
+                    source={require("../../assets/images/loopi_logo.png")} 
                     style={styles.logo} 
                     resizeMode="contain"
                 />
@@ -41,6 +49,7 @@ export default function LoginScreen (){
                         onPress={() => console.log("Clicou em Entrar")}
                     />
                 </View>
+                </View>
 
                 <View style={styles.footer}>
                     <Text style={styles.footerText}>Não tem conta? </Text>
@@ -57,7 +66,8 @@ export default function LoginScreen (){
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: LoopiColors.darkPrimary, // Fundo escuro do app
+        backgroundColor: DARK_PRIMARY, // Fundo escuro do app
+        width: "100%"
     },
     scrollContainer: {
         flexGrow: 1,
@@ -65,21 +75,25 @@ const styles = StyleSheet.create({
         paddingTop: 40,
         paddingBottom: 20,
     },
+    form: {
+        flex: 1, // Faz a view esticar e ocupar todo o espaço vazio
+        justifyContent: "center", // Empurra o conteúdo pro meio
+    },
     logo: {
-        width: 100,
-        height: 40,
+        width: 160,
+        height: 70,
         marginBottom: 30, // Empurra o título para baixo
     },
     title: {
-        color: LoopiColors.textColor,
+        color: TEXT_COLOR,
         fontSize: 32,
-        fontFamily: "Unbounded_700Bold", // A fonte chique que você escolheu!
+        fontFamily: "Unbounded_700Bold",
         marginBottom: 8,
     },
     subtitle: {
-        color: LoopiColors.textColor,
+        color: TEXT_COLOR,
         opacity: 0.7,
-        fontSize: 16,
+        fontSize: 18,
         fontFamily: "DMSans_400Regular",
         marginBottom: 40,
     },
@@ -88,28 +102,31 @@ const styles = StyleSheet.create({
         marginBottom: 30,
     },
     forgetButton: {
-        alignSelf: "flex-end", // O segredo para alinhar só este item à direita!
+        alignSelf: "flex-end", // alinhar só este item à direita!
         marginBottom: 30, // Espaço entre o esqueci a senha e o botão de entrar
         marginTop: -5,
     },
     forgetText: {
-        color: LoopiColors.primary, // Cor verde para mostrar que é clicável
-        fontSize: 14,
+        color: PRIMARY,
+        fontSize: 18,
         fontFamily: "DMSans_400Regular",
     },
     footer: {
         flexDirection: "row", // Texto e link lado a lado
         justifyContent: "center",
-        marginTop: "auto", // Empurra o rodapé pro fundo da tela!
-        paddingTop: 30,
+        marginTop: "auto",
+        marginBottom: 40,
+        paddingTop: 20,
     },
     footerText: {
-        color: LoopiColors.textColor,
+        color: TEXT_COLOR,
         opacity: 0.7,
         fontFamily: "DMSans_400Regular",
+        fontSize: 18,
     },
     footerLink: {
-        color: LoopiColors.primary,
+        color: PRIMARY,
         fontFamily: "DMSans_700Bold",
+        fontSize: 18,
     }
 });
