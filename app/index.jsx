@@ -1,5 +1,5 @@
-import RegisterScreen from "./screens/RegisterScreen";
+import TermsScreen from "./screens/TermsScreen";
 
 export default function Index(){
-  return <RegisterScreen />
+  return <TermsScreen />
 }

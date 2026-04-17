@@ -36,7 +36,7 @@ export default function LoginScreen (){
                         label="Senha" 
                         iconName="lock" 
                         placeholder="Insira sua senha" 
-                        secureTextEntry={true}
+                        isPassword={true}
                     />
                     
                     {/* Esqueci a senha (Alinhado à direita) */}
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     scrollContainer: {
         flexGrow: 1,
         paddingHorizontal: 30, // Dá aquele respiro nas laterais (Margem do Figma)
-        paddingTop: 40,
+        paddingTop: 20,
         paddingBottom: 20,
     },
     form: {
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     logo: {
         width: 160,
         height: 70,
-        marginBottom: 30, // Empurra o título para baixo
+        marginBottom: 20, // Empurra o título para baixo
     },
     title: {
         color: TEXT_COLOR,
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
         opacity: 0.7,
         fontSize: 18,
         fontFamily: "DMSans_400Regular",
-        marginBottom: 40,
+        marginBottom: 30,
     },
     formContainer: {
         width: "100%",
@@ -114,8 +114,7 @@ const styles = StyleSheet.create({
     footer: {
         flexDirection: "row", // Texto e link lado a lado
         justifyContent: "center",
-        marginTop: "auto",
-        marginBottom: 40,
+        marginBottom: 10,
         paddingTop: 20,
     },
     footerText: {

@@ -1,5 +1,6 @@
 import { Feather } from '@expo/vector-icons';
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, View, TouchableOpacity } from "react-native";
+import { useState } from 'react';
 
 const DARK_PRIMARY= "#0D0F1A";
 const CARD= "#141629";
@@ -9,7 +10,10 @@ const SECONDARY= "#6366F1";
 const TEXT_COLOR= "#F4F4FF";
 const FADED_TEXT_COLOR= "#ACACAC";
 
-export default function LabeledInput ({ label, iconName, ...rest }) {
+export default function LabeledInput ({ label, iconName, isPassword, ...rest }) {
+
+    const [isSecure, setIsSecure] = useState(isPassword);
+
     return (
         <View style={styles.wrapper}>
             <Text style={styles.label}>{ label ? label : "Não informado" }</Text>
@@ -27,8 +31,21 @@ export default function LabeledInput ({ label, iconName, ...rest }) {
                 <TextInput 
                     style={styles.input}
                     placeholderTextColor="#888888"
+                    secureTextEntry={isSecure}
                     {...rest}
                 />
+
+                {isPassword && (
+                    <TouchableOpacity onPress={() => setIsSecure(!isSecure)}>
+                        <Feather 
+                            name={isSecure ? "eye-off" : "eye"} // Troca o ícone dinamicamente
+                            size={20} 
+                            color={FADED_TEXT_COLOR} 
+                        />
+                    </TouchableOpacity>
+                )}
+
+
             </View>
         </View>
     )

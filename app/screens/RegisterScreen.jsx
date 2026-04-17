@@ -17,7 +17,6 @@ export default function RegisterScreen(){
         <SafeAreaView style={styles.safeArea}> 
             <ScrollView contentContainerStyle={styles.scrollContainer}>
                 
-                {/* --- CABEÇALHO (HEADER) --- */}
                 <View style={styles.headerContainer}>
                     <View style={styles.headerTop}>
                         <TouchableOpacity onPress={() => console.log("Voltar")}>
@@ -35,7 +34,6 @@ export default function RegisterScreen(){
 
                     <Text style={styles.stepText}>PASSO 1 DE 2</Text>
                 </View>
-                {/* -------------------------------- */}
 
                 <View style={styles.formContent}>
                     <Text style={styles.title}>Seus dados</Text>
@@ -100,7 +98,7 @@ const styles= StyleSheet.create({
     },
     headerContainer: {
         width: "100%",
-        marginBottom: 20,
+        marginBottom: 10,
     },
     headerTop: {
         flexDirection: "row",
@@ -144,7 +142,7 @@ const styles= StyleSheet.create({
         color: TEXT_COLOR,
         fontSize: 32,
         fontFamily: "Nunito_900Black",
-        marginBottom: 30, 
+        marginBottom: 10, 
     },
     formContainer: {
         width: "100%",
