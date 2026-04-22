@@ -24,9 +24,9 @@ export default function LoopiButton({ textButton, onPress, variant = "primary" }
 
 const styles= StyleSheet.create({
     button:{
+        width: "100%",
         backgroundColor: PRIMARY,
         padding: 16,
-        marginHorizontal: 50,
         borderRadius: 30,
         alignItems: "center",
         justifyContent: "center",

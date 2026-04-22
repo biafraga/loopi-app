@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
     },
     title: {
         color: TEXT_COLOR,
-        fontSize: 32,
-        fontFamily: "Unbounded_700Bold",
+        fontSize: 30,
+        fontFamily: "Nunito_900Black",
         marginBottom: 8,
     },
     subtitle: {

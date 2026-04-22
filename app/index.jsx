@@ -1,5 +1,5 @@
-import TermsScreen from "./screens/TermsScreen";
+import SuccessScreen from "./screens/SuccessScreen";
 
 export default function Index(){
-  return <TermsScreen />
+  return <SuccessScreen />
 }
