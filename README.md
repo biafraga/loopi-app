@@ -1,50 +1,113 @@
-# Welcome to your Expo app 👋
+# Loopi App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> App mobile de mobilidade urbana que aprende a rotina do usuário e notifica o horário exato de saída.
 
-## Get started
+Desenvolvido em **React Native** com **Expo**, o Loopi é a interface móvel que se conecta à [loopi-api](https://github.com/biafraga/loopi-api) para entregar uma experiência inteligente de deslocamento urbano.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## Sobre o projeto
 
-2. Start the app
+O Loopi resolve um problema cotidiano: saber exatamente quando sair de casa para chegar no horário. O usuário cadastra seu trajeto diário — origem, destino e horário de chegada — e o app aprende seu padrão de deslocamento para notificá-lo no momento certo de sair.
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## Telas
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+<table>
+  <tr>
+    <td align="center"><b>Login</b></td>
+    <td align="center"><b>Cadastro</b></td>
+    <td align="center"><b>Bem-vindo</b></td>
+    <td align="center"><b>Meus Trajetos</b></td>
+  </tr>
+  <tr>
+    <td><img src="assets/screenshots/login.png" width="180"/></td>
+    <td><img src="assets/screenshots/cadastro.png" width="180"/></td>
+    <td><img src="assets/screenshots/success-screen.png" width="180"/></td>
+    <td><img src="assets/screenshots/estado-vazio.png" width="180"/></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Origem</b></td>
+    <td align="center"><b>Destino</b></td>
+    <td align="center"><b>Trajeto Cadastrado</b></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><img src="assets/screenshots/origem.png" width="180"/></td>
+    <td><img src="assets/screenshots/destino.png" width="180"/></td>
+    <td><img src="assets/screenshots/rota-cadastrada.png" width="180"/></td>
+    <td></td>
+  </tr>
+</table>
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## Tecnologias
 
-When you're ready, run:
+| Camada | Tecnologia |
+|---|---|
+| Framework | React Native |
+| Plataforma | Expo |
+| Linguagem | JavaScript |
+| Navegação | Expo Router |
+| Ícones | Expo Vector Icons |
+| Back-end | [loopi-api](https://github.com/biafraga/loopi-api) (Spring Boot) |
+
+---
+
+## Funcionalidades
+
+- [x] Onboarding de boas-vindas
+- [x] Cadastro de usuário (fluxo em 2 etapas)
+- [x] Login com e-mail e senha
+- [x] Recuperação de senha
+- [x] Cadastro de trajeto (origem → destino → horário de chegada)
+- [x] Integração com sugestões de endereço via Mapbox
+- [x] Tela de trajetos cadastrados
+- [ ] Notificação de horário de saída (em desenvolvimento)
+- [ ] Histórico de deslocamentos (em desenvolvimento)
+
+---
+
+## Como rodar localmente
+
+### Pré-requisitos
+
+- Node.js 18+
+- Expo CLI (`npm install -g expo-cli`)
+- App **Expo Go** no celular ou emulador configurado
+- [loopi-api](https://github.com/biafraga/loopi-api) rodando localmente
+
+### Passos
 
 ```bash
-npm run reset-project
+# Clone o repositório
+git clone https://github.com/biafraga/loopi-app.git
+cd loopi-app
+
+# Instale as dependências
+npm install
+
+# Inicie o projeto
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Escaneie o QR code com o Expo Go (Android) ou com a câmera (iOS).
 
-## Learn more
+> Certifique-se de que a [loopi-api](https://github.com/biafraga/loopi-api) está rodando na porta `8080` antes de iniciar o app.
 
-To learn more about developing your project with Expo, look at the following resources:
+---
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Projeto relacionado
 
-## Join the community
+O back-end do Loopi é uma API REST desenvolvida em Spring Boot: [loopi-api](https://github.com/biafraga/loopi-api)
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Autora
+
+**Beatriz Fraga** — Desenvolvedora Full Stack em formação
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-beatrizfraga-blue?style=flat&logo=linkedin)](https://linkedin.com/in/beatrizfraga)
+[![GitHub](https://img.shields.io/badge/GitHub-biafraga-black?style=flat&logo=github)](https://github.com/biafraga)
