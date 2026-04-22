@@ -1,5 +1,5 @@
-import SuccessScreen from "./screens/SuccessScreen";
+import RouteConfirmationScreen from "./screens/RouteConfirmationScreen";
 
 export default function Index(){
-  return <SuccessScreen />
+  return <RouteConfirmationScreen/>
 }
