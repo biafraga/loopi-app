@@ -65,11 +65,13 @@ export default function RegisterScreen(){
                             placeholder="Insira sua senha"
                             secureTextEntry={true}
                         />
-                        
+                    <View style={styles.buttonWrapper}> 
                         <LoopiButton
                             textButton="Próximo" 
                             onPress={() => console.log("Ir para passo 2")}
                         />
+                    </View>  
+
                     </View>
 
                     <View style={styles.footer}>
@@ -90,22 +92,26 @@ const styles= StyleSheet.create({
         flex: 1,
         backgroundColor: DARK_PRIMARY,
     },
+    
     scrollContainer: {
         flexGrow: 1,
         paddingHorizontal: 30, 
         paddingTop: 20,
         paddingBottom: 20,
     },
+
     headerContainer: {
         width: "100%",
         marginBottom: 10,
     },
+
     headerTop: {
         flexDirection: "row",
         alignItems: "center",
         marginBottom: 30,
         marginLeft: -10, // Puxa a setinha um pouco para a esquerda para alinhar visualmente
     },
+
     headerTitle: {
         color: FADED_TEXT_COLOR,
         fontSize: 16,
@@ -113,41 +119,53 @@ const styles= StyleSheet.create({
         marginLeft: 10,
         letterSpacing: 0.5,
     },
+
     progressContainer: {
         flexDirection: "row",
         gap: 8, // Espaço entre os pontinhos
         marginBottom: 12,
     },
+
     progressDot: {
         height: 8,
         width: 16,
         backgroundColor: BORDER, // Cor das bolinhas inativas
         borderRadius: 4,
     },
+
     progressDotActive: {
         width: 32, // Bolinha ativa
         backgroundColor: PRIMARY,
     },
+
     stepText: {
         color: PRIMARY,
         fontSize: 12,
         fontFamily: "DMSans_700Bold",
         letterSpacing: 1,
     },
+
     formContent: {
         flex: 1,
         justifyContent: "center", 
     },
+
     title: {
         color: TEXT_COLOR,
         fontSize: 32,
         fontFamily: "Nunito_900Black",
         marginBottom: 10, 
     },
+
     formContainer: {
         width: "100%",
         marginBottom: 30,
     },
+
+    buttonWrapper: {
+        marginTop: 20,
+    },
+
     footer: {
         flexDirection: "row", 
         justifyContent: "center",
@@ -155,12 +173,14 @@ const styles= StyleSheet.create({
         marginBottom: 20,  
         paddingTop: 20, 
     },
+
     footerText: {
         color: TEXT_COLOR,
         opacity: 0.7,
         fontFamily: "DMSans_400Regular",
         fontSize: 18,
     },
+
     footerLink: {
         color: PRIMARY,
         fontFamily: "DMSans_700Bold",

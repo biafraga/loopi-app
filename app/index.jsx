@@ -1,5 +1,5 @@
-import RouteConfirmationScreen from "./screens/RouteConfirmationScreen";
+import HomeScreen from "./screens/HomeScreen";
 
 export default function Index(){
-  return <RouteConfirmationScreen/>
+  return <HomeScreen />
 }
