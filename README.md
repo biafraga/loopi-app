@@ -16,6 +16,18 @@ O Loopi resolve um problema cotidiano: saber exatamente quando sair de casa para
 
 <table>
   <tr>
+    <td align="center"><b>Home</b></td>
+    <td align="center"><b>Histórico</b></td>
+    <td align="center"><b>Estatísticas</b></td>
+    <td align="center"><b>Perfil</b></td>
+  </tr>
+  <tr>
+    <td><img src="assets/screenshots/home.png" width="180"/></td>
+    <td><img src="assets/screenshots/historico.png" width="180"/></td>
+    <td><img src="assets/screenshots/estatisticas.png" width="180"/></td>
+    <td><img src="assets/screenshots/perfil.png" width="180"/></td>
+  </tr>
+  <tr>
     <td align="center"><b>Login</b></td>
     <td align="center"><b>Cadastro</b></td>
     <td align="center"><b>Bem-vindo</b></td>
@@ -65,8 +77,11 @@ O Loopi resolve um problema cotidiano: saber exatamente quando sair de casa para
 - [x] Cadastro de trajeto (origem → destino → horário de chegada)
 - [x] Integração com sugestões de endereço via Mapbox
 - [x] Tela de trajetos cadastrados
+- [x] Home com próximo loop e horário de saída recomendado
+- [x] Histórico de viagens com métricas de pontualidade
+- [x] Estatísticas de desempenho (tempo economizado, tempo médio por dia)
+- [x] Perfil do usuário com gerenciamento de loops
 - [ ] Notificação de horário de saída (em desenvolvimento)
-- [ ] Histórico de deslocamentos (em desenvolvimento)
 
 ---
 
