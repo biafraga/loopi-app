@@ -2,7 +2,9 @@ import { Feather } from "@expo/vector-icons";
 import { useState } from "react";
 import { Modal, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import LoopiButton from "../components/LoopiButton";
 import Menu from "../components/Menu";
+
 
 const DARK_PRIMARY = "#0D0F1A";
 const CARD = "#141629";
@@ -74,11 +76,14 @@ export default function HomeScreen({ userName = "Beatriz" }) {
                             </View>
                         </View>
 
-                        {/* Botão Centralizado e arredondado */}
-                        <TouchableOpacity style={styles.primaryButton}>
-                            <Feather name="navigation" size={16} color={DARK_PRIMARY} style={{ marginRight: 8 }} />
-                            <Text style={styles.primaryButtonText}>INICIAR LOOP</Text>
-                        </TouchableOpacity>
+                        <View style={{ width: "65%", alignSelf: "center", marginBottom: 16 }}>
+                            <LoopiButton 
+                                textButton="INICIAR LOOP" 
+                                icon="navigation"
+                                size="small"
+                                onPress={() => console.log("Iniciar loop do Hero Card")} 
+                            />
+                        </View>
 
                         {/* Texto ou criar novo */}
                         <Text style={styles.orText}>ou criar novo loop</Text>
@@ -154,10 +159,15 @@ export default function HomeScreen({ userName = "Beatriz" }) {
                             </View>
 
                             {/* Botões */}
-                            <TouchableOpacity style={styles.primaryButtonSheet}>
-                                <Feather name="navigation" size={18} color={DARK_PRIMARY} style={{ marginRight: 8 }} />
-                                <Text style={styles.primaryButtonText}>INICIAR LOOP</Text>
-                            </TouchableOpacity>
+                            {/* O Botão Primário */}
+                            <View style={{ marginBottom: 16 }}>
+                                <LoopiButton 
+                                    textButton="INICIAR LOOP" 
+                                    variant="secondary"
+                                    icon="navigation"
+                                    onPress={() => console.log("Iniciar loop do modal")} 
+                                />
+                            </View>
 
                             {/* BOTÃO: Mudar trajeto */}
                             <TouchableOpacity 
@@ -168,12 +178,14 @@ export default function HomeScreen({ userName = "Beatriz" }) {
                                 <Text style={styles.secondaryButtonText}>Alterar trajeto de hoje</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity 
-                                style={styles.cancelButton}
-                                onPress={() => setBottomSheetVisible(false)}
-                            >
-                                <Text style={styles.cancelButtonText}>Cancelar</Text>
-                            </TouchableOpacity>
+                            {/* BOTÃO: Cancelar */}
+                            <View style={{ marginTop: 8 }}>
+                                <LoopiButton 
+                                    textButton="Cancelar" 
+                                    variant="outline"
+                                    onPress={() => setBottomSheetVisible(false)} 
+                                />
+                            </View>
                         </View>
 
                     </TouchableWithoutFeedback>
@@ -259,14 +271,14 @@ const styles = StyleSheet.create({
     },
 
     heroTime: {
-        color: TEXT_COLOR,
+        color: "#e2e2e2",
         fontSize: 55,
         fontFamily: "Unbounded_900Black",
         marginBottom: 16, 
         alignSelf: 'flex-start',
-        textShadowColor: 'rgba(255, 255, 255, 0.2)', 
-        textShadowOffset: { width: 0, height: 0 },
-        textShadowRadius: 10,
+        textShadowColor: SECONDARY,
+        textShadowOffset: { width: 0, height: 4 }, // Joga a sombra pra baixo
+        textShadowRadius: 12, // Esfumaça
     },
 
     routeSection: {
@@ -311,24 +323,6 @@ const styles = StyleSheet.create({
     routeText: {
         color: FADED_TEXT_COLOR,
         fontSize: 13,
-        fontFamily: "DMSans_700Bold",
-    },
-
-    primaryButton: {
-        backgroundColor: PRIMARY,
-        borderRadius: 24,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center", // Centraliza o texto e ícone no botão
-        alignSelf: "center", // Centraliza o botão no card
-        width: "85%",
-        paddingVertical: 14,
-        marginBottom: 16,
-    },
-
-    primaryButtonText: {
-        color: DARK_PRIMARY,
-        fontSize: 16,
         fontFamily: "DMSans_700Bold",
     },
 
@@ -437,8 +431,8 @@ const styles = StyleSheet.create({
 
     sheetPreTitle: {
         color: PRIMARY,
-        fontSize: 12,
-        fontFamily: "DMSans_700Bold",
+        fontSize: 16,
+        fontFamily: "DMSans_400Regular",
         letterSpacing: 1,
         marginBottom: 8,
     },
@@ -473,7 +467,7 @@ const styles = StyleSheet.create({
 
     sheetCardDetails: {
         color: FADED_TEXT_COLOR,
-        fontSize: 12,
+        fontSize: 14,
         fontFamily: "DMSans_400Regular",
         lineHeight: 18,
     },
@@ -497,7 +491,7 @@ const styles = StyleSheet.create({
     },
     secondaryButtonText: {
         color: FADED_TEXT_COLOR,
-        fontSize: 14,
+        fontSize: 16,
         fontFamily: "DMSans_700Bold",
     },
 

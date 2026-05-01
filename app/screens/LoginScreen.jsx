@@ -18,7 +18,7 @@ export default function LoginScreen (){
             <ScrollView contentContainerStyle={styles.scrollContainer}>
                 <View style={styles.form}>
                 <Image 
-                    source={require("../../assets/images/loopi_logo.png")} 
+                    source={require("../assets/images/loopi_logo.png")} 
                     style={styles.logo} 
                     resizeMode="contain"
                 />

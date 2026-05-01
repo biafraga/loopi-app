@@ -21,7 +21,7 @@ export default function StatsScreen() {
     // O 'type' define a cor (se foi um dia rápido ou um dia com atraso)
     const chartData = [
         { id: "1", label: "S", value: 30, type: "good" },
-        { id: "2", label: "T", value: 15, type: "bad" }, // Terça vermelha igual ao Figma
+        { id: "2", label: "T", value: 15, type: "bad" },
         { id: "3", label: "Q", value: 80, type: "good" },
         { id: "4", label: "Q", value: 25, type: "good" },
         { id: "5", label: "S", value: 35, type: "good" },
@@ -59,7 +59,7 @@ export default function StatsScreen() {
                     ))}
                 </View>
 
-                {/* HERO CARD - VOCÊ ECONOMIZOU (Fundo Verde Neon!) */}
+                {/* HERO CARD(Fundo Verde Neon) */}
                 <View style={styles.heroCard}>
                     <Text style={styles.heroCardLabel}>VOCÊ ECONOMIZOU ESSE MÊS</Text>
                     <Text style={styles.heroCardValue}>2h30m</Text>
@@ -100,7 +100,6 @@ export default function StatsScreen() {
                     </View>
                 </View>
 
-                {/* Espaçamento para o Menu não engolir o conteúdo */}
                 <View style={{ height: 100 }} /> 
             </ScrollView>
 
