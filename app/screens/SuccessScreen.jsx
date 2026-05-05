@@ -71,15 +71,15 @@ const styles= StyleSheet.create({
 
     title: {
         color: TEXT_COLOR,
-        fontSize: 28,
-        fontFamily: "Unbounded_700Bold",
+        fontSize: 32,
+        fontFamily: "Nunito_900Black",
         textAlign: "center",
     },
 
     titleHighlight: {
         color: PRIMARY,
-        fontSize: 28,
-        fontFamily: "Unbounded_700Bold",
+        fontSize: 32,
+        fontFamily: "Nunito_900Black",
         textAlign: "center",
         marginBottom: 16,
     },
@@ -119,6 +119,7 @@ const styles= StyleSheet.create({
         fontSize: 14,
         fontFamily: "DMSans_400Regular",
         lineHeight: 18,
+        paddingLeft: 14,
     },
 
     footer: {

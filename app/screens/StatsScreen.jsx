@@ -123,8 +123,8 @@ const styles = StyleSheet.create({
 
     preTitle: {
         color: PRIMARY,
-        fontSize: 12,
-        fontFamily: "DMSans_700Bold",
+        fontSize: 14,
+        fontFamily: "DMSans_400Regular",
         letterSpacing: 1,
         marginBottom: 4,
         textTransform: "uppercase",

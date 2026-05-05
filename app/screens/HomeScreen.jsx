@@ -37,7 +37,6 @@ export default function HomeScreen({ userName = "Beatriz" }) {
 
     return (
         <SafeAreaView style={styles.safeArea}>
-            {/* HEADER INTELIGENTE */}
             <View style={styles.header}>
                 <View>
                     <Text style={styles.greetingText}>{getGreeting()}</Text>
@@ -85,7 +84,6 @@ export default function HomeScreen({ userName = "Beatriz" }) {
                             />
                         </View>
 
-                        {/* Texto ou criar novo */}
                         <Text style={styles.orText}>ou criar novo loop</Text>
                     </View>
                 ) : (
@@ -102,8 +100,8 @@ export default function HomeScreen({ userName = "Beatriz" }) {
                         <Text style={styles.metricValue}>{metrics.timeSaved}</Text>
                     </View>
                     <View style={styles.metricCard}>
-                        <Text style={styles.metricLabel}>Viagens</Text>
-                        <Text style={styles.metricValue}>{metrics.totalTrips}</Text>
+                        <Text style={styles.metricLabel}>VIAGENS</Text>
+                        <Text style={styles.SecondMetricValue}>{metrics.totalTrips}</Text>
                     </View>
                 </View>
 
@@ -135,7 +133,7 @@ export default function HomeScreen({ userName = "Beatriz" }) {
                 visible={isBottomSheetVisible}
                 onRequestClose={() => setBottomSheetVisible(false)}
             >
-                {/* A View do fundo virou um botão invisível que fecha o modal */}
+                {/* O fundo fecha o modal */}
                 <TouchableOpacity 
                     style={styles.modalOverlay} 
                     activeOpacity={1} 
@@ -357,6 +355,12 @@ const styles = StyleSheet.create({
 
     metricValue: {
         color: PRIMARY,
+        fontSize: 28,
+        fontFamily: "Nunito_900Black",
+    },
+
+    SecondMetricValue:{
+        color: TEXT_COLOR,
         fontSize: 28,
         fontFamily: "Nunito_900Black",
     },

@@ -1,9 +1,9 @@
+import { Feather } from '@expo/vector-icons';
 import { useState } from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Feather } from '@expo/vector-icons';
-import LoopiCheckbox from "../components/LoopiCheckbox";
 import LoopiButton from "../components/LoopiButton";
+import LoopiCheckbox from "../components/LoopiCheckbox";
 
 const DARK_PRIMARY= "#0D0F1A";
 const CARD= "#141629";
@@ -31,9 +31,7 @@ export default function TermsScreen(){
                     </View>
 
                     <View style={styles.progressContainer}>
-                        {/* Pontinho Inativo (Passo 1 já passou) */}
-                        <View style={styles.progressDot} />
-                        {/* Pontinho Ativo (Passo 2 atual) */}
+                        <View style={styles.PreviousProgressDot} />
                         <View style={[styles.progressDot, styles.progressDotActive]} />
                     </View>
 
@@ -80,6 +78,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: DARK_PRIMARY,
     },
+
     scrollContainer: {
         flexGrow: 1,
         paddingHorizontal: 30, 
@@ -91,12 +90,14 @@ const styles = StyleSheet.create({
         width: "100%",
         marginBottom: 30, 
     },
+
     headerTop: {
         flexDirection: "row",
         alignItems: "center",
         marginBottom: 30,
         marginLeft: -10, 
     },
+
     headerTitle: {
         color: FADED_TEXT_COLOR,
         fontSize: 16,
@@ -104,37 +105,51 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         letterSpacing: 0.5,
     },
+
     progressContainer: {
         flexDirection: "row",
         gap: 8, 
         marginBottom: 12,
     },
+
+        PreviousProgressDot: {
+        height: 8,
+        width: 16,
+        backgroundColor: "#4f5e19",
+        borderRadius: 4,
+    },
+    
     progressDot: {
         height: 8,
         width: 16,
         backgroundColor: BORDER, 
         borderRadius: 4,
     },
+
     progressDotActive: {
         width: 32, 
         backgroundColor: PRIMARY,
     },
+
     stepText: {
         color: PRIMARY,
         fontSize: 12,
         fontFamily: "DMSans_700Bold",
         letterSpacing: 1,
     },
+
     mainContent: {
         flex: 1,
         justifyContent: "flex-start", 
     },
+
     title: {
         color: TEXT_COLOR,
         fontSize: 32,
         fontFamily: "Nunito_900Black",
         marginBottom: 8, 
     },
+
     subtitle: {
         color: TEXT_COLOR,
         opacity: 0.7,
@@ -142,9 +157,11 @@ const styles = StyleSheet.create({
         fontFamily: "DMSans_400Regular",
         marginBottom: 40,
     },
+
     checkboxGroup: {
         marginBottom: 30,
     },
+
     disclaimerText: {
         color: FADED_TEXT_COLOR,
         fontSize: 14,
@@ -152,7 +169,8 @@ const styles = StyleSheet.create({
         lineHeight: 22,
         marginBottom: 40,
     },
+
     buttonContainer: {
-        marginTop: "auto", // Empurra o botão pro final da tela, caso sobre espaço!
+        marginTop: "auto", // Empurra o botão pro final da tela, caso sobre espaço
     }
 });

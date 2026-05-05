@@ -21,7 +21,6 @@ export default function CreateLoopScreen() {
     return (
         <SafeAreaView style={styles.safeArea}>
             
-            {/* CABEÇALHO */}
             <View style={styles.header}>
                 <TouchableOpacity style={styles.backButton}>
                     <Feather name="chevron-left" size={24} color={FADED_TEXT_COLOR} />

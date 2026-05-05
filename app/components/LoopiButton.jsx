@@ -68,6 +68,7 @@ const styles= StyleSheet.create({
 
     buttonSecondary: {
         backgroundColor: SECONDARY,
+        
     },
 
     buttonSmall: {

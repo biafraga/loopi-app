@@ -26,8 +26,8 @@ export default function RouteConfirmationScreen({
                 </TouchableOpacity>
 
                 <View style={styles.progressContainer}>
-                    <View style={styles.progressDot} />
-                    <View style={styles.progressDot} />
+                    <View style={styles.PreviousProgressDot} />
+                    <View style={styles.PreviousProgressDot} />
                     <View style={[styles.progressDot, styles.activeDot]} />
                 </View>
                 <Text style={styles.stepText}>PASSO 3 DE 3</Text>
@@ -106,6 +106,14 @@ const styles = StyleSheet.create({
         gap: 8,
         marginBottom: 12,
     },
+
+    PreviousProgressDot: {
+        height: 8,
+        width: 16,
+        backgroundColor: "#4f5e19",
+        borderRadius: 4,
+    },
+
     progressDot: {
         height: 8,
         width: 16,

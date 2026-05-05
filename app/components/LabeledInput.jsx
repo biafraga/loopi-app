@@ -1,6 +1,6 @@
 import { Feather } from '@expo/vector-icons';
-import { StyleSheet, Text, TextInput, View, TouchableOpacity } from "react-native";
 import { useState } from 'react';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 const DARK_PRIMARY= "#0D0F1A";
 const CARD= "#141629";
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         backgroundColor: CARD,
         borderRadius: 18,
-        borderWidth: 1,
+        borderWidth: 0.5,
         borderColor: PRIMARY, 
         paddingHorizontal: 14,
         height: 52,

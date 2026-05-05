@@ -110,7 +110,7 @@ const styles= StyleSheet.create({
     monthText: {
         color: PRIMARY,
         fontSize: 12,
-        fontFamily: "DMSans_700Bold",
+        fontFamily: "DMSans_400Regular",
         letterSpacing: 1,
         marginBottom: 4,
         textTransform: "uppercase",
@@ -143,7 +143,7 @@ const styles= StyleSheet.create({
 
     summaryLabel: {
         color: FADED_TEXT_COLOR,
-        fontSize: 11,
+        fontSize: 14,
         fontFamily: "DMSans_700Bold",
         marginBottom: 8,
     },
