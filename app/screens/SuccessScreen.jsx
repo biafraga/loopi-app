@@ -3,14 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiButton from "../components/LoopiButton";
 import LoopiMascot from "../components/LoopiMascot";
-
-const DARK_PRIMARY= "#0D0F1A";
-const CARD= "#141629";
-const BORDER= "#1C1F38";
-const PRIMARY= "#C8F135";
-const SECONDARY= "#6366F1";
-const TEXT_COLOR= "#F4F4FF";
-const FADED_TEXT_COLOR= "#ACACAC";
+import colors from "../theme/colors";
 
 export default function SuccessScreen({ userName = "Usuário" }){
     return(
@@ -27,7 +20,7 @@ export default function SuccessScreen({ userName = "Usuário" }){
 
                 <View style={styles.infoCard}>
                     <View style={styles.iconBox}>
-                        <Feather name="map-pin" size={20} color={PRIMARY}/>
+                        <Feather name="map-pin" size={20} color={colors.PRIMARY}/>
                     </View>
                     <Text style={styles.infoText}>
                         Próximo passo: cadastrar{"\n"}seu trajeto diário para o{"\n"}Loopi começar a aprender
@@ -53,7 +46,7 @@ export default function SuccessScreen({ userName = "Usuário" }){
 const styles= StyleSheet.create({
     safeArea:{
         flex: 1,
-        backgroundColor: DARK_PRIMARY,
+        backgroundColor: colors.DARK_PRIMARY,
     },
 
     container:{
@@ -70,14 +63,14 @@ const styles= StyleSheet.create({
     },
 
     title: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 28,
         fontFamily: "Unbounded_700Bold",
         textAlign: "center",
     },
 
     titleHighlight: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 28,
         fontFamily: "Unbounded_700Bold",
         textAlign: "center",
@@ -85,7 +78,7 @@ const styles= StyleSheet.create({
     },
 
     subtitle: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 16,
         fontFamily: "DMSans_400Regular",
         textAlign: "center",
@@ -96,7 +89,7 @@ const styles= StyleSheet.create({
     infoCard: {
         flexDirection: "row",
         alignItems: "center",
-        backgroundColor: CARD,
+        backgroundColor: colors.CARD,
         padding: 16,
         borderRadius: 16,
         width: "100%",
@@ -108,14 +101,14 @@ const styles= StyleSheet.create({
         height: 48,
         borderRadius: 12,
         borderWidth: 1,
-        borderColor: PRIMARY,
+        borderColor: colors.PRIMARY,
         alignItems: "center",
         justifyContent: "center",
         marginRight: 16,
     },
 
     infoText: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_400Regular",
         lineHeight: 18,
@@ -130,7 +123,7 @@ const styles= StyleSheet.create({
         paddingVertical: 10,
     },
     skipText: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 14,
         fontFamily: "DMSans_700Bold",
     },

@@ -3,14 +3,7 @@ import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 
 import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiButton from "../components/LoopiButton";
 import SearchInput from "../components/SearchInput";
-
-const DARK_PRIMARY = "#0D0F1A";
-const CARD = "#141629";
-const BORDER = "#1C1F38";
-const PRIMARY = "#C8F135";
-const SECONDARY = "#6366F1";
-const TEXT_COLOR = "#F4F4FF";
-const FADED_TEXT_COLOR = "#ACACAC";
+import colors from "../theme/colors";
 
 export default function RouteDestinationScreen() {
     return (
@@ -18,7 +11,7 @@ export default function RouteDestinationScreen() {
             
             <View style={styles.header}>
                 <TouchableOpacity style={styles.backButton}>
-                    <Feather name="chevron-left" size={24} color={FADED_TEXT_COLOR} />
+                    <Feather name="chevron-left" size={24} color={colors.FADED_TEXT_COLOR} />
                     <Text style={styles.backText}>NOVO TRAJETO</Text>
                 </TouchableOpacity>
 
@@ -51,7 +44,7 @@ export default function RouteDestinationScreen() {
                         <TextInput 
                             style={styles.timeInput} 
                             placeholder="08"
-                            placeholderTextColor={FADED_TEXT_COLOR}
+                            placeholderTextColor={colors.FADED_TEXT_COLOR}
                             keyboardType="numeric"
                             maxLength={2}
                         />
@@ -66,7 +59,7 @@ export default function RouteDestinationScreen() {
                         <TextInput 
                             style={styles.timeInput} 
                             placeholder="00"
-                            placeholderTextColor={FADED_TEXT_COLOR}
+                            placeholderTextColor={colors.FADED_TEXT_COLOR}
                             keyboardType="numeric"
                             maxLength={2}
                         />
@@ -89,7 +82,7 @@ export default function RouteDestinationScreen() {
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: DARK_PRIMARY,
+        backgroundColor: colors.DARK_PRIMARY,
     },
 
     header: {
@@ -105,7 +98,7 @@ const styles = StyleSheet.create({
     },
 
     backText: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 16,
         fontFamily: "DMSans_400Regular",
         marginLeft: 10,
@@ -121,17 +114,17 @@ const styles = StyleSheet.create({
     progressDot: {
         height: 8,
         width: 16,
-        backgroundColor: BORDER,
+        backgroundColor: colors.BORDER,
         borderRadius: 4,
     },
 
     activeDot: {
         width: 32,
-        backgroundColor: PRIMARY
+        backgroundColor: colors.PRIMARY
     },
 
     stepText: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 14,
         fontFamily: "DMSans_700Bold",
         letterSpacing: 1,
@@ -149,7 +142,7 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 28,
         fontFamily: "Nunito_900Black",
         marginBottom: 30, // Deixei 30 aqui para dar o mesmo espaço do subtitle da outra tela
@@ -160,7 +153,7 @@ const styles = StyleSheet.create({
     },
 
     sectionTitle: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 14, // Aumentado para acompanhar sua Origem
         fontFamily: "DMSans_700Bold",
         letterSpacing: 1,
@@ -174,9 +167,9 @@ const styles = StyleSheet.create({
     },
 
     timeBox: {
-        backgroundColor: DARK_PRIMARY,
+        backgroundColor: colors.DARK_PRIMARY,
         borderWidth: 1,
-        borderColor: BORDER,
+        borderColor: colors.BORDER,
         borderRadius: 16,
         paddingVertical: 12,
         paddingHorizontal: 20,
@@ -185,21 +178,21 @@ const styles = StyleSheet.create({
     },
 
     timeLabel: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 12,
         fontFamily: "DMSans_700Bold",
         marginBottom: 4,
     },
 
     timeInput: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 32,
         fontFamily: "Nunito_900Black",
         textAlign: "center",
     },
 
     timeSeparator: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 32,
         fontFamily: "Nunito_900Black",
         marginHorizontal: 12,

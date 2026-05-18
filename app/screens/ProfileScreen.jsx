@@ -2,14 +2,7 @@ import { Feather } from "@expo/vector-icons";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Menu from "../components/Menu";
-
-const DARK_PRIMARY = "#0D0F1A";
-const CARD = "#141629";
-const BORDER = "#1C1F38";
-const PRIMARY = "#C8F135";
-const DANGER = "#FF5252";
-const TEXT_COLOR = "#F4F4FF";
-const FADED_TEXT_COLOR = "#ACACAC";
+import colors from "../theme/colors";
 
 export default function ProfileScreen() {
     // MOCK DE DADOS DO USUÁRIO
@@ -50,7 +43,7 @@ export default function ProfileScreen() {
                 {/* CARD "MEUS LOOPS" */}
                 <View style={styles.loopsCard}>
                     <View style={styles.loopsCardLeft}>
-                        <Feather name="smile" size={24} color={PRIMARY} />
+                        <Feather name="smile" size={24} color={colors.PRIMARY} />
                         <View style={styles.loopsCardText}>
                             <Text style={styles.loopsCardTitle}>Meus loops</Text>
                             <Text style={styles.loopsCardSubtitle}>{user.loopsCount} trajeto cadastrado</Text>
@@ -65,27 +58,27 @@ export default function ProfileScreen() {
                 <View style={styles.optionsList}>
                     
                     <TouchableOpacity style={styles.optionItem}>
-                        <Feather name="bell" size={20} color={FADED_TEXT_COLOR} style={styles.optionIcon} />
+                        <Feather name="bell" size={20} color={colors.FADED_TEXT_COLOR} style={styles.optionIcon} />
                         <Text style={styles.optionText}>Notificações</Text>
-                        <Feather name="chevron-right" size={20} color={FADED_TEXT_COLOR} />
+                        <Feather name="chevron-right" size={20} color={colors.FADED_TEXT_COLOR} />
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.optionItem}>
-                        <Feather name="shield" size={20} color={FADED_TEXT_COLOR} style={styles.optionIcon} />
+                        <Feather name="shield" size={20} color={colors.FADED_TEXT_COLOR} style={styles.optionIcon} />
                         <Text style={styles.optionText}>Privacidade</Text>
-                        <Feather name="chevron-right" size={20} color={FADED_TEXT_COLOR} />
+                        <Feather name="chevron-right" size={20} color={colors.FADED_TEXT_COLOR} />
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.optionItem}>
-                        <Feather name="help-circle" size={20} color={FADED_TEXT_COLOR} style={styles.optionIcon} />
+                        <Feather name="help-circle" size={20} color={colors.FADED_TEXT_COLOR} style={styles.optionIcon} />
                         <Text style={styles.optionText}>Ajuda</Text>
-                        <Feather name="chevron-right" size={20} color={FADED_TEXT_COLOR} />
+                        <Feather name="chevron-right" size={20} color={colors.FADED_TEXT_COLOR} />
                     </TouchableOpacity>
 
                     {/* BOTÃO DE SAIR (Com cor de Danger) */}
                     <TouchableOpacity style={[styles.optionItem, { borderBottomWidth: 0 }]}>
-                        <Feather name="log-out" size={20} color={DANGER} style={styles.optionIcon} />
-                        <Text style={[styles.optionText, { color: DANGER }]}>Sair</Text>
+                        <Feather name="log-out" size={20} color={colors.DANGER} style={styles.optionIcon} />
+                        <Text style={[styles.optionText, { color: colors.DANGER }]}>Sair</Text>
                     </TouchableOpacity>
                     
                 </View>
@@ -102,7 +95,7 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: DARK_PRIMARY,
+        backgroundColor: colors.DARK_PRIMARY,
     },
 
     header: {
@@ -112,7 +105,7 @@ const styles = StyleSheet.create({
     },
 
     preTitle: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 12,
         fontFamily: "DMSans_700Bold",
         letterSpacing: 1,
@@ -121,7 +114,7 @@ const styles = StyleSheet.create({
     },
 
     titleText: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 28,
         fontFamily: "Nunito_900Black",
     },
@@ -136,7 +129,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginBottom: 32,
         borderBottomWidth: 1,
-        borderBottomColor: BORDER,
+        borderBottomColor: colors.BORDER,
         paddingBottom: 24,
     },
 
@@ -144,14 +137,14 @@ const styles = StyleSheet.create({
         width: 64,
         height: 64,
         borderRadius: 32,
-        backgroundColor: PRIMARY,
+        backgroundColor: colors.PRIMARY,
         justifyContent: "center",
         alignItems: "center",
         marginRight: 16,
     },
 
     avatarText: {
-        color: DARK_PRIMARY,
+        color: colors.DARK_PRIMARY,
         fontSize: 28,
         fontFamily: "Nunito_900Black",
     },
@@ -161,20 +154,20 @@ const styles = StyleSheet.create({
     },
 
     userName: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 18,
         fontFamily: "DMSans_700Bold",
         marginBottom: 4,
     },
 
     userEmail: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_400Regular",
     },
 
     editButtonText: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 14,
         fontFamily: "DMSans_700Bold",
     },
@@ -185,7 +178,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         backgroundColor: "rgba(200, 241, 53, 0.05)",
         borderWidth: 1,
-        borderColor: PRIMARY,
+        borderColor: colors.PRIMARY,
         borderRadius: 16,
         padding: 20,
         marginBottom: 32,
@@ -201,29 +194,29 @@ const styles = StyleSheet.create({
     },
 
     loopsCardTitle: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 16,
         fontFamily: "DMSans_700Bold",
         marginBottom: 4,
     },
 
     loopsCardSubtitle: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 12,
         fontFamily: "DMSans_400Regular",
     },
 
     newLoopText: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 16,
         fontFamily: "DMSans_700Bold",
     },
 
     optionsList: {
-        backgroundColor: CARD,
+        backgroundColor: colors.CARD,
         borderRadius: 16,
         borderWidth: 1,
-        borderColor: BORDER,
+        borderColor: colors.BORDER,
         paddingHorizontal: 20,
     },
 
@@ -232,7 +225,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         paddingVertical: 20,
         borderBottomWidth: 1,
-        borderBottomColor: BORDER,
+        borderBottomColor: colors.BORDER,
     },
 
     optionIcon: {
@@ -241,7 +234,7 @@ const styles = StyleSheet.create({
 
     optionText: {
         flex: 1,
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 16,
         fontFamily: "DMSans_400Regular",
     }

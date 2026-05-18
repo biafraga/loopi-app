@@ -3,14 +3,7 @@ import { useState } from "react";
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiButton from "../components/LoopiButton";
-
-const DARK_PRIMARY = "#0D0F1A";
-const CARD = "#141629";
-const BORDER = "#1C1F38";
-const PRIMARY = "#C8F135";
-const SECONDARY = "#6366F1";
-const TEXT_COLOR = "#F4F4FF";
-const FADED_TEXT_COLOR = "#ACACAC";
+import colors from "../theme/colors";
 
 export default function CreateLoopScreen() {
     // Estados para guardar o que o usuário digitar nos inputs
@@ -24,7 +17,7 @@ export default function CreateLoopScreen() {
             {/* CABEÇALHO */}
             <View style={styles.header}>
                 <TouchableOpacity style={styles.backButton}>
-                    <Feather name="chevron-left" size={24} color={FADED_TEXT_COLOR} />
+                    <Feather name="chevron-left" size={24} color={colors.FADED_TEXT_COLOR} />
                     <Text style={styles.backText}>CRIAR TRAJETO</Text>
                 </TouchableOpacity>
             </View>
@@ -72,7 +65,7 @@ export default function CreateLoopScreen() {
                         
                         {/* Linha 1: Origem */}
                         <View style={styles.routePoint}>
-                            <View style={[styles.dot, { backgroundColor: PRIMARY }]} />
+                            <View style={[styles.dot, { backgroundColor: colors.PRIMARY }]} />
                             <View style={styles.pointTextContainer}>
                                 <Text style={styles.pointLabel}>Origem</Text>
                                 <Text style={styles.pointValue}>{origem}</Text>
@@ -97,7 +90,7 @@ export default function CreateLoopScreen() {
 
                         {/* Linha 3: Destino */}
                         <View style={styles.routePoint}>
-                            <View style={[styles.dot, { backgroundColor: SECONDARY }]} />
+                            <View style={[styles.dot, { backgroundColor: colors.SECONDARY }]} />
                             <View style={styles.pointTextContainer}>
                                 <Text style={styles.pointLabel}>Destino</Text>
                                 <Text style={styles.pointValue}>{destino}</Text>
@@ -125,7 +118,7 @@ export default function CreateLoopScreen() {
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: DARK_PRIMARY,
+        backgroundColor: colors.DARK_PRIMARY,
     },
 
     header: {
@@ -141,7 +134,7 @@ const styles = StyleSheet.create({
     },
 
     backText: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 16,
         fontFamily: "DMSans_400Regular",
         marginLeft: 10,
@@ -158,7 +151,7 @@ const styles = StyleSheet.create({
     },
 
     label: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_700Bold",
         marginBottom: 8,
@@ -167,23 +160,23 @@ const styles = StyleSheet.create({
     input: {
         backgroundColor: "transparent",
         borderWidth: 1,
-        borderColor: BORDER,
+        borderColor: colors.BORDER,
         borderRadius: 12,
         paddingHorizontal: 16,
         paddingVertical: 14,
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 16,
         fontFamily: "DMSans_400Regular",
     },
 
     routeCard: {
-        backgroundColor: CARD,
+        backgroundColor: colors.CARD,
         borderRadius: 16,
         padding: 24,
         marginTop: 10,
         marginBottom: 40,
         borderWidth: 1,
-        borderColor: BORDER,
+        borderColor: colors.BORDER,
     },
 
     routePoint: {
@@ -204,14 +197,14 @@ const styles = StyleSheet.create({
     },
 
     pointLabel: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 11,
         fontFamily: "DMSans_400Regular",
         marginBottom: 2,
     },
 
     pointValue: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_700Bold",
     },
@@ -219,7 +212,7 @@ const styles = StyleSheet.create({
     verticalLine: {
         width: 1,
         height: 24,
-        backgroundColor: BORDER,
+        backgroundColor: colors.BORDER,
         marginLeft: 5,
         marginVertical: 4,
     },
@@ -231,7 +224,7 @@ const styles = StyleSheet.create({
     },
 
     submitButton: {
-        backgroundColor: SECONDARY,
+        backgroundColor: colors.SECONDARY,
         borderRadius: 24,
         flexDirection: "row",
         alignItems: "center",
@@ -240,7 +233,7 @@ const styles = StyleSheet.create({
     },
     
     submitButtonText: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 16,
         fontFamily: "DMSans_700Bold",
     }

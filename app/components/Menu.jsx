@@ -1,13 +1,6 @@
 import { Feather } from '@expo/vector-icons';
 import { StyleSheet, TouchableOpacity, View } from "react-native";
-
-const DARK_PRIMARY= "#0D0F1A";
-const CARD= "#141629";
-const BORDER= "#1C1F38";
-const PRIMARY= "#C8F135";
-const SECONDARY= "#6366F1";
-const TEXT_COLOR= "#F4F4FF";
-const FADED_TEXT_COLOR= "#ACACAC";
+import colors from '../theme/colors';
 
 export default function Menu({ activeTab = "home" }){
 
@@ -30,7 +23,7 @@ export default function Menu({ activeTab = "home" }){
                             name={tab.icon} 
                             size={24} 
                             // Usa o verde principal se estiver ativo, senão usa a cor apagada do texto
-                            color={activeTab === tab.id ? PRIMARY : FADED_TEXT_COLOR} 
+                            color={activeTab === tab.id ? colors.PRIMARY : colors.FADED_TEXT_COLOR} 
                         />
                     </TouchableOpacity>
                 ))}
@@ -43,11 +36,11 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
-        backgroundColor: DARK_PRIMARY,
+        backgroundColor: colors.DARK_PRIMARY,
         paddingVertical: 16,
         paddingBottom: 24,
         borderTopWidth: 1,
-        borderTopColor: BORDER,
+        borderTopColor: colors.BORDER,
     },
     tabButton: {
         alignItems: "center",

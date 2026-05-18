@@ -2,14 +2,7 @@ import { useState } from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Menu from "../components/Menu";
-
-const DARK_PRIMARY = "#0D0F1A";
-const CARD = "#141629";
-const BORDER = "#1C1F38";
-const PRIMARY = "#C8F135";
-const DANGER = "#FF5252";  // Vermelho para atrasos
-const TEXT_COLOR = "#F4F4FF";
-const FADED_TEXT_COLOR = "#ACACAC";
+import colors from "../theme/colors";
 
 export default function StatsScreen() {
     // Estado para controlar qual aba de tempo está selecionada
@@ -78,7 +71,7 @@ export default function StatsScreen() {
                                     styles.bar, 
                                     { 
                                         height: `${item.value}%`,
-                                        backgroundColor: item.type === "good" ? PRIMARY : DANGER 
+                                        backgroundColor: item.type === "good" ? colors.PRIMARY : colors.DANGER 
                                     }
                                 ]} />
                                 {/* Letra do dia da semana (S, T, Q...) */}
@@ -92,11 +85,11 @@ export default function StatsScreen() {
                 <View style={styles.metricsRow}>
                     <View style={styles.metricCard}>
                         <Text style={styles.metricLabel}>TAXA PONTUAL</Text>
-                        <Text style={[styles.metricValue, { color: PRIMARY }]}>78%</Text>
+                        <Text style={[styles.metricValue, { color: colors.PRIMARY }]}>78%</Text>
                     </View>
                     <View style={styles.metricCard}>
                         <Text style={styles.metricLabel}>DIA MAIS LENTO</Text>
-                        <Text style={[styles.metricValue, { color: DANGER }]}>Sex</Text>
+                        <Text style={[styles.metricValue, { color: colors.DANGER }]}>Sex</Text>
                     </View>
                 </View>
 
@@ -112,7 +105,7 @@ export default function StatsScreen() {
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: DARK_PRIMARY,
+        backgroundColor: colors.DARK_PRIMARY,
     },
 
     header: {
@@ -122,7 +115,7 @@ const styles = StyleSheet.create({
     },
 
     preTitle: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 12,
         fontFamily: "DMSans_700Bold",
         letterSpacing: 1,
@@ -131,7 +124,7 @@ const styles = StyleSheet.create({
     },
 
     titleText: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 28,
         fontFamily: "Nunito_900Black",
     },
@@ -155,22 +148,22 @@ const styles = StyleSheet.create({
 
     filterButtonActive: {
         borderWidth: 1,
-        borderColor: PRIMARY,
+        borderColor: colors.PRIMARY,
         backgroundColor: "rgba(200, 241, 53, 0.1)", // Verde com opacidade
     },
 
     filterText: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_700Bold",
     },
 
     filterTextActive: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
     },
 
     heroCard: {
-        backgroundColor: PRIMARY,
+        backgroundColor: colors.PRIMARY,
         borderRadius: 24,
         padding: 24,
         alignItems: "center",
@@ -178,7 +171,7 @@ const styles = StyleSheet.create({
     },
 
     heroCardLabel: {
-        color: DARK_PRIMARY,
+        color: colors.DARK_PRIMARY,
         fontSize: 12,
         fontFamily: "DMSans_700Bold",
         letterSpacing: 1,
@@ -186,29 +179,29 @@ const styles = StyleSheet.create({
     },
 
     heroCardValue: {
-        color: DARK_PRIMARY,
+        color: colors.DARK_PRIMARY,
         fontSize: 48,
         fontFamily: "Nunito_900Black",
         marginBottom: 4,
     },
 
     heroCardSub: {
-        color: DARK_PRIMARY,
+        color: colors.DARK_PRIMARY,
         fontSize: 14,
         fontFamily: "DMSans_400Regular",
     },
 
     chartCard: {
-        backgroundColor: CARD,
+        backgroundColor: colors.CARD,
         borderRadius: 16,
         padding: 20,
         borderWidth: 1,
-        borderColor: BORDER,
+        borderColor: colors.BORDER,
         marginBottom: 24,
     },
 
     chartTitle: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 12,
         fontFamily: "DMSans_700Bold",
         letterSpacing: 1,
@@ -237,7 +230,7 @@ const styles = StyleSheet.create({
     },
 
     barLabel: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 12,
         fontFamily: "DMSans_700Bold",
     },
@@ -249,16 +242,16 @@ const styles = StyleSheet.create({
 
     metricCard: {
         width: "48%",
-        backgroundColor: CARD,
+        backgroundColor: colors.CARD,
         borderRadius: 16,
         padding: 20,
         alignItems: "center",
         borderWidth: 1,
-        borderColor: BORDER,
+        borderColor: colors.BORDER,
     },
 
     metricLabel: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 11,
         fontFamily: "DMSans_700Bold",
         letterSpacing: 1,

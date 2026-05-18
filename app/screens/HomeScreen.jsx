@@ -4,15 +4,7 @@ import { Modal, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableWithout
 import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiButton from "../components/LoopiButton";
 import Menu from "../components/Menu";
-
-
-const DARK_PRIMARY = "#0D0F1A";
-const CARD = "#141629";
-const BORDER = "#1C1F38";
-const PRIMARY = "#C8F135";
-const SECONDARY = "#6366F1";
-const TEXT_COLOR = "#F4F4FF";
-const FADED_TEXT_COLOR = "#ACACAC";
+import colors from "../theme/colors";
 
 export default function HomeScreen({ userName = "Beatriz" }) {
     const getGreeting = () => {
@@ -199,7 +191,7 @@ export default function HomeScreen({ userName = "Beatriz" }) {
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: DARK_PRIMARY,
+        backgroundColor: colors.DARK_PRIMARY,
     },
 
     header: {
@@ -212,14 +204,14 @@ const styles = StyleSheet.create({
     },
 
     greetingText: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 16, 
         fontFamily: "DMSans_400Regular",
         marginBottom: 4, 
     },
 
     nameText: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 20, 
         fontFamily: "Unbounded_900Black",
     },
@@ -228,9 +220,9 @@ const styles = StyleSheet.create({
         width: 44, 
         height: 44,
         borderRadius: 22,
-        backgroundColor: CARD, 
+        backgroundColor: colors.CARD, 
         borderWidth: 1,
-        borderColor: BORDER,
+        borderColor: colors.BORDER,
         justifyContent: "center",
         alignItems: "center",
     },
@@ -241,12 +233,12 @@ const styles = StyleSheet.create({
     },
 
     heroCard: {
-        backgroundColor: CARD,
+        backgroundColor: colors.CARD,
         borderRadius: 24,
         padding: 24, 
         marginBottom: 24,
         borderWidth: 1,
-        borderColor: BORDER,
+        borderColor: colors.BORDER,
     },
 
     heroHeader: {
@@ -256,7 +248,7 @@ const styles = StyleSheet.create({
     },
 
     heroTag: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 12,
         fontFamily: "DMSans_700Bold",
         marginLeft: 8,
@@ -264,7 +256,7 @@ const styles = StyleSheet.create({
     },
 
     heroSubtitle: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_400Regular",
         marginBottom: 8, 
@@ -276,7 +268,7 @@ const styles = StyleSheet.create({
         fontFamily: "Unbounded_900Black",
         marginBottom: 16, 
         alignSelf: 'flex-start',
-        textShadowColor: SECONDARY,
+        textShadowColor: colors.SECONDARY,
         textShadowOffset: { width: 0, height: 4 }, // Joga a sombra pra baixo
         textShadowRadius: 12, // Esfumaça
     },
@@ -296,14 +288,14 @@ const styles = StyleSheet.create({
         width: 8,
         height: 8,
         borderRadius: 4,
-        backgroundColor: PRIMARY,
+        backgroundColor: colors.PRIMARY,
     },
 
     dotPurple: {
         width: 8,
         height: 8,
         borderRadius: 4,
-        backgroundColor: SECONDARY,
+        backgroundColor: colors.SECONDARY,
     },
 
     dashedLine: {
@@ -311,7 +303,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 12,
         height: 1,
         borderWidth: 1,
-        borderColor: PRIMARY,
+        borderColor: colors.PRIMARY,
         borderStyle: "dashed",
     },
 
@@ -321,13 +313,13 @@ const styles = StyleSheet.create({
     },
 
     routeText: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 13,
         fontFamily: "DMSans_700Bold",
     },
 
     orText: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_700Bold",
         textAlign: "center",
@@ -341,14 +333,14 @@ const styles = StyleSheet.create({
 
     metricCard: {
         width: "48%",
-        backgroundColor: CARD,
+        backgroundColor: colors.CARD,
         borderRadius: 16,
         padding: 20, 
         alignItems: "flex-start",
     },
 
     metricLabel: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 12, 
         fontFamily: "DMSans_700Bold",
         letterSpacing: 1,
@@ -356,7 +348,7 @@ const styles = StyleSheet.create({
     },
 
     metricValue: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 28,
         fontFamily: "Nunito_900Black",
     },
@@ -364,7 +356,7 @@ const styles = StyleSheet.create({
     loopCard: {
         flexDirection: "row",
         alignItems: "center",
-        backgroundColor: CARD,
+        backgroundColor: colors.CARD,
         borderRadius: 16,
         padding: 16,
         marginBottom: 100, // Espaço para o FAB não cobrir
@@ -374,23 +366,23 @@ const styles = StyleSheet.create({
         width: 48, 
         height: 48,
         borderRadius: 12,
-        backgroundColor: DARK_PRIMARY,
+        backgroundColor: colors.DARK_PRIMARY,
         borderWidth: 1,
-        borderColor: BORDER,
+        borderColor: colors.BORDER,
         justifyContent: "center",
         alignItems: "center",
         marginRight: 16,
     },
 
     loopTitle: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 18,
         fontFamily: "DMSans_700Bold",
         marginBottom: 4,
     },
 
     loopSubtitle: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_400Regular",
     },
@@ -402,11 +394,11 @@ const styles = StyleSheet.create({
         width: 64,
         height: 64,
         borderRadius: 32,
-        backgroundColor: PRIMARY,
+        backgroundColor: colors.PRIMARY,
         justifyContent: "center",
         alignItems: "center",
         elevation: 5, 
-        shadowColor: PRIMARY, 
+        shadowColor: colors.PRIMARY, 
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.3,
         shadowRadius: 8,
@@ -419,18 +411,18 @@ const styles = StyleSheet.create({
     },
 
     bottomSheet: {
-        backgroundColor: DARK_PRIMARY,
+        backgroundColor: colors.DARK_PRIMARY,
         borderTopLeftRadius: 32,
         borderTopRightRadius: 32,
         padding: 30,
         paddingBottom: 40,
         borderWidth: 1,
-        borderColor: BORDER,
+        borderColor: colors.BORDER,
         borderBottomWidth: 0,
     },
 
     sheetPreTitle: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 16,
         fontFamily: "DMSans_400Regular",
         letterSpacing: 1,
@@ -438,7 +430,7 @@ const styles = StyleSheet.create({
     },
 
     sheetTitle: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 28,
         fontFamily: "Nunito_900Black",
         marginBottom: 24,
@@ -447,7 +439,7 @@ const styles = StyleSheet.create({
     sheetCard: {
         backgroundColor: "rgba(200, 241, 53, 0.05)",
         borderWidth: 1,
-        borderColor: PRIMARY,
+        borderColor: colors.PRIMARY,
         borderRadius: 16,
         padding: 20,
         marginBottom: 24,
@@ -460,20 +452,20 @@ const styles = StyleSheet.create({
     },
 
     sheetCardRoute: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 16,
         fontFamily: "DMSans_700Bold",
     },
 
     sheetCardDetails: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_400Regular",
         lineHeight: 18,
     },
 
     primaryButtonSheet: {
-        backgroundColor: PRIMARY,
+        backgroundColor: colors.PRIMARY,
         borderRadius: 24,
         flexDirection: "row",
         alignItems: "center",
@@ -490,7 +482,7 @@ const styles = StyleSheet.create({
         marginBottom: 8,
     },
     secondaryButtonText: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 16,
         fontFamily: "DMSans_700Bold",
     },
@@ -501,7 +493,7 @@ const styles = StyleSheet.create({
     },
 
     cancelButtonText: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 16,
         fontFamily: "DMSans_700Bold",
     },

@@ -2,14 +2,7 @@ import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "rea
 import { SafeAreaView } from "react-native-safe-area-context";
 import LabeledInput from "../components/LabeledInput";
 import LoopiButton from "../components/LoopiButton";
-
-const DARK_PRIMARY= "#0D0F1A";
-const CARD= "#141629";
-const BORDER= "#1C1F38";
-const PRIMARY= "#C8F135";
-const SECONDARY= "#6366F1";
-const TEXT_COLOR= "#F4F4FF";
-const FADED_TEXT_COLOR= "#ACACAC";
+import colors from "../theme/colors";
 
 
 export default function LoginScreen (){
@@ -66,12 +59,12 @@ export default function LoginScreen (){
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: DARK_PRIMARY, // Fundo escuro do app
+        backgroundColor: colors.DARK_PRIMARY,
         width: "100%"
     },
     scrollContainer: {
         flexGrow: 1,
-        paddingHorizontal: 30, // Dá aquele respiro nas laterais (Margem do Figma)
+        paddingHorizontal: 30, // respiro nas laterais (Margem do Figma)
         paddingTop: 20,
         paddingBottom: 20,
     },
@@ -85,13 +78,13 @@ const styles = StyleSheet.create({
         marginBottom: 20, // Empurra o título para baixo
     },
     title: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 30,
         fontFamily: "Nunito_900Black",
         marginBottom: 8,
     },
     subtitle: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         opacity: 0.7,
         fontSize: 18,
         fontFamily: "DMSans_400Regular",
@@ -107,7 +100,7 @@ const styles = StyleSheet.create({
         marginTop: -5,
     },
     forgetText: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 18,
         fontFamily: "DMSans_400Regular",
     },
@@ -118,13 +111,13 @@ const styles = StyleSheet.create({
         paddingTop: 20,
     },
     footerText: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         opacity: 0.7,
         fontFamily: "DMSans_400Regular",
         fontSize: 18,
     },
     footerLink: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontFamily: "DMSans_700Bold",
         fontSize: 18,
     }

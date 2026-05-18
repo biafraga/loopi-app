@@ -4,13 +4,7 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-nati
 import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiButton from "../components/LoopiButton";
 import SearchInput from "../components/SearchInput";
-
-const DARK_PRIMARY = "#0D0F1A";
-const CARD = "#141629";
-const BORDER = "#1C1F38";
-const PRIMARY = "#C8F135";
-const TEXT_COLOR = "#F4F4FF";
-const FADED_TEXT_COLOR = "#ACACAC";
+import colors from "../theme/colors";
 
 export default function RouteOriginScreen() {
     // 1. Estado para guardar o que o usuário está digitando
@@ -40,7 +34,7 @@ export default function RouteOriginScreen() {
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.header}>
                 <TouchableOpacity style={styles.backButton}>
-                    <Feather name="chevron-left" size={24} color={FADED_TEXT_COLOR} />
+                    <Feather name="chevron-left" size={24} color={colors.FADED_TEXT_COLOR} />
                     <Text style={styles.backText}>NOVO TRAJETO</Text>
                 </TouchableOpacity>
 
@@ -87,13 +81,13 @@ export default function RouteOriginScreen() {
                             <Feather 
                                 name="map-pin" 
                                 size={20} 
-                                color={isFirstItem ? PRIMARY : FADED_TEXT_COLOR} 
+                                color={isFirstItem ? colors.PRIMARY : colors.FADED_TEXT_COLOR} 
                                 style={styles.pinIcon} 
                             />
                             <View>
                                 <Text style={[
                                     styles.suggestionTitle, 
-                                    !isFirstItem && { color: FADED_TEXT_COLOR }
+                                    !isFirstItem && { color: colors.FADED_TEXT_COLOR }
                                 ]}>
                                     {item.title}
                                 </Text>
@@ -121,7 +115,7 @@ export default function RouteOriginScreen() {
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: DARK_PRIMARY,
+        backgroundColor: colors.DARK_PRIMARY,
     },
     header: {
         paddingHorizontal: 30,
@@ -134,7 +128,7 @@ const styles = StyleSheet.create({
         marginBottom: 30,
     },
     backText: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 16,
         fontFamily: "DMSans_400Regular",
         marginLeft: 10,
@@ -148,15 +142,15 @@ const styles = StyleSheet.create({
     progressDot: {
         height: 8,
         width: 16,
-        backgroundColor: BORDER, 
+        backgroundColor: colors.BORDER, 
         borderRadius: 4,
     },
     activeDot: {
         width: 32, 
-        backgroundColor: PRIMARY
+        backgroundColor: colors.PRIMARY
     },
     stepText: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 14,
         fontFamily: "DMSans_700Bold",
         letterSpacing: 1,
@@ -166,13 +160,13 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30,
     },
     title: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 28,
         fontFamily: "Nunito_900Black",
         marginBottom: 8,
     },
     subtitle: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 16,
         fontFamily: "DMSans_400Regular",
         marginBottom: 30,
@@ -181,7 +175,7 @@ const styles = StyleSheet.create({
         marginBottom: 40,
     },
     sectionTitle: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_700Bold",
         letterSpacing: 1,
@@ -190,7 +184,7 @@ const styles = StyleSheet.create({
     suggestionCard: {
         flexDirection: "row",
         alignItems: "center",
-        backgroundColor: CARD,
+        backgroundColor: colors.CARD,
         padding: 16,
         borderRadius: 16,
         marginBottom: 12,
@@ -198,19 +192,19 @@ const styles = StyleSheet.create({
     fadedCard: {
         backgroundColor: "transparent",
         borderWidth: 1,
-        borderColor: CARD,
+        borderColor: colors.CARD,
     },
     pinIcon: {
         marginRight: 16,
     },
     suggestionTitle: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 16,
         fontFamily: "DMSans_700Bold",
         marginBottom: 4,
     },
     suggestionSubtitle: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_400Regular",
     },

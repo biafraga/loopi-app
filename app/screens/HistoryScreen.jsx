@@ -2,17 +2,7 @@ import { useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Menu from "../components/Menu";
-
-
-const DARK_PRIMARY= "#0D0F1A";
-const CARD= "#141629";
-const BORDER= "#1C1F38";
-const PRIMARY= "#C8F135";
-const DANGER = "#FF5252"; // Vermelho (Atrasos)
-const INFO = "#6366F1"; // Azul/Roxo (Adiantado)
-const SECONDARY= "#6366F1";
-const TEXT_COLOR= "#F4F4FF";
-const FADED_TEXT_COLOR= "#ACACAC";
+import colors from "../theme/colors";
 
 export default function HistoryScreen(){
     //MOCK DE DADOS
@@ -31,12 +21,12 @@ export default function HistoryScreen(){
     const getBadgeStyle = (status) => {
         switch (status) {
             case "late":
-                return { backgroundColor: "rgba(255, 82, 82, 0.1)", color: DANGER };
+                return { backgroundColor: "rgba(255, 82, 82, 0.1)", color: colors.DANGER };
             case "early":
-                return { backgroundColor: "rgba(99, 102, 241, 0.1)", color: INFO };
+                return { backgroundColor: "rgba(99, 102, 241, 0.1)", color: colors.INFO };
             case "on_time":
             default:
-                return { backgroundColor: "rgba(200, 241, 53, 0.1)", color: PRIMARY };
+                return { backgroundColor: "rgba(200, 241, 53, 0.1)", color: colors.PRIMARY };
         }
     };
 
@@ -50,15 +40,15 @@ export default function HistoryScreen(){
             <View style={styles.summaryRow}>
                 <View style={styles.summaryCard}>
                     <Text style={styles.summaryLabel}>Viagens</Text>
-                    <Text style={[styles.summaryValue, { color: TEXT_COLOR }]}>{summary.totalTrips}</Text>
+                    <Text style={[styles.summaryValue, { color: colors.TEXT_COLOR }]}>{summary.totalTrips}</Text>
                 </View>
                 <View style={styles.summaryCard}>
                     <Text style={styles.summaryLabel}>No prazo</Text>
-                    <Text style={[styles.summaryValue, { color: PRIMARY }]}>{summary.onTime}</Text>
+                    <Text style={[styles.summaryValue, { color: colors.PRIMARY }]}>{summary.onTime}</Text>
                 </View>
                 <View style={styles.summaryCard}>
                     <Text style={styles.summaryLabel}>Atrasos</Text>
-                    <Text style={[styles.summaryValue, { color: DANGER }]}>{summary.late}</Text>
+                    <Text style={[styles.summaryValue, { color: colors.DANGER }]}>{summary.late}</Text>
                 </View>
             </View>
 
@@ -98,7 +88,7 @@ export default function HistoryScreen(){
 const styles= StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: DARK_PRIMARY,
+        backgroundColor: colors.DARK_PRIMARY,
     },
 
     header: {
@@ -108,7 +98,7 @@ const styles= StyleSheet.create({
     },
 
     monthText: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 12,
         fontFamily: "DMSans_700Bold",
         letterSpacing: 1,
@@ -117,7 +107,7 @@ const styles= StyleSheet.create({
     },
 
     titleText: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 28,
         fontFamily: "Nunito_900Black",
     },
@@ -130,7 +120,7 @@ const styles= StyleSheet.create({
     },
 
     summaryCard: {
-        backgroundColor: CARD,
+        backgroundColor: colors.CARD,
         borderRadius: 16,
         paddingVertical: 16,
         paddingHorizontal: 12,
@@ -138,11 +128,11 @@ const styles= StyleSheet.create({
         flex: 1, // Faz os 3 cards dividirem o espaço igualmente
         marginHorizontal: 4,
         borderWidth: 1,
-        borderColor: BORDER,
+        borderColor: colors.BORDER,
     },
 
     summaryLabel: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 11,
         fontFamily: "DMSans_700Bold",
         marginBottom: 8,
@@ -162,12 +152,12 @@ const styles= StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: CARD,
+        backgroundColor: colors.CARD,
         borderRadius: 16,
         padding: 16,
         marginBottom: 12,
         borderWidth: 1,
-        borderColor: BORDER,
+        borderColor: colors.BORDER,
     },
 
     cardInfo: {
@@ -176,14 +166,14 @@ const styles= StyleSheet.create({
     },
 
     dateText: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_700Bold",
         marginBottom: 4,
     },
 
     detailsText: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 11,
         fontFamily: "DMSans_400Regular",
     },

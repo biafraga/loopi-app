@@ -3,14 +3,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiButton from "../components/LoopiButton";
 import LoopiMascot from "../components/LoopiMascot";
 import Menu from "../components/Menu";
-
-const DARK_PRIMARY= "#0D0F1A";
-const CARD= "#141629";
-const BORDER= "#1C1F38";
-const PRIMARY= "#C8F135";
-const SECONDARY= "#6366F1";
-const TEXT_COLOR= "#F4F4FF";
-const FADED_TEXT_COLOR= "#ACACAC";
+import colors from "../theme/colors";
 
 export default function EmptyStateScreen(){
     return(
@@ -47,7 +40,7 @@ export default function EmptyStateScreen(){
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: DARK_PRIMARY,
+        backgroundColor: colors.DARK_PRIMARY,
     },
     content: {
         flex: 1,
@@ -61,14 +54,14 @@ const styles = StyleSheet.create({
         alignItems: "flex-start",
     },
     overline: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_400Regular",
         letterSpacing: 1.5,
         marginBottom: 8,
     },
     title: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 28,
         fontFamily: "Nunito_900Black",
         lineHeight: 36,
@@ -80,7 +73,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     instruction: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 16,
         fontFamily: "DMSans_400Regular",
         textAlign: "center",

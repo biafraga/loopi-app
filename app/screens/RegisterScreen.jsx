@@ -3,14 +3,7 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-nati
 import { SafeAreaView } from "react-native-safe-area-context";
 import LabeledInput from "../components/LabeledInput";
 import LoopiButton from "../components/LoopiButton";
-
-const DARK_PRIMARY= "#0D0F1A";
-const CARD= "#141629";
-const BORDER= "#1C1F38";
-const PRIMARY= "#C8F135";
-const SECONDARY= "#6366F1";
-const TEXT_COLOR= "#F4F4FF";
-const FADED_TEXT_COLOR= "#ACACAC";
+import colors from '../theme/colors';
 
 export default function RegisterScreen(){
     return(
@@ -20,7 +13,7 @@ export default function RegisterScreen(){
                 <View style={styles.headerContainer}>
                     <View style={styles.headerTop}>
                         <TouchableOpacity onPress={() => console.log("Voltar")}>
-                            <Feather name="chevron-left" size={28} color={FADED_TEXT_COLOR} />
+                            <Feather name="chevron-left" size={28} color={colors.FADED_TEXT_COLOR} />
                         </TouchableOpacity>
                         <Text style={styles.headerTitle}>CRIAR CONTA</Text>
                     </View>
@@ -90,7 +83,7 @@ export default function RegisterScreen(){
 const styles= StyleSheet.create({
     safeArea:{
         flex: 1,
-        backgroundColor: DARK_PRIMARY,
+        backgroundColor: colors.DARK_PRIMARY,
     },
     
     scrollContainer: {
@@ -113,7 +106,7 @@ const styles= StyleSheet.create({
     },
 
     headerTitle: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 16,
         fontFamily: "DMSans_400Regular",
         marginLeft: 10,
@@ -129,17 +122,17 @@ const styles= StyleSheet.create({
     progressDot: {
         height: 8,
         width: 16,
-        backgroundColor: BORDER, // Cor das bolinhas inativas
+        backgroundColor: colors.BORDER, // Cor das bolinhas inativas
         borderRadius: 4,
     },
 
     progressDotActive: {
         width: 32, // Bolinha ativa
-        backgroundColor: PRIMARY,
+        backgroundColor: colors.PRIMARY,
     },
 
     stepText: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 12,
         fontFamily: "DMSans_700Bold",
         letterSpacing: 1,
@@ -151,7 +144,7 @@ const styles= StyleSheet.create({
     },
 
     title: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 32,
         fontFamily: "Nunito_900Black",
         marginBottom: 10, 
@@ -175,14 +168,14 @@ const styles= StyleSheet.create({
     },
 
     footerText: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         opacity: 0.7,
         fontFamily: "DMSans_400Regular",
         fontSize: 18,
     },
 
     footerLink: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontFamily: "DMSans_700Bold",
         fontSize: 18,
     }

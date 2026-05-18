@@ -2,14 +2,7 @@ import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Menu from "../components/Menu";
-
-const DARK_PRIMARY = "#0D0F1A";
-const CARD = "#141629";
-const BORDER = "#1C1F38";
-const PRIMARY = "#C8F135";
-const DANGER = "#FF5252"; 
-const TEXT_COLOR = "#F4F4FF";
-const FADED_TEXT_COLOR = "#ACACAC";
+import colors from "../theme/colors";
 
 export default function ActiveLoopScreen() {
     // Começando em 25min 
@@ -101,7 +94,7 @@ export default function ActiveLoopScreen() {
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: DARK_PRIMARY,
+        backgroundColor: colors.DARK_PRIMARY,
     },
 
     content: {
@@ -124,27 +117,27 @@ const styles = StyleSheet.create({
         width: 10,
         height: 10,
         borderRadius: 5,
-        backgroundColor: PRIMARY,
+        backgroundColor: colors.PRIMARY,
         marginRight: 8,
     },
 
     statusText: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 16,
         fontFamily: "DMSans_400Regular",
         letterSpacing: 1,
     },
 
     title: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 28,
         fontFamily: "Nunito_900Black",
     },
 
     timerCard: {
-        backgroundColor: CARD,
+        backgroundColor: colors.CARD,
         borderWidth: 1,
-        borderColor: PRIMARY,
+        borderColor: colors.PRIMARY,
         borderRadius: 16,
         padding: 30,
         alignItems: "center",
@@ -152,7 +145,7 @@ const styles = StyleSheet.create({
     },
 
     timerLabel: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 16,
         fontFamily: "DMSans_400Regular",
         letterSpacing: 1,
@@ -160,14 +153,14 @@ const styles = StyleSheet.create({
     },
 
     timerValue: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 56,
         fontFamily: "Nunito_900Black",
         marginBottom: 16,
     },
 
     timerSubtitle: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_400Regular",
         marginBottom: 32,
@@ -179,7 +172,7 @@ const styles = StyleSheet.create({
 
     progressBarBackground: {
         height: 8,
-        backgroundColor: BORDER,
+        backgroundColor: colors.BORDER,
         borderRadius: 4,
         marginBottom: 12,
         overflow: "hidden", 
@@ -187,7 +180,7 @@ const styles = StyleSheet.create({
 
     progressBarFill: {
         height: "100%",
-        backgroundColor: PRIMARY,
+        backgroundColor: colors.PRIMARY,
         borderRadius: 4,
     },
 
@@ -197,7 +190,7 @@ const styles = StyleSheet.create({
     },
 
     progressText: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 11,
         fontFamily: "DMSans_700Bold",
     },
@@ -210,9 +203,9 @@ const styles = StyleSheet.create({
 
     metricCard: {
         width: "48%",
-        backgroundColor: CARD,
+        backgroundColor: colors.CARD,
         borderWidth: 1,
-        borderColor: BORDER,
+        borderColor: colors.BORDER,
         borderRadius: 16,
         padding: 20,
         alignItems: "center",
@@ -220,7 +213,7 @@ const styles = StyleSheet.create({
     },
 
     metricLabel: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 11,
         fontFamily: "DMSans_700Bold",
         textAlign: "center",
@@ -230,20 +223,20 @@ const styles = StyleSheet.create({
     },
 
     metricValue: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 26,
         fontFamily: "Nunito_900Black",
     },
 
     metricValueSecondary: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 26,
         fontFamily: "Nunito_900Black",
     },
 
     dangerButton: {
         borderWidth: 1,
-        borderColor: DANGER,
+        borderColor: colors.DANGER,
         borderRadius: 24,
         flexDirection: "row",
         alignItems: "center",
@@ -252,7 +245,7 @@ const styles = StyleSheet.create({
     },
 
     dangerButtonText: {
-        color: DANGER,
+        color: colors.DANGER,
         fontSize: 16,
         fontFamily: "DMSans_700Bold",
     }

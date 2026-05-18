@@ -2,13 +2,7 @@ import { Feather } from "@expo/vector-icons";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiMascot from "../components/LoopiMascot"; // Nosso mascote oficial importado!
-
-const DARK_PRIMARY = "#0D0F1A";
-const CARD = "#141629";
-const BORDER = "#1C1F38";
-const PRIMARY = "#C8F135";
-const TEXT_COLOR = "#F4F4FF";
-const FADED_TEXT_COLOR = "#ACACAC";
+import colors from "../theme/colors";
 
 export default function LoopStartedScreen() {
     return (
@@ -40,7 +34,7 @@ export default function LoopStartedScreen() {
                     <Text style={styles.summaryLabel}>Trajeto</Text>
                     <View style={styles.routeRow}>
                         <Text style={styles.routeTextPrimary}>Barra de Maricá</Text>
-                        <Feather name="arrow-right" size={12} color={PRIMARY} style={{ marginHorizontal: 6 }} />
+                        <Feather name="arrow-right" size={12} color={colors.PRIMARY} style={{ marginHorizontal: 6 }} />
                         <Text style={styles.routeTextPrimary}>Centro RJ</Text>
                     </View>
                 </View>
@@ -61,7 +55,7 @@ export default function LoopStartedScreen() {
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: DARK_PRIMARY,
+        backgroundColor: colors.DARK_PRIMARY,
         justifyContent: "space-between",
     },
 
@@ -78,7 +72,7 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 24,
         fontFamily: "Nunito_900Black",
         marginTop: 16,
@@ -87,7 +81,7 @@ const styles = StyleSheet.create({
     registeredCard: {
         backgroundColor: "rgba(200, 241, 53, 0.05)",
         borderWidth: 1,
-        borderColor: PRIMARY,
+        borderColor: colors.PRIMARY,
         borderRadius: 12,
         paddingVertical: 20,
         paddingHorizontal: 40,
@@ -97,7 +91,7 @@ const styles = StyleSheet.create({
     },
 
     registeredLabel: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 11,
         fontFamily: "DMSans_700Bold",
         letterSpacing: 1,
@@ -105,13 +99,13 @@ const styles = StyleSheet.create({
     },
 
     registeredTime: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 40,
         fontFamily: "Nunito_900Black",
     },
 
     infoText: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_400Regular",
         textAlign: "center",
@@ -123,9 +117,9 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: CARD,
+        backgroundColor: colors.CARD,
         borderWidth: 1,
-        borderColor: BORDER,
+        borderColor: colors.BORDER,
         borderRadius: 12,
         padding: 16,
         width: "100%",
@@ -133,13 +127,13 @@ const styles = StyleSheet.create({
     },
 
     summaryLabel: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_400Regular",
     },
 
     summaryValue: {
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 16,
         fontFamily: "DMSans_700Bold",
     },
@@ -150,7 +144,7 @@ const styles = StyleSheet.create({
     },
 
     routeTextPrimary: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 11,
         fontFamily: "DMSans_700Bold",
     },
@@ -170,7 +164,7 @@ const styles = StyleSheet.create({
     },
 
     outlineButtonText: {
-        color: FADED_TEXT_COLOR,
+        color: colors.FADED_TEXT_COLOR,
         fontSize: 16,
         fontFamily: "DMSans_700Bold",
     }
