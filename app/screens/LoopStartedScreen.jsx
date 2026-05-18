@@ -1,5 +1,5 @@
 import { Feather } from "@expo/vector-icons";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiMascot from "../components/LoopiMascot"; // Nosso mascote oficial importado!
 import colors from "../theme/colors";
@@ -7,6 +7,7 @@ import colors from "../theme/colors";
 export default function LoopStartedScreen() {
     return (
         <SafeAreaView style={styles.safeArea}>
+            <ScrollView>
             <View style={styles.content}>
                 
                 <View style={styles.centerStage}>
@@ -48,6 +49,8 @@ export default function LoopStartedScreen() {
                 </TouchableOpacity>
             </View>
 
+            </ScrollView>
+
         </SafeAreaView>
     );
 }
@@ -68,7 +71,8 @@ const styles = StyleSheet.create({
 
     centerStage: {
         alignItems: "center",
-        marginBottom: 24,
+        marginBottom: 20,
+        marginTop: 30,
     },
 
     title: {
@@ -91,9 +95,15 @@ const styles = StyleSheet.create({
     },
 
     registeredLabel: {
+<<<<<<< HEAD
         color: colors.PRIMARY,
         fontSize: 11,
         fontFamily: "DMSans_700Bold",
+=======
+        color: PRIMARY,
+        fontSize: 14,
+        fontFamily: "DMSans_400Regular",
+>>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         letterSpacing: 1,
         marginBottom: 8,
     },

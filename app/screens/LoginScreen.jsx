@@ -32,7 +32,6 @@ export default function LoginScreen (){
                         isPassword={true}
                     />
                     
-                    {/* Esqueci a senha (Alinhado à direita) */}
                     <TouchableOpacity style={styles.forgetButton}>
                         <Text style={styles.forgetText}>Esqueci a senha</Text>
                     </TouchableOpacity>
@@ -59,12 +58,20 @@ export default function LoginScreen (){
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
+<<<<<<< HEAD
         backgroundColor: colors.DARK_PRIMARY,
+=======
+        backgroundColor: DARK_PRIMARY,
+>>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         width: "100%"
     },
     scrollContainer: {
         flexGrow: 1,
+<<<<<<< HEAD
         paddingHorizontal: 30, // respiro nas laterais (Margem do Figma)
+=======
+        paddingHorizontal: 30,
+>>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         paddingTop: 20,
         paddingBottom: 20,
     },
@@ -75,7 +82,8 @@ const styles = StyleSheet.create({
     logo: {
         width: 160,
         height: 70,
-        marginBottom: 20, // Empurra o título para baixo
+        marginBottom: 20,
+
     },
     title: {
         color: colors.TEXT_COLOR,
@@ -95,8 +103,8 @@ const styles = StyleSheet.create({
         marginBottom: 30,
     },
     forgetButton: {
-        alignSelf: "flex-end", // alinhar só este item à direita!
-        marginBottom: 30, // Espaço entre o esqueci a senha e o botão de entrar
+        alignSelf: "flex-end", 
+        marginBottom: 30,
         marginTop: -5,
     },
     forgetText: {

@@ -35,8 +35,7 @@ export default function ActiveLoopScreen() {
                 contentContainerStyle={{ paddingBottom: 120 }}
                 showsVerticalScrollIndicator={false}
             >
-                
-                {/* CABEÇALHO */}
+    
                 <View style={styles.header}>
                     <View style={styles.statusBadge}>
                         <View style={styles.statusDot} />
@@ -45,7 +44,7 @@ export default function ActiveLoopScreen() {
                     <Text style={styles.title}>Em trânsito</Text>
                 </View>
 
-                {/* CARD PRINCIPAL - CRONÔMETRO */}
+                {/* CARD PRINCIPAL COM CRONÔMETRO */}
                 <View style={styles.timerCard}>
                     <Text style={styles.timerLabel}>TEMPO</Text>
                     
@@ -66,10 +65,10 @@ export default function ActiveLoopScreen() {
                     </View>
                 </View>
 
-                {/* CARDS MENORES DE MÉTRICAS */}
+                {/* CARDS DE MÉTRICAS */}
                 <View style={styles.metricsRow}>
                     <View style={styles.metricCard}>
-                        <Text style={styles.metricLabel}>PREVISÃO{"\n"}CHEGADA</Text>
+                        <Text style={styles.metricLabel}>PREVISÃO DE{"\n"}CHEGADA</Text>
                         <Text style={styles.metricValue}>7:40</Text>
                     </View>
                     <View style={styles.metricCard}>
@@ -223,14 +222,24 @@ const styles = StyleSheet.create({
     },
 
     metricValue: {
+<<<<<<< HEAD
         color: colors.TEXT_COLOR,
         fontSize: 26,
+=======
+        color: TEXT_COLOR,
+        fontSize: 28,
+>>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         fontFamily: "Nunito_900Black",
     },
 
     metricValueSecondary: {
+<<<<<<< HEAD
         color: colors.PRIMARY,
         fontSize: 26,
+=======
+        color: PRIMARY,
+        fontSize: 28,
+>>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         fontFamily: "Nunito_900Black",
     },
 

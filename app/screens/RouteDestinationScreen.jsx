@@ -16,7 +16,7 @@ export default function RouteDestinationScreen() {
                 </TouchableOpacity>
 
                 <View style={styles.progressContainer}>
-                    <View style={styles.progressDot} />
+                    <View style={styles.PreviousProgressDot} />
                     <View style={[styles.progressDot, styles.activeDot]} />
                     <View style={styles.progressDot} />
                 </View>
@@ -111,6 +111,13 @@ const styles = StyleSheet.create({
         marginBottom: 12,
     },
 
+    PreviousProgressDot: {
+        height: 8,
+        width: 16,
+        backgroundColor: "#4f5e19",
+        borderRadius: 4,
+    },
+
     progressDot: {
         height: 8,
         width: 16,
@@ -145,7 +152,7 @@ const styles = StyleSheet.create({
         color: colors.TEXT_COLOR,
         fontSize: 28,
         fontFamily: "Nunito_900Black",
-        marginBottom: 30, // Deixei 30 aqui para dar o mesmo espaço do subtitle da outra tela
+        marginBottom: 30,
     },
 
     searchSection: {
@@ -153,9 +160,15 @@ const styles = StyleSheet.create({
     },
 
     sectionTitle: {
+<<<<<<< HEAD
         color: colors.FADED_TEXT_COLOR,
         fontSize: 14, // Aumentado para acompanhar sua Origem
         fontFamily: "DMSans_700Bold",
+=======
+        color: PRIMARY,
+        fontSize: 15, 
+        fontFamily: "DMSans_400Regular",
+>>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         letterSpacing: 1,
         marginBottom: 16,
     },

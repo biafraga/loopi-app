@@ -1,7 +1,18 @@
 import { Feather } from '@expo/vector-icons';
 import { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+<<<<<<< HEAD
 import colors from '../theme/colors';
+=======
+
+const DARK_PRIMARY= "#0D0F1A";
+const CARD= "#141629";
+const BORDER= "#1C1F38";
+const PRIMARY= "#C8F135";
+const SECONDARY= "#6366F1";
+const TEXT_COLOR= "#F4F4FF";
+const FADED_TEXT_COLOR= "#ACACAC";
+>>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
 
 export default function LabeledInput ({ label, iconName, isPassword, ...rest }) {
 
@@ -61,8 +72,13 @@ const styles = StyleSheet.create({
         alignItems: "center",
         backgroundColor: colors.CARD,
         borderRadius: 18,
+<<<<<<< HEAD
         borderWidth: 1,
         borderColor: colors.PRIMARY, 
+=======
+        borderWidth: 0.5,
+        borderColor: PRIMARY, 
+>>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         paddingHorizontal: 14,
         height: 52,
     },

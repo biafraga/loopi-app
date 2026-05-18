@@ -19,9 +19,7 @@ export default function RegisterScreen(){
                     </View>
 
                     <View style={styles.progressContainer}>
-                        {/* Pontinho Ativo (Passo 1) */}
                         <View style={[styles.progressDot, styles.progressDotActive]} />
-                        {/* Pontinho Inativo (Passo 2 - Termos) */}
                         <View style={styles.progressDot} />
                     </View>
 
@@ -102,7 +100,7 @@ const styles= StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         marginBottom: 30,
-        marginLeft: -10, // Puxa a setinha um pouco para a esquerda para alinhar visualmente
+        marginLeft: -10,
     },
 
     headerTitle: {
@@ -115,20 +113,29 @@ const styles= StyleSheet.create({
 
     progressContainer: {
         flexDirection: "row",
-        gap: 8, // Espaço entre os pontinhos
+        gap: 8,
         marginBottom: 12,
     },
 
     progressDot: {
         height: 8,
         width: 16,
+<<<<<<< HEAD
         backgroundColor: colors.BORDER, // Cor das bolinhas inativas
+=======
+        backgroundColor: BORDER,
+>>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         borderRadius: 4,
     },
 
     progressDotActive: {
+<<<<<<< HEAD
         width: 32, // Bolinha ativa
         backgroundColor: colors.PRIMARY,
+=======
+        width: 32,
+        backgroundColor: PRIMARY,
+>>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
     },
 
     stepText: {

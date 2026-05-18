@@ -24,11 +24,11 @@ export default function ArrivalScreen() {
                 <View style={styles.metricsContainer}>
                     <View style={styles.metricBox}>
                         <Text style={styles.metricLabel}>DURAÇÃO</Text>
-                        <Text style={styles.metricValue}>18</Text>
+                        <Text style={styles.metricValue}>18m</Text>
                     </View>
                     <View style={styles.metricBox}>
                         <Text style={styles.metricLabel}>PREVISTO</Text>
-                        <Text style={styles.metricValue}>14</Text>
+                        <Text style={styles.SecondMetricValue}>14m</Text>
                     </View>
                     <View style={styles.metricBox}>
                         <Text style={styles.metricLabel}>DIFERENÇA</Text>
@@ -114,6 +114,12 @@ const styles = StyleSheet.create({
 
     metricValue: {
         color: colors.TEXT_COLOR,
+        fontSize: 24,
+        fontFamily: "Nunito_900Black",
+    },
+
+    SecondMetricValue: {
+        color: PRIMARY,
         fontSize: 24,
         fontFamily: "Nunito_900Black",
     },

@@ -75,7 +75,7 @@ export default function ProfileScreen() {
                         <Feather name="chevron-right" size={20} color={colors.FADED_TEXT_COLOR} />
                     </TouchableOpacity>
 
-                    {/* BOTÃO DE SAIR (Com cor de Danger) */}
+                    {/* BOTÃO DE SAIR */}
                     <TouchableOpacity style={[styles.optionItem, { borderBottomWidth: 0 }]}>
                         <Feather name="log-out" size={20} color={colors.DANGER} style={styles.optionIcon} />
                         <Text style={[styles.optionText, { color: colors.DANGER }]}>Sair</Text>
@@ -105,9 +105,15 @@ const styles = StyleSheet.create({
     },
 
     preTitle: {
+<<<<<<< HEAD
         color: colors.PRIMARY,
         fontSize: 12,
         fontFamily: "DMSans_700Bold",
+=======
+        color: PRIMARY,
+        fontSize: 14,
+        fontFamily: "DMSans_400Regular",
+>>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         letterSpacing: 1,
         marginBottom: 4,
         textTransform: "uppercase",
