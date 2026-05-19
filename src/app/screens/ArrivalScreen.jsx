@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     },
 
     SecondMetricValue: {
-        color: PRIMARY,
+        color: colors.PRIMARY,
         fontSize: 24,
         fontFamily: "Nunito_900Black",
     },

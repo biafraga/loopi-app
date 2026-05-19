@@ -6,7 +6,7 @@ import LoopiButton from "../components/LoopiButton";
 import SearchInput from "../components/SearchInput";
 import colors from "../theme/colors";
 
-export default function RouteOriginScreen() {
+export default function RouteOriginScreen({navigation}) {
     // 1. Estado para guardar o que o usuário está digitando
     const [searchText, setSearchText] = useState("");
     
@@ -33,7 +33,7 @@ export default function RouteOriginScreen() {
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.header}>
-                <TouchableOpacity style={styles.backButton}>
+                <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
                     <Feather name="chevron-left" size={24} color={colors.FADED_TEXT_COLOR} />
                     <Text style={styles.backText}>NOVO TRAJETO</Text>
                 </TouchableOpacity>
@@ -104,7 +104,7 @@ export default function RouteOriginScreen() {
             <View style={styles.footer}>
                 <LoopiButton 
                     textButton="Confirmar origem" 
-                    onPress={() => console.log("Ir para Destino")}
+                    onPress={() => navigation.navigate("RouteDestination")}
                 />
             </View>
 

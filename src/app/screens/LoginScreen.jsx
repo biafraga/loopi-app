@@ -5,7 +5,7 @@ import LoopiButton from "../components/LoopiButton";
 import colors from "../theme/colors";
 
 
-export default function LoginScreen (){
+export default function LoginScreen ({ navigation }){
     return(
         <SafeAreaView style={styles.safeArea}>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -38,14 +38,14 @@ export default function LoginScreen (){
 
                     <LoopiButton
                         textButton="Entrar"
-                        onPress={() => console.log("Clicou em Entrar")}
+                        onPress={() => navigation.navigate("EmptyState")}
                     />
                 </View>
                 </View>
 
                 <View style={styles.footer}>
                     <Text style={styles.footerText}>Não tem conta? </Text>
-                    <TouchableOpacity onPress={() => console.log("Ir para Cadastro")}>
+                    <TouchableOpacity onPress={() => navigation.navigate("Register")}>
                         <Text style={styles.footerLink}>Cadastre-se</Text>
                     </TouchableOpacity>
                 </View>

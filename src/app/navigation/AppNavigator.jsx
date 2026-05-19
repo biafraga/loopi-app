@@ -8,13 +8,17 @@ import ArrivalScreen from '../screens/ArrivalScreen';
 import EmptyStateScreen from '../screens/EmptyStateScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 import HomeScreen from '../screens/HomeScreen';
+import InstructionsScreen from '../screens/InstructionsScreen';
 import LoginScreen from '../screens/LoginScreen';
 import LoopStartedScreen from '../screens/LoopStartedScreen';
+import PermissionsScreen from '../screens/PermissionsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import ProposalScreen from '../screens/ProposalScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import RouteConfirmationScreen from '../screens/RouteConfirmationScreen';
 import RouteDestinationScreen from '../screens/RouteDestinationScreen';
 import RouteOriginScreen from '../screens/RouteOriginScreen';
+import SplashScreen from '../screens/SplashScreen';
 import StatsScreen from '../screens/StatsScreen';
 import SuccessScreen from '../screens/SuccessScreen';
 import TermsScreen from '../screens/TermsScreen';
@@ -77,7 +81,7 @@ function BottomTabs() {
 export default function AppNavigator() {
     return (
         <Stack.Navigator
-            initialRouteName="Login"
+            initialRouteName="Splash"
             screenOptions={{ headerShown: false }}
         >
             <Stack.Screen name="Login" component={LoginScreen} />
@@ -92,6 +96,10 @@ export default function AppNavigator() {
             <Stack.Screen name="LoopStarted" component={LoopStartedScreen} />
             <Stack.Screen name="ActiveLoop" component={ActiveLoopScreen} />
             <Stack.Screen name="Arrival" component={ArrivalScreen} />
+            <Stack.Screen name="Splash" component={SplashScreen} />
+            <Stack.Screen name="Proposal" component={ProposalScreen} />
+            <Stack.Screen name="Instructions" component={InstructionsScreen} />
+            <Stack.Screen name="Permissions" component={PermissionsScreen} />
         </Stack.Navigator>
     );
 }

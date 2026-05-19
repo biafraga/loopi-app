@@ -35,7 +35,7 @@ export default function HomeScreen({ userName = "Beatriz" }) {
                     <Text style={styles.nameText}>{userName}</Text>
                 </View>
                 <TouchableOpacity style={styles.notificationBtn}>
-                    <Feather name="bell" size={20} color={TEXT_COLOR} />
+                    <Feather name="bell" size={20} color={colors.TEXT_COLOR} />
                 </TouchableOpacity>
             </View>
 
@@ -46,7 +46,7 @@ export default function HomeScreen({ userName = "Beatriz" }) {
                     <View style={styles.heroCard}>
                         {/* Cabeçalho */}
                         <View style={styles.heroHeader}>
-                            <Feather name="clock" size={14} color={PRIMARY} />
+                            <Feather name="clock" size={14} color={colors.PRIMARY} />
                             <Text style={styles.heroTag}>PRÓXIMO LOOP</Text>
                         </View>
                         
@@ -101,7 +101,7 @@ export default function HomeScreen({ userName = "Beatriz" }) {
                 {myLoops.map(loop => (
                     <TouchableOpacity key={loop.id} style={styles.loopCard}>
                         <View style={styles.loopIconContainer}>
-                            <Feather name="clock" size={20} color={PRIMARY} />
+                            <Feather name="clock" size={20} color={colors.PRIMARY} />
                         </View>
                         <View>
                             <Text style={styles.loopTitle}>{loop.title}</Text>
@@ -114,7 +114,7 @@ export default function HomeScreen({ userName = "Beatriz" }) {
 
             {/* FAB */}
             <TouchableOpacity style={styles.fab} onPress={() => setBottomSheetVisible(true)}>
-                <Feather name="plus" size={28} color={DARK_PRIMARY} />
+                <Feather name="plus" size={28} color={colors.DARK_PRIMARY} />
             </TouchableOpacity>
 
             <Menu activeTab="home" />
@@ -142,7 +142,7 @@ export default function HomeScreen({ userName = "Beatriz" }) {
                             <View style={styles.sheetCard}>
                                 <View style={styles.sheetCardHeader}>
                                     <Text style={styles.sheetCardRoute}>Barra de Maricá</Text>
-                                    <Feather name="arrow-right" size={16} color={PRIMARY} style={{ marginHorizontal: 8 }} />
+                                    <Feather name="arrow-right" size={16} color={colors.PRIMARY} style={{ marginHorizontal: 8 }} />
                                     <Text style={styles.sheetCardRoute}>Centro RJ</Text>
                                 </View>
                                 <Text style={styles.sheetCardDetails}>Média: 2h10m Chegada prevista: 7h22m</Text>
@@ -164,7 +164,7 @@ export default function HomeScreen({ userName = "Beatriz" }) {
                                 style={styles.secondaryButtonSheet}
                                 onPress={() => console.log("Ir para a tela 02 - Criar um loop")} 
                             >
-                                <Feather name="edit-2" size={16} color={FADED_TEXT_COLOR} style={{ marginRight: 8 }} />
+                                <Feather name="edit-2" size={16} color={colors.FADED_TEXT_COLOR} style={{ marginRight: 8 }} />
                                 <Text style={styles.secondaryButtonText}>Alterar trajeto de hoje</Text>
                             </TouchableOpacity>
 
@@ -352,7 +352,7 @@ const styles = StyleSheet.create({
     },
 
     SecondMetricValue:{
-        color: TEXT_COLOR,
+        color: colors.TEXT_COLOR,
         fontSize: 28,
         fontFamily: "Nunito_900Black",
     },
