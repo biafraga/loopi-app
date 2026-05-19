@@ -62,8 +62,8 @@ O Loopi resolve um problema cotidiano: saber exatamente quando sair de casa para
 | Framework | React Native |
 | Plataforma | Expo |
 | Linguagem | JavaScript |
-| Navegação | Expo Router |
-| Ícones | Expo Vector Icons |
+| Navegação | React Navigation |
+| Ícones | Feather (Expo Vector Icons) |
 | Back-end | [loopi-api](https://github.com/biafraga/loopi-api) (Spring Boot) |
 
 ---
