@@ -22,10 +22,10 @@ O Loopi resolve um problema cotidiano: saber exatamente quando sair de casa para
     <td align="center"><b>Perfil</b></td>
   </tr>
   <tr>
-    <td><img src="app/assets/screenshots/home.png" width="180"/></td>
-    <td><img src="app/assets/screenshots/historico.png" width="180"/></td>
-    <td><img src="app/assets/screenshots/estatisticas.png" width="180"/></td>
-    <td><img src="app/assets/screenshots/perfil.png" width="180"/></td>
+    <td><img src="src/assets/screenshots/home.png" width="180"/></td>
+    <td><img src="src/assets/screenshots/historico.png" width="180"/></td>
+    <td><img src="src/assets/screenshots/estatisticas.png" width="180"/></td>
+    <td><img src="src/assets/screenshots/perfil.png" width="180"/></td>
   </tr>
   <tr>
     <td align="center"><b>Login</b></td>
@@ -34,10 +34,10 @@ O Loopi resolve um problema cotidiano: saber exatamente quando sair de casa para
     <td align="center"><b>Meus Trajetos</b></td>
   </tr>
   <tr>
-    <td><img src="app/assets/screenshots/login.png" width="180"/></td>
-    <td><img src="app/assets/screenshots/cadastro.png" width="180"/></td>
-    <td><img src="app/assets/screenshots/success_screen.png" width="180"/></td>
-    <td><img src="app/assets/screenshots/estado_vazio.png" width="180"/></td>
+    <td><img src="src/assets/screenshots/login.png" width="180"/></td>
+    <td><img src="src/assets/screenshots/cadastro.png" width="180"/></td>
+    <td><img src="src/assets/screenshots/success_screen.png" width="180"/></td>
+    <td><img src="src/assets/screenshots/estado_vazio.png" width="180"/></td>
   </tr>
   <tr>
     <td align="center"><b>Origem</b></td>
@@ -46,9 +46,9 @@ O Loopi resolve um problema cotidiano: saber exatamente quando sair de casa para
     <td></td>
   </tr>
   <tr>
-    <td><img src="app/assets/screenshots/origem.png" width="180"/></td>
-    <td><img src="app/assets/screenshots/destino.png" width="180"/></td>
-    <td><img src="app/assets/screenshots/rota_cadastrada.png" width="180"/></td>
+    <td><img src="src/assets/screenshots/origem.png" width="180"/></td>
+    <td><img src="src/assets/screenshots/destino.png" width="180"/></td>
+    <td><img src="src/assets/screenshots/rota_cadastrada.png" width="180"/></td>
     <td></td>
   </tr>
 </table>
