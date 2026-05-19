@@ -222,24 +222,14 @@ const styles = StyleSheet.create({
     },
 
     metricValue: {
-<<<<<<< HEAD
         color: colors.TEXT_COLOR,
         fontSize: 26,
-=======
-        color: TEXT_COLOR,
-        fontSize: 28,
->>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         fontFamily: "Nunito_900Black",
     },
 
     metricValueSecondary: {
-<<<<<<< HEAD
         color: colors.PRIMARY,
         fontSize: 26,
-=======
-        color: PRIMARY,
-        fontSize: 28,
->>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         fontFamily: "Nunito_900Black",
     },
 

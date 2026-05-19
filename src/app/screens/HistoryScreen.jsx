@@ -132,13 +132,8 @@ const styles= StyleSheet.create({
     },
 
     summaryLabel: {
-<<<<<<< HEAD
         color: colors.FADED_TEXT_COLOR,
         fontSize: 11,
-=======
-        color: FADED_TEXT_COLOR,
-        fontSize: 14,
->>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         fontFamily: "DMSans_700Bold",
         marginBottom: 8,
     },

@@ -4,18 +4,7 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-nati
 import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiButton from "../components/LoopiButton";
 import LoopiCheckbox from "../components/LoopiCheckbox";
-<<<<<<< HEAD
 import colors from "../theme/colors";
-=======
-
-const DARK_PRIMARY= "#0D0F1A";
-const CARD= "#141629";
-const BORDER= "#1C1F38";
-const PRIMARY= "#C8F135";
-const SECONDARY= "#6366F1";
-const TEXT_COLOR= "#F4F4FF";
-const FADED_TEXT_COLOR= "#ACACAC";
->>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
 
 export default function TermsScreen(){
     // Criando os estados para os dois checkboxes começarem desmarcados (false)

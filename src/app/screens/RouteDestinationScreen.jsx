@@ -160,15 +160,9 @@ const styles = StyleSheet.create({
     },
 
     sectionTitle: {
-<<<<<<< HEAD
         color: colors.FADED_TEXT_COLOR,
         fontSize: 14, // Aumentado para acompanhar sua Origem
         fontFamily: "DMSans_700Bold",
-=======
-        color: PRIMARY,
-        fontSize: 15, 
-        fontFamily: "DMSans_400Regular",
->>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         letterSpacing: 1,
         marginBottom: 16,
     },

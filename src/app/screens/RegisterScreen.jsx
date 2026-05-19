@@ -120,22 +120,13 @@ const styles= StyleSheet.create({
     progressDot: {
         height: 8,
         width: 16,
-<<<<<<< HEAD
         backgroundColor: colors.BORDER, // Cor das bolinhas inativas
-=======
-        backgroundColor: BORDER,
->>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         borderRadius: 4,
     },
 
     progressDotActive: {
-<<<<<<< HEAD
         width: 32, // Bolinha ativa
         backgroundColor: colors.PRIMARY,
-=======
-        width: 32,
-        backgroundColor: PRIMARY,
->>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
     },
 
     stepText: {

@@ -115,15 +115,9 @@ const styles = StyleSheet.create({
     },
 
     preTitle: {
-<<<<<<< HEAD
         color: colors.PRIMARY,
         fontSize: 12,
         fontFamily: "DMSans_700Bold",
-=======
-        color: PRIMARY,
-        fontSize: 14,
-        fontFamily: "DMSans_400Regular",
->>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         letterSpacing: 1,
         marginBottom: 4,
         textTransform: "uppercase",

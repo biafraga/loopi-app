@@ -63,28 +63,16 @@ const styles= StyleSheet.create({
     },
 
     title: {
-<<<<<<< HEAD
         color: colors.TEXT_COLOR,
         fontSize: 28,
         fontFamily: "Unbounded_700Bold",
-=======
-        color: TEXT_COLOR,
-        fontSize: 32,
-        fontFamily: "Nunito_900Black",
->>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         textAlign: "center",
     },
 
     titleHighlight: {
-<<<<<<< HEAD
         color: colors.PRIMARY,
         fontSize: 28,
         fontFamily: "Unbounded_700Bold",
-=======
-        color: PRIMARY,
-        fontSize: 32,
-        fontFamily: "Nunito_900Black",
->>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         textAlign: "center",
         marginBottom: 16,
     },

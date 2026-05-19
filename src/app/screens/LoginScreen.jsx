@@ -58,20 +58,12 @@ export default function LoginScreen (){
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-<<<<<<< HEAD
         backgroundColor: colors.DARK_PRIMARY,
-=======
-        backgroundColor: DARK_PRIMARY,
->>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         width: "100%"
     },
     scrollContainer: {
         flexGrow: 1,
-<<<<<<< HEAD
         paddingHorizontal: 30, // respiro nas laterais (Margem do Figma)
-=======
-        paddingHorizontal: 30,
->>>>>>> bb2a0894ea7b44feddc60bd3b35f7955dc7358ad
         paddingTop: 20,
         paddingBottom: 20,
     },
