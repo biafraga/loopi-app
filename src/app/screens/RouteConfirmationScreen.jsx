@@ -9,12 +9,13 @@ export default function RouteConfirmationScreen({
     origin = "Não informado", 
     destination = "Não informado", 
     arrivalTime = "00:00", 
-    days = "Dias úteis" 
+    days = "Dias úteis",
+    navigation
 }) {
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.header}>
-                <TouchableOpacity style={styles.backButton}>
+                <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
                     <Feather name="chevron-left" size={24} color={colors.FADED_TEXT_COLOR} />
                     <Text style={styles.backText}>NOVO TRAJETO</Text>
                 </TouchableOpacity>
@@ -66,7 +67,7 @@ export default function RouteConfirmationScreen({
             <View style={styles.footer}>
                 <LoopiButton 
                     textButton="Próximo" 
-                    onPress={() => console.log("Finalizar fluxo e ir para Home")}
+                    onPress={() => navigation.navigate("Main")}
                 />
             </View>
         </SafeAreaView>

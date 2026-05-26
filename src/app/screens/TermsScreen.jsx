@@ -6,7 +6,7 @@ import LoopiButton from "../components/LoopiButton";
 import LoopiCheckbox from "../components/LoopiCheckbox";
 import colors from "../theme/colors";
 
-export default function TermsScreen(){
+export default function TermsScreen({navigation}){
     // Criando os estados para os dois checkboxes começarem desmarcados (false)
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [notificationsAccepted, setNotificationsAccepted] = useState(false);
@@ -17,7 +17,7 @@ export default function TermsScreen(){
                 
                 <View style={styles.headerContainer}>
                     <View style={styles.headerTop}>
-                        <TouchableOpacity onPress={() => console.log("Voltar")}>
+                        <TouchableOpacity onPress={() => navigation.goBack()}>
                             <Feather name="chevron-left" size={28} color={colors.FADED_TEXT_COLOR} />
                         </TouchableOpacity>
                         <Text style={styles.headerTitle}>CRIAR CONTA</Text>
@@ -56,7 +56,7 @@ export default function TermsScreen(){
                     <View style={styles.buttonContainer}>
                         <LoopiButton 
                             textButton="Criar minha conta" 
-                            onPress={() => console.log("Conta Finalizada!")}
+                            onPress={() => navigation.navigate("Success")}
                         />
                     </View>
                 </View>

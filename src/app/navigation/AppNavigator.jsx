@@ -5,6 +5,7 @@ import colors from '../theme/colors';
 
 import ActiveLoopScreen from '../screens/ActiveLoopScreen';
 import ArrivalScreen from '../screens/ArrivalScreen';
+import CreateLoopScreen from '../screens/CreateLoopScreen';
 import EmptyStateScreen from '../screens/EmptyStateScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 import HomeScreen from '../screens/HomeScreen';
@@ -100,6 +101,7 @@ export default function AppNavigator() {
             <Stack.Screen name="Proposal" component={ProposalScreen} />
             <Stack.Screen name="Instructions" component={InstructionsScreen} />
             <Stack.Screen name="Permissions" component={PermissionsScreen} />
+            <Stack.Screen name="CreateLoop" component={CreateLoopScreen} />
         </Stack.Navigator>
     );
 }

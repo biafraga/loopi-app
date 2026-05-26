@@ -1,7 +1,6 @@
 import { Feather } from "@expo/vector-icons";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Menu from "../components/Menu";
 import colors from "../theme/colors";
 
 export default function ProfileScreen() {
@@ -85,8 +84,6 @@ export default function ProfileScreen() {
 
                 <View style={{ height: 100 }} /> 
             </ScrollView>
-
-            <Menu activeTab="profile" />
 
         </SafeAreaView>
     );

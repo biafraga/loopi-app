@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Menu from "../components/Menu";
 import colors from "../theme/colors";
 
 export default function HistoryScreen(){
@@ -78,8 +77,6 @@ export default function HistoryScreen(){
                 {/* Espaçamento extra no fim pra Nav Bar não tampar o último item */}
                 <View style={{ height: 100 }} /> 
             </ScrollView>
-
-            <Menu activeTab="history" />
 
         </SafeAreaView>
     )

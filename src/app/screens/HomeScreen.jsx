@@ -3,10 +3,9 @@ import { useState } from "react";
 import { Modal, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiButton from "../components/LoopiButton";
-import Menu from "../components/Menu";
 import colors from "../theme/colors";
 
-export default function HomeScreen({ userName = "Beatriz" }) {
+export default function HomeScreen({ userName = "Beatriz", navigation }) {
     const getGreeting = () => {
         const hour = new Date().getHours();
         if (hour < 12) return "Bom dia";
@@ -117,8 +116,6 @@ export default function HomeScreen({ userName = "Beatriz" }) {
                 <Feather name="plus" size={28} color={colors.DARK_PRIMARY} />
             </TouchableOpacity>
 
-            <Menu activeTab="home" />
-
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -155,14 +152,14 @@ export default function HomeScreen({ userName = "Beatriz" }) {
                                     textButton="INICIAR LOOP" 
                                     variant="secondary"
                                     icon="navigation"
-                                    onPress={() => console.log("Iniciar loop do modal")} 
+                                    onPress={() => navigation.navigate("ActiveLoop")} //erro aqui 
                                 />
                             </View>
 
                             {/* BOTÃO: Mudar trajeto */}
                             <TouchableOpacity 
                                 style={styles.secondaryButtonSheet}
-                                onPress={() => console.log("Ir para a tela 02 - Criar um loop")} 
+                                onPress={() => navigation.navigate("Ir para a tela 02 - Criar um loop")} 
                             >
                                 <Feather name="edit-2" size={16} color={colors.FADED_TEXT_COLOR} style={{ marginRight: 8 }} />
                                 <Text style={styles.secondaryButtonText}>Alterar trajeto de hoje</Text>

@@ -5,7 +5,7 @@ import LoopiMascot from "../components/LoopiMascot";
 import Menu from "../components/Menu";
 import colors from "../theme/colors";
 
-export default function EmptyStateScreen(){
+export default function EmptyStateScreen({navigation}){
     return(
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.content}>
@@ -25,7 +25,7 @@ export default function EmptyStateScreen(){
                 <View style={styles.buttonContainer}>
                     <LoopiButton
                         textButton="+ Adicionar trajeto" 
-                        onPress={() => console.log("Indo para cadastro de origem...")}
+                        onPress={() => navigation.navigate("RouteOrigin")}
                     />
                 </View>
             </View>

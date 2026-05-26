@@ -5,7 +5,7 @@ import LoopiButton from "../components/LoopiButton";
 import SearchInput from "../components/SearchInput";
 import colors from "../theme/colors";
 
-export default function RouteDestinationScreen() {
+export default function RouteDestinationScreen({navigation}) {
     return (
         <SafeAreaView style={styles.safeArea}>
             
@@ -71,7 +71,7 @@ export default function RouteDestinationScreen() {
             <View style={styles.footer}>
                 <LoopiButton 
                     textButton="Próximo" 
-                    onPress={() => console.log("Ir para Confirmação")}
+                    onPress={() => navigation.navigate("RouteConfirmation")}
                 />
             </View>
 
