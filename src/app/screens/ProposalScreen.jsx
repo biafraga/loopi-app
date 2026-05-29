@@ -32,7 +32,7 @@ export default function ProposalScreen({ navigation }){
             <View style={styles.buttonContainer}>
                 <LoopiButton
                     textButton="Próximo"
-                    onPress={() => navigation.navigate("Instructions")}
+                    onPress={() => navigation.navigate("instructions")}
                 />
             </View>
         </SafeAreaView>

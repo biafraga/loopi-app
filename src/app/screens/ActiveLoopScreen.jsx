@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Menu from "../components/Menu";
 import colors from "../theme/colors";
 
-export default function ActiveLoopScreen() {
+export default function ActiveLoopScreen({navigation}) {
     // Começando em 25min 
     const [seconds, setSeconds] = useState(25 * 60 + 25);
     
@@ -78,13 +77,11 @@ export default function ActiveLoopScreen() {
                 </View>
 
                 {/* BOTÃO MANUAL */}
-                <TouchableOpacity style={styles.dangerButton}>
+                {/* <TouchableOpacity style={styles.dangerButton} onPress={() => navigation.navigate("arrival")}>
                     <Text style={styles.dangerButtonText}>Registrar chegada manualmente</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
             </ScrollView>
-
-            <Menu activeTab="home" />
 
         </SafeAreaView>
     );

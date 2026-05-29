@@ -53,7 +53,7 @@ export default function InstructionsScreen({ navigation }) {
             <View style={styles.buttonContainer}>
                 <LoopiButton
                     textButton="Próximo"
-                    onPress={() => navigation.navigate("Permissions")}
+                    onPress={() => navigation.navigate("permissions")}
                 />
             </View>
         </SafeAreaView>

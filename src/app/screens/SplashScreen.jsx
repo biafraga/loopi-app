@@ -18,12 +18,13 @@ export default function SplashScreen({ navigation }){
             <View style={styles.buttonContainer}>
                 <LoopiButton
                     textButton="Começar agora"
-                    onPress={() => navigation.navigate("Proposal")}
+                    onPress={() => navigation.navigate("proposal")}
                 />
 
                 <LoopiButton
                     variant="outline"
-                    onPress={() => navigation.navigate("Login")}
+                    textButton="Já tenho conta"
+                    onPress={() => navigation.navigate("login")}
                 />
 
             </View>

@@ -49,7 +49,7 @@ export default function PermissionsScreen({ navigation }) {
             <View style={styles.buttonContainer}>
                 <LoopiButton
                     textButton="Permitir e começar"
-                    onPress={() => navigation.navigate("Register")}
+                    onPress={() => navigation.navigate("register")}
                 />
             </View>
         </SafeAreaView>

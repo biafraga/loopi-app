@@ -5,14 +5,14 @@ import LabeledInput from "../components/LabeledInput";
 import LoopiButton from "../components/LoopiButton";
 import colors from '../theme/colors';
 
-export default function RegisterScreen(){
+export default function RegisterScreen({navigation}){
     return(
         <SafeAreaView style={styles.safeArea}> 
             <ScrollView contentContainerStyle={styles.scrollContainer}>
                 
                 <View style={styles.headerContainer}>
                     <View style={styles.headerTop}>
-                        <TouchableOpacity onPress={() => console.log("Voltar")}>
+                        <TouchableOpacity onPress={() => navigation.goBack()}>
                             <Feather name="chevron-left" size={28} color={colors.FADED_TEXT_COLOR} />
                         </TouchableOpacity>
                         <Text style={styles.headerTitle}>CRIAR CONTA</Text>
@@ -59,7 +59,7 @@ export default function RegisterScreen(){
                     <View style={styles.buttonWrapper}> 
                         <LoopiButton
                             textButton="Próximo" 
-                            onPress={() => console.log("Ir para passo 2")}
+                            onPress={() => navigation.navigate("terms")}
                         />
                     </View>  
 
@@ -67,7 +67,7 @@ export default function RegisterScreen(){
 
                     <View style={styles.footer}>
                         <Text style={styles.footerText}>Já tem conta? </Text>
-                        <TouchableOpacity onPress={() => console.log("Ir para Login")}>
+                        <TouchableOpacity onPress={() => navigation.navigate("login")}>
                             <Text style={styles.footerLink}>Entrar</Text>
                         </TouchableOpacity>
                     </View>

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Menu from "../components/Menu";
 import colors from "../theme/colors";
 
 export default function StatsScreen() {
@@ -95,8 +94,6 @@ export default function StatsScreen() {
 
                 <View style={{ height: 100 }} /> 
             </ScrollView>
-
-            <Menu activeTab="stats" />
 
         </SafeAreaView>
     );

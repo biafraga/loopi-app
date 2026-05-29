@@ -5,7 +5,7 @@ import LoopiButton from "../components/LoopiButton";
 import LoopiMascot from "../components/LoopiMascot";
 import colors from "../theme/colors";
 
-export default function SuccessScreen({ userName = "Usuário" }){
+export default function SuccessScreen({ userName = "Usuário", navigation }){
     return(
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.container}>
@@ -30,10 +30,10 @@ export default function SuccessScreen({ userName = "Usuário" }){
                 <View style={styles.footer}>
                     <LoopiButton
                         textButton="Cadastrar meu trajeto"
-                        onPress={() => console.log("Indo para o mapa...")}
+                        onPress={() => navigation.navigate("route_origin")}
                     />
 
-                    <TouchableOpacity style={styles.skipButton} onPress={() => console.log("Pular por enquanto")}>
+                    <TouchableOpacity style={styles.skipButton} onPress={() => navigation.navigate("empty_state")}>
                         <Text style={styles.skipText}>Fazer isso depois</Text>
                     </TouchableOpacity>
                 </View>

@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiMascot from "../components/LoopiMascot"; // Nosso mascote oficial importado!
 import colors from "../theme/colors";
 
-export default function LoopStartedScreen() {
+export default function LoopStartedScreen({navigation}) {
     return (
         <SafeAreaView style={styles.safeArea}>
             <ScrollView>
@@ -45,7 +45,7 @@ export default function LoopStartedScreen() {
             {/* BOTÃO FOOTER (OUTLINE) */}
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.outlineButton}>
-                    <Text style={styles.outlineButtonText}>Ver loop ativo</Text>
+                    <Text style={styles.outlineButtonText} onPress={() => navigation.navigate("active_loop")}>Ver loop ativo</Text>
                 </TouchableOpacity>
             </View>
 

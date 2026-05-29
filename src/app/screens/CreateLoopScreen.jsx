@@ -5,7 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiButton from "../components/LoopiButton";
 import colors from "../theme/colors";
 
-export default function CreateLoopScreen() {
+export default function CreateLoopScreen({navigation}) {
     // Estados para guardar o que o usuário digitar nos inputs
     const [origem, setOrigem] = useState("");
     const [destino, setDestino] = useState("");
@@ -15,7 +15,7 @@ export default function CreateLoopScreen() {
         <SafeAreaView style={styles.safeArea}>
             
             <View style={styles.header}>
-                <TouchableOpacity style={styles.backButton}>
+                <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
                     <Feather name="chevron-left" size={24} color={colors.FADED_TEXT_COLOR} />
                     <Text style={styles.backText}>CRIAR TRAJETO</Text>
                 </TouchableOpacity>
@@ -106,7 +106,7 @@ export default function CreateLoopScreen() {
                     textButton="CRIAR LOOP" 
                     variant="secondary" 
                     icon="navigation" 
-                    onPress={() => console.log("Criar")} 
+                    onPress={() => navigation.navigate("route_confirmation")} 
                 />
             </View>
 

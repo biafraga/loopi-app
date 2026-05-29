@@ -4,7 +4,7 @@ import LoopiButton from "../components/LoopiButton";
 import LoopiMascot from "../components/LoopiMascot";
 import colors from "../theme/colors";
 
-export default function ArrivalScreen() {
+export default function ArrivalScreen({navigation}) {
     // Array com os dias no plural para encaixar certinho na frase
     const diasDaSemana = ["domingos", "segundas", "terças", "quartas", "quintas", "sextas", "sábados"];
     
@@ -46,7 +46,7 @@ export default function ArrivalScreen() {
             <View style={styles.footer}>
                 <LoopiButton 
                     textButton="Ver histórico" 
-                    onPress={() => console.log("Navegar para o histórico")} 
+                    onPress={() => navigation.navigate("main", { screen: "history_tab" })} 
                 />
             </View>
 

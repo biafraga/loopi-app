@@ -1,6 +1,6 @@
 {
   "name": "loopi-app",
-  "main": "expo-router/entry",
+  "main": "index.jsx",
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",

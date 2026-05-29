@@ -5,12 +5,12 @@ import LoopiButton from "../components/LoopiButton";
 import SearchInput from "../components/SearchInput";
 import colors from "../theme/colors";
 
-export default function RouteDestinationScreen() {
+export default function RouteDestinationScreen({navigation}) {
     return (
         <SafeAreaView style={styles.safeArea}>
             
             <View style={styles.header}>
-                <TouchableOpacity style={styles.backButton}>
+                <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
                     <Feather name="chevron-left" size={24} color={colors.FADED_TEXT_COLOR} />
                     <Text style={styles.backText}>NOVO TRAJETO</Text>
                 </TouchableOpacity>
@@ -71,7 +71,7 @@ export default function RouteDestinationScreen() {
             <View style={styles.footer}>
                 <LoopiButton 
                     textButton="Próximo" 
-                    onPress={() => console.log("Ir para Confirmação")}
+                    onPress={() => navigation.navigate("route_confirmation")}
                 />
             </View>
 

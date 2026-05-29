@@ -1,10 +1,9 @@
 import { Feather } from "@expo/vector-icons";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Menu from "../components/Menu";
 import colors from "../theme/colors";
 
-export default function ProfileScreen() {
+export default function ProfileScreen({navigation}) {
     // MOCK DE DADOS DO USUÁRIO
     const user = {
         name: "Beatriz Fraga",
@@ -50,7 +49,7 @@ export default function ProfileScreen() {
                         </View>
                     </View>
                     <TouchableOpacity>
-                        <Text style={styles.newLoopText}>+ Novo</Text>
+                        <Text style={styles.newLoopText} onPress={() => navigation.navigate("route_origin")}>+ Novo</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -85,8 +84,6 @@ export default function ProfileScreen() {
 
                 <View style={{ height: 100 }} /> 
             </ScrollView>
-
-            <Menu activeTab="profile" />
 
         </SafeAreaView>
     );

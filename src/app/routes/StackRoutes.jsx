@@ -5,6 +5,7 @@ import colors from '../theme/colors';
 
 import ActiveLoopScreen from '../screens/ActiveLoopScreen';
 import ArrivalScreen from '../screens/ArrivalScreen';
+import CreateLoopScreen from '../screens/CreateLoopScreen';
 import EmptyStateScreen from '../screens/EmptyStateScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 import HomeScreen from '../screens/HomeScreen';
@@ -43,7 +44,7 @@ function BottomTabs() {
             }}
         >
             <Tab.Screen
-                name="HomeTab"
+                name="home_tab"
                 component={HomeScreen}
                 options={{
                     tabBarIcon: ({ color }) => <Feather name="home" size={24} color={color} />,
@@ -51,7 +52,7 @@ function BottomTabs() {
                 }}
             />
             <Tab.Screen
-                name="HistoryTab"
+                name="history_tab"
                 component={HistoryScreen}
                 options={{
                     tabBarIcon: ({ color }) => <Feather name="clock" size={24} color={color} />,
@@ -59,7 +60,7 @@ function BottomTabs() {
                 }}
             />
             <Tab.Screen
-                name="StatsTab"
+                name="stats_tab"
                 component={StatsScreen}
                 options={{
                     tabBarIcon: ({ color }) => <Feather name="bar-chart-2" size={24} color={color} />,
@@ -67,7 +68,7 @@ function BottomTabs() {
                 }}
             />
             <Tab.Screen
-                name="ProfileTab"
+                name="profile_tab"
                 component={ProfileScreen}
                 options={{
                     tabBarIcon: ({ color }) => <Feather name="user" size={24} color={color} />,
@@ -78,28 +79,29 @@ function BottomTabs() {
     );
 }
 
-export default function AppNavigator() {
+export default function StackRoutes() {
     return (
         <Stack.Navigator
-            initialRouteName="Splash"
+            initialRouteName="splash"
             screenOptions={{ headerShown: false }}
         >
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Register" component={RegisterScreen} />
-            <Stack.Screen name="Terms" component={TermsScreen} />
-            <Stack.Screen name="Success" component={SuccessScreen} />
-            <Stack.Screen name="Main" component={BottomTabs} />
-            <Stack.Screen name="EmptyState" component={EmptyStateScreen} />
-            <Stack.Screen name="RouteOrigin" component={RouteOriginScreen} />
-            <Stack.Screen name="RouteDestination" component={RouteDestinationScreen} />
-            <Stack.Screen name="RouteConfirmation" component={RouteConfirmationScreen} />
-            <Stack.Screen name="LoopStarted" component={LoopStartedScreen} />
-            <Stack.Screen name="ActiveLoop" component={ActiveLoopScreen} />
-            <Stack.Screen name="Arrival" component={ArrivalScreen} />
-            <Stack.Screen name="Splash" component={SplashScreen} />
-            <Stack.Screen name="Proposal" component={ProposalScreen} />
-            <Stack.Screen name="Instructions" component={InstructionsScreen} />
-            <Stack.Screen name="Permissions" component={PermissionsScreen} />
+            <Stack.Screen name="login" component={LoginScreen} />
+            <Stack.Screen name="register" component={RegisterScreen} />
+            <Stack.Screen name="terms" component={TermsScreen} />
+            <Stack.Screen name="success" component={SuccessScreen} />
+            <Stack.Screen name="main" component={BottomTabs} />
+            <Stack.Screen name="empty_state" component={EmptyStateScreen} />
+            <Stack.Screen name="route_origin" component={RouteOriginScreen} />
+            <Stack.Screen name="route_destination" component={RouteDestinationScreen} />
+            <Stack.Screen name="route_confirmation" component={RouteConfirmationScreen} />
+            <Stack.Screen name="loop_started" component={LoopStartedScreen} />
+            <Stack.Screen name="active_loop" component={ActiveLoopScreen} />
+            <Stack.Screen name="arrival" component={ArrivalScreen} />
+            <Stack.Screen name="splash" component={SplashScreen} />
+            <Stack.Screen name="proposal" component={ProposalScreen} />
+            <Stack.Screen name="instructions" component={InstructionsScreen} />
+            <Stack.Screen name="permissions" component={PermissionsScreen} />
+            <Stack.Screen name="create_loop" component={CreateLoopScreen} />
         </Stack.Navigator>
     );
 }

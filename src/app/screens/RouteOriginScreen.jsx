@@ -104,7 +104,7 @@ export default function RouteOriginScreen({navigation}) {
             <View style={styles.footer}>
                 <LoopiButton 
                     textButton="Confirmar origem" 
-                    onPress={() => navigation.navigate("RouteDestination")}
+                    onPress={() => navigation.navigate("route_destination")}
                 />
             </View>
 

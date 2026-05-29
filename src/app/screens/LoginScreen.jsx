@@ -38,14 +38,14 @@ export default function LoginScreen ({ navigation }){
 
                     <LoopiButton
                         textButton="Entrar"
-                        onPress={() => navigation.navigate("EmptyState")}
+                        onPress={() => navigation.navigate("empty_state")}
                     />
                 </View>
                 </View>
 
                 <View style={styles.footer}>
                     <Text style={styles.footerText}>Não tem conta? </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+                    <TouchableOpacity onPress={() => navigation.navigate("register")}>
                         <Text style={styles.footerLink}>Cadastre-se</Text>
                     </TouchableOpacity>
                 </View>
