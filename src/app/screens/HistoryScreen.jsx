@@ -78,7 +78,6 @@ export default function HistoryScreen(){
                 <View style={{ height: 100 }} /> 
             </ScrollView>
 
-
         </SafeAreaView>
     )
 }
