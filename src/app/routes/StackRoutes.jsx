@@ -85,7 +85,6 @@ export default function StackRoutes() {
             initialRouteName="splash"
             screenOptions={{ headerShown: false }}
         >
-<<<<<<< HEAD:src/app/routes/StackRoutes.jsx
             <Stack.Screen name="login" component={LoginScreen} />
             <Stack.Screen name="register" component={RegisterScreen} />
             <Stack.Screen name="terms" component={TermsScreen} />
@@ -103,25 +102,6 @@ export default function StackRoutes() {
             <Stack.Screen name="instructions" component={InstructionsScreen} />
             <Stack.Screen name="permissions" component={PermissionsScreen} />
             <Stack.Screen name="create_loop" component={CreateLoopScreen} />
-=======
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Register" component={RegisterScreen} />
-            <Stack.Screen name="Terms" component={TermsScreen} />
-            <Stack.Screen name="Success" component={SuccessScreen} />
-            <Stack.Screen name="Main" component={BottomTabs} />
-            <Stack.Screen name="EmptyState" component={EmptyStateScreen} />
-            <Stack.Screen name="RouteOrigin" component={RouteOriginScreen} />
-            <Stack.Screen name="RouteDestination" component={RouteDestinationScreen} />
-            <Stack.Screen name="RouteConfirmation" component={RouteConfirmationScreen} />
-            <Stack.Screen name="LoopStarted" component={LoopStartedScreen} />
-            <Stack.Screen name="ActiveLoop" component={ActiveLoopScreen} />
-            <Stack.Screen name="Arrival" component={ArrivalScreen} />
-            <Stack.Screen name="Splash" component={SplashScreen} />
-            <Stack.Screen name="Proposal" component={ProposalScreen} />
-            <Stack.Screen name="Instructions" component={InstructionsScreen} />
-            <Stack.Screen name="Permissions" component={PermissionsScreen} />
-            <Stack.Screen name="CreateLoop" component={CreateLoopScreen} />
->>>>>>> f067f1a43fc5e817533ad4fd22dcbc0f667337b4:src/app/navigation/AppNavigator.jsx
         </Stack.Navigator>
     );
 }
