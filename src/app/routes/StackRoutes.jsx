@@ -6,11 +6,9 @@ import ActiveLoopScreen from '../screens/ActiveLoopScreen';
 import ArrivalScreen from '../screens/ArrivalScreen';
 import CreateLoopScreen from '../screens/CreateLoopScreen';
 import EmptyStateScreen from '../screens/EmptyStateScreen';
-import InstructionsScreen from '../screens/InstructionsScreen';
 import LoginScreen from '../screens/LoginScreen';
 import LoopStartedScreen from '../screens/LoopStartedScreen';
-import PermissionsScreen from '../screens/PermissionsScreen';
-import ProposalScreen from '../screens/ProposalScreen';
+import OnboardingScreen from '../screens/OnboardingScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import RouteConfirmationScreen from '../screens/RouteConfirmationScreen';
 import RouteDestinationScreen from '../screens/RouteDestinationScreen';
@@ -41,10 +39,8 @@ export default function StackRoutes() {
             <Stack.Screen name="active_loop" component={ActiveLoopScreen} />
             <Stack.Screen name="arrival" component={ArrivalScreen} />
             <Stack.Screen name="splash" component={SplashScreen} />
-            <Stack.Screen name="proposal" component={ProposalScreen} />
-            <Stack.Screen name="instructions" component={InstructionsScreen} />
-            <Stack.Screen name="permissions" component={PermissionsScreen} />
             <Stack.Screen name="create_loop" component={CreateLoopScreen} />
+            <Stack.Screen name="onboarding" component={OnboardingScreen} />
         </Stack.Navigator>
     );
 }
