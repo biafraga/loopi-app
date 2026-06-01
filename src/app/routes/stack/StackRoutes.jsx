@@ -1,21 +1,21 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import TabRoutes from './TabRoutes';
+import TabRoutes from '../tab';
 
-import ActiveLoopScreen from '../screens/ActiveLoopScreen';
-import ArrivalScreen from '../screens/ArrivalScreen';
-import CreateLoopScreen from '../screens/CreateLoopScreen';
-import EmptyStateScreen from '../screens/EmptyStateScreen';
-import LoginScreen from '../screens/LoginScreen';
-import LoopStartedScreen from '../screens/LoopStartedScreen';
-import OnboardingScreen from '../screens/OnboardingScreen';
-import RegisterScreen from '../screens/RegisterScreen';
-import RouteConfirmationScreen from '../screens/RouteConfirmationScreen';
-import RouteDestinationScreen from '../screens/RouteDestinationScreen';
-import RouteOriginScreen from '../screens/RouteOriginScreen';
-import SplashScreen from '../screens/SplashScreen';
-import SuccessScreen from '../screens/SuccessScreen';
-import TermsScreen from '../screens/TermsScreen';
+import ActiveLoopScreen from '../../screens/ActiveLoopScreen';
+import ArrivalScreen from '../../screens/ArrivalScreen';
+import CreateLoopScreen from '../../screens/CreateLoopScreen';
+import EmptyStateScreen from '../../screens/EmptyStateScreen';
+import LoginScreen from '../../screens/LoginScreen';
+import LoopStartedScreen from '../../screens/LoopStartedScreen';
+import OnboardingScreen from '../../screens/OnboardingScreen';
+import RegisterScreen from '../../screens/RegisterScreen';
+import RouteConfirmationScreen from '../../screens/RouteConfirmationScreen';
+import RouteDestinationScreen from '../../screens/RouteDestinationScreen';
+import RouteOriginScreen from '../../screens/RouteOriginScreen';
+import SplashScreen from '../../screens/SplashScreen';
+import SuccessScreen from '../../screens/SuccessScreen';
+import TermsScreen from '../../screens/TermsScreen';
 
 const Stack = createNativeStackNavigator();
 

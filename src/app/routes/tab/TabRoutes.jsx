@@ -1,11 +1,11 @@
 import { Feather } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import colors from '../theme/colors';
+import colors from '../../theme/colors';
 
-import HistoryScreen from '../screens/HistoryScreen';
-import HomeScreen from '../screens/HomeScreen';
-import ProfileScreen from '../screens/ProfileScreen';
-import StatsScreen from '../screens/StatsScreen';
+import HistoryScreen from '../../screens/HistoryScreen';
+import HomeScreen from '../../screens/HomeScreen';
+import ProfileScreen from '../../screens/ProfileScreen';
+import StatsScreen from '../../screens/StatsScreen';
 
 const Tab = createBottomTabNavigator();
 
