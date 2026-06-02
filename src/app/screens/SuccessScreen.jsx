@@ -33,7 +33,7 @@ export default function SuccessScreen({ userName = "Usuário", navigation }){
                         onPress={() => navigation.navigate("route_origin")}
                     />
 
-                    <TouchableOpacity style={styles.skipButton} onPress={() => navigation.navigate("empty_state")}>
+                    <TouchableOpacity style={styles.skipButton} onPress={() => navigation.navigate("main")}>
                         <Text style={styles.skipText}>Fazer isso depois</Text>
                     </TouchableOpacity>
                 </View>

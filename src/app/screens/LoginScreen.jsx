@@ -38,7 +38,7 @@ export default function LoginScreen ({ navigation }){
 
                     <LoopiButton
                         textButton="Entrar"
-                        onPress={() => navigation.navigate("empty_state")}
+                        onPress={() => navigation.navigate("main")}
                     />
                 </View>
                 </View>

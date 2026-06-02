@@ -4,8 +4,17 @@ import { Modal, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableWithout
 import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiButton from "../components/LoopiButton";
 import colors from "../theme/colors";
+import EmptyStateScreen from "./EmptyStateScreen";
 
-export default function HomeScreen({ userName = "Beatriz" , navigation}) {
+export default function HomeScreen({ userName = "Beatriz", navigation }) {
+
+    // Com o true, o app sabe que você tem rotas.
+    const [hasRoutes, setHasRoutes] = useState(true);
+    
+    // MOCK DO COLD START: Criamos a variável fingindo que o usuário tem 0 viagens
+    const [tripsCount, setTripsCount] = useState(0); 
+    const isColdStart = tripsCount === 0;
+
     const getGreeting = () => {
         const hour = new Date().getHours();
         if (hour < 12) return "Bom dia";
@@ -21,10 +30,14 @@ export default function HomeScreen({ userName = "Beatriz" , navigation}) {
         destination: "Centro, RJ"
     });
 
-    const metrics = { timeSaved: "1h23m", totalTrips: 16 };
+    const metrics = { timeSaved: "1h23m", totalTrips: tripsCount };
     const myLoops = [
         { id: "1", title: "Meus loops", subtitle: "1 trajeto cadastrado" }
     ];
+
+    if (!hasRoutes) {
+        return <EmptyStateScreen navigation={navigation} />;
+    }
 
     return (
         <SafeAreaView style={styles.safeArea}>
@@ -43,17 +56,19 @@ export default function HomeScreen({ userName = "Beatriz" , navigation}) {
                 {/* HERO CARD */}
                 {nextLoop ? (
                     <View style={styles.heroCard}>
-                        {/* Cabeçalho */}
                         <View style={styles.heroHeader}>
                             <Feather name="clock" size={14} color={colors.PRIMARY} />
                             <Text style={styles.heroTag}>PRÓXIMO LOOP</Text>
                         </View>
                         
-                        <Text style={styles.heroSubtitle}>Saída recomendada</Text>
-                        
-                        <Text style={styles.heroTime}>{nextLoop.time}</Text>
+                        <Text style={styles.heroSubtitle}>
+                            {isColdStart ? "Aguardando 1ª viagem" : "Saída recomendada"}
+                        </Text>
+                    
+                        <Text style={styles.heroTime}>
+                            {isColdStart ? "--:--" : nextLoop.time}
+                        </Text>
 
-                        {/* Rota Tracejada */}
                         <View style={styles.routeSection}>
                             <View style={styles.routeDotsRow}>
                                 <View style={styles.dotGreen} />
@@ -88,7 +103,10 @@ export default function HomeScreen({ userName = "Beatriz" , navigation}) {
                 <View style={styles.metricsRow}>
                     <View style={styles.metricCard}>
                         <Text style={styles.metricLabel}>TEMPO MÉDIO</Text>
-                        <Text style={styles.metricValue}>{metrics.timeSaved}</Text>
+                        <Text style={styles.metricValue}>
+                            {isColdStart ? "--" : metrics.timeSaved}
+                        </Text>
+                        {isColdStart && <Text style={styles.helperText}>Aprendendo seu ritmo...</Text>}
                     </View>
                     <View style={styles.metricCard}>
                         <Text style={styles.metricLabel}>VIAGENS</Text>
@@ -111,7 +129,8 @@ export default function HomeScreen({ userName = "Beatriz" , navigation}) {
 
             </ScrollView>
 
-            {/* FAB */}
+            {/*FAB*/}
+
             <TouchableOpacity style={styles.fab} onPress={() => setBottomSheetVisible(true)}>
                 <Feather name="plus" size={28} color={colors.DARK_PRIMARY} />
             </TouchableOpacity>
@@ -122,20 +141,16 @@ export default function HomeScreen({ userName = "Beatriz" , navigation}) {
                 visible={isBottomSheetVisible}
                 onRequestClose={() => setBottomSheetVisible(false)}
             >
-                {/* O fundo fecha o modal */}
                 <TouchableOpacity 
                     style={styles.modalOverlay} 
                     activeOpacity={1} 
                     onPressOut={() => setBottomSheetVisible(false)}
                 >
-                    
                     <TouchableWithoutFeedback>
-                        
                         <View style={styles.bottomSheet}>
                             <Text style={styles.sheetPreTitle}>INICIAR LOOP</Text>
                             <Text style={styles.sheetTitle}>Qual trajeto hoje?</Text>
 
-                            {/* Card do trajeto sugerido */}
                             <View style={styles.sheetCard}>
                                 <View style={styles.sheetCardHeader}>
                                     <Text style={styles.sheetCardRoute}>Barra de Maricá</Text>
@@ -145,27 +160,29 @@ export default function HomeScreen({ userName = "Beatriz" , navigation}) {
                                 <Text style={styles.sheetCardDetails}>Média: 2h10m Chegada prevista: 7h22m</Text>
                             </View>
 
-                            {/* Botões */}
-                            {/* O Botão Primário */}
                             <View style={{ marginBottom: 16 }}>
                                 <LoopiButton 
                                     textButton="INICIAR LOOP" 
                                     variant="secondary"
                                     icon="navigation"
-                                    onPress={() => navigation.navigate("loop_started")} 
+                                    onPress={() => {
+                                        setBottomSheetVisible(false);
+                                        navigation.navigate("loop_started");
+                                    }} 
                                 />
                             </View>
 
-                            {/* BOTÃO: Mudar trajeto */}
                             <TouchableOpacity 
                                 style={styles.secondaryButtonSheet}
-                                onPress={() => navigation.navigate("create_loop")} 
+                                onPress={() => {
+                                    setBottomSheetVisible(false);
+                                    navigation.navigate("create_loop");
+                                }} 
                             >
                                 <Feather name="edit-2" size={16} color={colors.FADED_TEXT_COLOR} style={{ marginRight: 8 }} />
                                 <Text style={styles.secondaryButtonText}>Alterar trajeto de hoje</Text>
                             </TouchableOpacity>
 
-                            {/* BOTÃO: Cancelar */}
                             <View style={{ marginTop: 8 }}>
                                 <LoopiButton 
                                     textButton="Cancelar" 
@@ -174,11 +191,9 @@ export default function HomeScreen({ userName = "Beatriz" , navigation}) {
                                 />
                             </View>
                         </View>
-
                     </TouchableWithoutFeedback>
                 </TouchableOpacity>
             </Modal>
-
         </SafeAreaView>
     );
 }
@@ -352,6 +367,13 @@ const styles = StyleSheet.create({
         color: colors.TEXT_COLOR,
         fontSize: 28,
         fontFamily: "Nunito_900Black",
+    },
+
+    helperText: {
+        color: colors.PRIMARY, 
+        fontSize: 12, 
+        fontFamily: "DMSans_400Regular", 
+        marginTop: 4 
     },
 
     loopCard: {

@@ -56,7 +56,7 @@ export default function TermsScreen({navigation}){
                     <View style={styles.buttonContainer}>
                         <LoopiButton 
                             textButton="Permitir e começar" 
-                            onPress={() => navigation.navigate("register")}
+                            onPress={() => navigation.navigate("success")}
                         />
                     </View>
                 </View>

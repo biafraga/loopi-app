@@ -5,7 +5,6 @@ import TabRoutes from '../tab';
 import ActiveLoopScreen from '../../screens/ActiveLoopScreen';
 import ArrivalScreen from '../../screens/ArrivalScreen';
 import CreateLoopScreen from '../../screens/CreateLoopScreen';
-import EmptyStateScreen from '../../screens/EmptyStateScreen';
 import LoginScreen from '../../screens/LoginScreen';
 import LoopStartedScreen from '../../screens/LoopStartedScreen';
 import OnboardingScreen from '../../screens/OnboardingScreen';
@@ -14,6 +13,7 @@ import RouteConfirmationScreen from '../../screens/RouteConfirmationScreen';
 import RouteDestinationScreen from '../../screens/RouteDestinationScreen';
 import RouteOriginScreen from '../../screens/RouteOriginScreen';
 import SplashScreen from '../../screens/SplashScreen';
+import StatusScreen from '../../screens/StatusScreen';
 import SuccessScreen from '../../screens/SuccessScreen';
 import TermsScreen from '../../screens/TermsScreen';
 
@@ -31,7 +31,6 @@ export default function StackRoutes() {
             <Stack.Screen name="terms" component={TermsScreen} />
             <Stack.Screen name="success" component={SuccessScreen} />
             <Stack.Screen name="main" component={TabRoutes} />
-            <Stack.Screen name="empty_state" component={EmptyStateScreen} />
             <Stack.Screen name="route_origin" component={RouteOriginScreen} />
             <Stack.Screen name="route_destination" component={RouteDestinationScreen} />
             <Stack.Screen name="route_confirmation" component={RouteConfirmationScreen} />
@@ -41,6 +40,7 @@ export default function StackRoutes() {
             <Stack.Screen name="splash" component={SplashScreen} />
             <Stack.Screen name="create_loop" component={CreateLoopScreen} />
             <Stack.Screen name="onboarding" component={OnboardingScreen} />
+            <Stack.Screen name="status" component={StatusScreen} />
         </Stack.Navigator>
     );
 }

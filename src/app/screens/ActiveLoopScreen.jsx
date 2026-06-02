@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import colors from "../theme/colors";
 
@@ -77,9 +77,16 @@ export default function ActiveLoopScreen({navigation}) {
                 </View>
 
                 {/* BOTÃO MANUAL */}
-                {/* <TouchableOpacity style={styles.dangerButton} onPress={() => navigation.navigate("arrival")}>
+                {<TouchableOpacity style={styles.dangerButton} 
+                    onPress={() => navigation.navigate("status", {
+                    mascotState: "construcao",
+                    title: "Página em Obras",
+                    description: "Ainda estamos martelando os códigos por aqui. Volte em breve!",
+                    buttonText: "Entendi",
+                    action: "goBack"
+                })}>
                     <Text style={styles.dangerButtonText}>Registrar chegada manualmente</Text>
-                </TouchableOpacity> */}
+                </TouchableOpacity>}
 
             </ScrollView>
 
