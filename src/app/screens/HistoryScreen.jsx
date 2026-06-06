@@ -1,5 +1,6 @@
+import { Feather } from "@expo/vector-icons";
 import { useState } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import colors from "../theme/colors";
 
@@ -15,6 +16,10 @@ export default function HistoryScreen(){
 
     // Resumo do mês (Também viria do Back-end no futuro)
     const summary = { month: "MARÇO 2025", totalTrips: 18, onTime: 14, late: 4 };
+
+    const isColdStart = false; // Mude para true para ver a tela zerada!
+    const [activeFilter, setActiveFilter] = useState("all");
+    const filteredData = historyData.filter(item => activeFilter === "all" || item.status === activeFilter);
 
     // Função auxiliar que decide as cores da etiqueta (badge) baseada no status
     const getBadgeStyle = (status) => {
@@ -32,52 +37,84 @@ export default function HistoryScreen(){
     return(
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.header}>
-                <Text style={styles.monthText}>{summary.month}</Text>
+                <Text style={styles.monthText}>{isColdStart ? "BEM-VINDA" : summary.month}</Text>
                 <Text style={styles.titleText}>Histórico</Text>
             </View>
 
-            <View style={styles.summaryRow}>
-                <View style={styles.summaryCard}>
-                    <Text style={styles.summaryLabel}>Viagens</Text>
-                    <Text style={[styles.summaryValue, { color: colors.TEXT_COLOR }]}>{summary.totalTrips}</Text>
+            {isColdStart ? (
+                // TELA VAZIA (COLD START)
+                <View style={styles.emptyStateContainer}>
+                    <Feather name="map" size={48} color={colors.BORDER} />
+                    <Text style={styles.emptyStateTitle}>Nenhuma viagem ainda</Text>
+                    <Text style={styles.emptyStateText}>
+                        Quando você começar a usar o Loopi, seus trajetos e atrasos ficarão salvos aqui.
+                    </Text>
                 </View>
-                <View style={styles.summaryCard}>
-                    <Text style={styles.summaryLabel}>No prazo</Text>
-                    <Text style={[styles.summaryValue, { color: colors.PRIMARY }]}>{summary.onTime}</Text>
-                </View>
-                <View style={styles.summaryCard}>
-                    <Text style={styles.summaryLabel}>Atrasos</Text>
-                    <Text style={[styles.summaryValue, { color: colors.DANGER }]}>{summary.late}</Text>
-                </View>
-            </View>
-
-            {/* LISTA DE HISTÓRICO */}
-            <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-                {historyData.map((item) => {
-                    // Pega as cores certas pra esse item específico
-                    const badgeStyle = getBadgeStyle(item.status);
-
-                    return (
-                        <View key={item.id} style={styles.historyCard}>
-                            <View style={styles.cardInfo}>
-                                <Text style={styles.dateText}>{item.date}</Text>
-                                <Text style={styles.detailsText}>{item.details}</Text>
-                            </View>
-                            
-                            {/* ETIQUETA / BADGE */}
-                            <View style={[styles.badge, { backgroundColor: badgeStyle.backgroundColor }]}>
-                                <Text style={[styles.badgeText, { color: badgeStyle.color }]}>
-                                    {item.statusText}
-                                </Text>
-                            </View>
+            ) : (
+                // TELA CHEIA (USUÁRIO ATIVO)
+                <>
+                    <View style={styles.summaryRow}>
+                        <View style={styles.summaryCard}>
+                            <Text style={styles.summaryLabel}>Viagens</Text>
+                            <Text style={[styles.summaryValue, { color: colors.TEXT_COLOR }]}>{summary.totalTrips}</Text>
                         </View>
-                    );
-                })}
-                
-                {/* Espaçamento extra no fim pra Nav Bar não tampar o último item */}
-                <View style={{ height: 100 }} /> 
-            </ScrollView>
+                        <View style={styles.summaryCard}>
+                            <Text style={styles.summaryLabel}>No prazo</Text>
+                            <Text style={[styles.summaryValue, { color: colors.PRIMARY }]}>{summary.onTime}</Text>
+                        </View>
+                        <View style={styles.summaryCard}>
+                            <Text style={styles.summaryLabel}>Atrasos</Text>
+                            <Text style={[styles.summaryValue, { color: colors.DANGER }]}>{summary.late}</Text>
+                        </View>
+                    </View>
 
+                    {/* FILTROS */}
+                    <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.filterRow}>
+                        <TouchableOpacity 
+                            style={[styles.filterChip, activeFilter === "all" && styles.filterChipActive]}
+                            onPress={() => setActiveFilter("all")}>
+                            <Text style={[styles.filterText, activeFilter === "all" && styles.filterTextActive]}>Todos</Text>
+                        </TouchableOpacity>
+                        
+                        <TouchableOpacity 
+                            style={[styles.filterChip, activeFilter === "on_time" && styles.filterChipActive]}
+                            onPress={() => setActiveFilter("on_time")}>
+                            <Text style={[styles.filterText, activeFilter === "on_time" && styles.filterTextActive]}>No Prazo</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity 
+                            style={[styles.filterChip, activeFilter === "late" && styles.filterChipActive]}
+                            onPress={() => setActiveFilter("late")}>
+                            <Text style={[styles.filterText, activeFilter === "late" && styles.filterTextActive]}>Atrasos</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity 
+                            style={[styles.filterChip, activeFilter === "early" && styles.filterChipActive]}
+                            onPress={() => setActiveFilter("early")}>
+                            <Text style={[styles.filterText, activeFilter === "early" && styles.filterTextActive]}>Adiantados</Text>
+                        </TouchableOpacity>
+                    </ScrollView>
+
+                    {/* LISTA DE HISTÓRICO FILTRADA */}
+                    <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+                        {filteredData.map((item) => {
+                            const badgeStyle = getBadgeStyle(item.status);
+                            return (
+                                <View key={item.id} style={styles.historyCard}>
+                                    <View style={styles.cardInfo}>
+                                        <Text style={styles.dateText}>{item.date}</Text>
+                                        <Text style={styles.detailsText}>{item.details}</Text>
+                                    </View>
+                                    <View style={[styles.badge, { backgroundColor: badgeStyle.backgroundColor }]}>
+                                        <Text style={[styles.badgeText, { color: badgeStyle.color }]}>{item.statusText}</Text>
+                                    </View>
+                                </View>
+                            );
+                        })}
+                        <View style={{ height: 100 }} /> 
+                    </ScrollView>
+                </>
+            )}
         </SafeAreaView>
     )
 }
@@ -186,6 +223,55 @@ const styles= StyleSheet.create({
     badgeText: {
         fontSize: 12,
         fontFamily: "DMSans_700Bold",
-    }
+    },
+
+    filterRow: {
+        flexDirection: "row",
+        paddingHorizontal: 30,
+        marginBottom: 20,
+        maxHeight: 32, // Impede que o scrollview roube espaço
+    },
+    filterChip: {
+        paddingVertical: 6,
+        paddingHorizontal: 16,
+        borderRadius: 20,
+        borderWidth: 1,
+        borderColor: colors.BORDER,
+        marginRight: 8,
+        justifyContent: "center",
+    },
+    filterChipActive: {
+        backgroundColor: colors.PRIMARY,
+        borderColor: colors.PRIMARY,
+    },
+    filterText: {
+        color: colors.FADED_TEXT_COLOR,
+        fontSize: 12,
+        fontFamily: "DMSans_700Bold",
+    },
+    filterTextActive: {
+        color: colors.DARK_PRIMARY,
+    },
+    emptyStateContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        paddingHorizontal: 40,
+        marginTop: 60,
+    },
+    emptyStateTitle: {
+        color: colors.TEXT_COLOR,
+        fontSize: 20,
+        fontFamily: "Nunito_900Black",
+        marginTop: 16,
+        marginBottom: 8,
+    },
+    emptyStateText: {
+        color: colors.FADED_TEXT_COLOR,
+        fontSize: 14,
+        fontFamily: "DMSans_400Regular",
+        textAlign: "center",
+        lineHeight: 20,
+    },
 
 });

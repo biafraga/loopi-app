@@ -44,9 +44,12 @@ export default function LoopStartedScreen({navigation}) {
 
             {/* BOTÃO FOOTER (OUTLINE) */}
             <View style={styles.footer}>
-                <TouchableOpacity style={styles.outlineButton}>
-                    <Text style={styles.outlineButtonText} onPress={() => navigation.navigate("active_loop")}>Ver loop ativo</Text>
-                </TouchableOpacity>
+                <TouchableOpacity 
+                        style={styles.outlineButton}
+                        onPress={() => navigation.navigate("active_loop")}
+                    >
+                        <Text style={styles.outlineButtonText}>Ver loop ativo</Text>
+                    </TouchableOpacity>
             </View>
 
             </ScrollView>
@@ -91,7 +94,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 40,
         alignItems: "center",
         marginBottom: 24,
-        
+        width: "100%",
     },
 
     registeredLabel: {
@@ -156,6 +159,7 @@ const styles = StyleSheet.create({
     footer: {
         paddingHorizontal: 30,
         paddingBottom: 40,
+        paddingTop: 20,
     },
 
     outlineButton: {

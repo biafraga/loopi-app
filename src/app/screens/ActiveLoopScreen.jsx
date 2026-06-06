@@ -1,9 +1,20 @@
+import { Feather } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import colors from "../theme/colors";
 
 export default function ActiveLoopScreen({navigation}) {
+    // MOCK DA TELA: Centralizando os dados para manter a coerência
+    const activeTrip = {
+        startTime: "05:10",
+        origin: "Barra de Maricá",
+        destination: "Centro RJ",
+        eta: "7:40",
+        averageTime: "1h57m",
+        isFirstTrip: false // Mude para true para simular o Cold Start das médias
+    };
+    
     // Começando em 25min 
     const [seconds, setSeconds] = useState(25 * 60 + 25);
     
@@ -36,9 +47,16 @@ export default function ActiveLoopScreen({navigation}) {
             >
     
                 <View style={styles.header}>
-                    <View style={styles.statusBadge}>
-                        <View style={styles.statusDot} />
-                        <Text style={styles.statusText}>LOOP ATIVO</Text>
+                    <View style={styles.headerTopRow}>
+                        <View style={styles.statusBadge}>
+                            <View style={styles.statusDot} />
+                            <Text style={styles.statusText}>LOOP ATIVO</Text>
+                        </View>
+                        
+                        {/* BOTÃO PARA MINIMIZAR E VOLTAR PARA A HOME */}
+                        <TouchableOpacity onPress={() => navigation.goBack()}>
+                            <Feather name="x" size={28} color={colors.FADED_TEXT_COLOR} />
+                        </TouchableOpacity>
                     </View>
                     <Text style={styles.title}>Em trânsito</Text>
                 </View>
@@ -58,8 +76,8 @@ export default function ActiveLoopScreen({navigation}) {
                             <View style={[styles.progressBarFill, { width: `${progressPercentage}%` }]} />
                         </View>
                         <View style={styles.progressLabels}>
-                            <Text style={styles.progressText}>Barra de Maricá</Text>
-                            <Text style={styles.progressText}>Centro RJ</Text>
+                            <Text style={styles.progressText}>{activeTrip.origin}</Text>
+                            <Text style={styles.progressText}>{activeTrip.destination}</Text>
                         </View>
                     </View>
                 </View>
@@ -68,25 +86,30 @@ export default function ActiveLoopScreen({navigation}) {
                 <View style={styles.metricsRow}>
                     <View style={styles.metricCard}>
                         <Text style={styles.metricLabel}>PREVISÃO DE{"\n"}CHEGADA</Text>
-                        <Text style={styles.metricValue}>7:40</Text>
+                        <Text style={styles.metricValue}>{activeTrip.eta}</Text>
                     </View>
                     <View style={styles.metricCard}>
                         <Text style={styles.metricLabel}>MÉDIAS{"\n"}TERÇAS</Text>
-                        <Text style={styles.metricValueSecondary}>1h57m</Text>
+                        <Text style={styles.metricValueSecondary}>
+                            {activeTrip.isFirstTrip ? "--" : activeTrip.averageTime}
+                        </Text>
                     </View>
                 </View>
 
                 {/* BOTÃO MANUAL */}
-                {<TouchableOpacity style={styles.dangerButton} 
-                    onPress={() => navigation.navigate("status", {
-                    mascotState: "construcao",
-                    title: "Página em Obras",
-                    description: "Ainda estamos martelando os códigos por aqui. Volte em breve!",
-                    buttonText: "Entendi",
-                    action: "goBack"
-                })}>
-                    <Text style={styles.dangerButtonText}>Registrar chegada manualmente</Text>
-                </TouchableOpacity>}
+                <TouchableOpacity 
+                    style={styles.primaryButton} 
+                    onPress={() => navigation.navigate("arrival")}
+                >
+                    <Text style={styles.primaryButtonText}>Registrar chegada manualmente</Text>
+                </TouchableOpacity>
+
+                {/* BOTÃO DE CANCELAMENTO */}
+                <TouchableOpacity style={styles.dangerButton} 
+                // TODO (Integração): Fazer requisição para o Spring Boot cancelar o status no banco de dados
+                    onPress={() => navigation.navigate("main")}>
+                    <Text style={styles.dangerButtonText}>Cancelar Trajeto</Text>
+                </TouchableOpacity>
 
             </ScrollView>
 
@@ -108,6 +131,30 @@ const styles = StyleSheet.create({
 
     header: {
         marginBottom: 32,
+    },
+
+    headerTopRow: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: 8,
+    },
+
+    primaryButton: {
+        borderWidth: 1,
+        borderColor: colors.PRIMARY,
+        borderRadius: 24,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        paddingVertical: 16,
+        marginBottom: 16,
+    },
+
+    primaryButtonText: {
+        color: colors.PRIMARY,
+        fontSize: 16,
+        fontFamily: "DMSans_700Bold",
     },
 
     statusBadge: {

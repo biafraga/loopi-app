@@ -8,10 +8,7 @@ import EmptyStateScreen from "./EmptyStateScreen";
 
 export default function HomeScreen({ userName = "Beatriz", navigation }) {
 
-    // Com o true, o app sabe que você tem rotas.
     const [hasRoutes, setHasRoutes] = useState(true);
-    
-    // MOCK DO COLD START: Criamos a variável fingindo que o usuário tem 0 viagens
     const [tripsCount, setTripsCount] = useState(0); 
     const isColdStart = tripsCount === 0;
 
@@ -22,17 +19,22 @@ export default function HomeScreen({ userName = "Beatriz", navigation }) {
         return "Boa noite";
     };
 
+    // Controla o modal de confirmação
     const [isBottomSheetVisible, setBottomSheetVisible] = useState(false);
 
     const [nextLoop, setNextLoop] = useState({
-        time: "05:18",
+        time: isColdStart ? "--:--" : "05:18",
         origin: "Barra de Maricá",
         destination: "Centro, RJ"
     });
 
-    const metrics = { timeSaved: "1h23m", totalTrips: tripsCount };
+    const metrics = { timeSaved: isColdStart ? "--" : "1h23m", totalTrips: tripsCount };
     const myLoops = [
-        { id: "1", title: "Meus loops", subtitle: "1 trajeto cadastrado" }
+        {
+            id: "1", 
+            title: "Meus loops", 
+            subtitle: isColdStart ? "Nenhuma viagem registrada" : `${tripsCount} viagens registradas`
+        }
     ];
 
     if (!hasRoutes) {
@@ -53,7 +55,7 @@ export default function HomeScreen({ userName = "Beatriz", navigation }) {
 
             <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
                 
-                {/* HERO CARD */}
+                {/* HERO CARD (Astro Principal) */}
                 {nextLoop ? (
                     <View style={styles.heroCard}>
                         <View style={styles.heroHeader}>
@@ -81,16 +83,15 @@ export default function HomeScreen({ userName = "Beatriz", navigation }) {
                             </View>
                         </View>
 
-                        <View style={{ width: "65%", alignSelf: "center", marginBottom: 16 }}>
+                        <View style={{ width: "65%", alignSelf: "center", marginBottom: 8 }}>
+                            {/* O BOTÃO VERDE AGORA ABRE A CONFIRMAÇÃO */}
                             <LoopiButton 
                                 textButton="INICIAR LOOP" 
                                 icon="navigation"
                                 size="small"
-                                onPress={() => navigation.navigate("loop_started")} 
+                                onPress={() => setBottomSheetVisible(true)} 
                             />
                         </View>
-
-                        <Text style={styles.orText}>ou criar novo loop</Text>
                     </View>
                 ) : (
                     <View style={[styles.heroCard, { alignItems: 'center', paddingVertical: 40 }]}>
@@ -129,12 +130,12 @@ export default function HomeScreen({ userName = "Beatriz", navigation }) {
 
             </ScrollView>
 
-            {/*FAB*/}
-
-            <TouchableOpacity style={styles.fab} onPress={() => setBottomSheetVisible(true)}>
+            {/* O FAB AGORA É EXCLUSIVO PARA CRIAR ALGO NOVO */}
+            <TouchableOpacity style={styles.fab} onPress={() => navigation.navigate("create_loop")}>
                 <Feather name="plus" size={28} color={colors.DARK_PRIMARY} />
             </TouchableOpacity>
 
+            {/* MODAL DE CONFIRMAÇÃO (BOTTOM SHEET) */}
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -148,21 +149,25 @@ export default function HomeScreen({ userName = "Beatriz", navigation }) {
                 >
                     <TouchableWithoutFeedback>
                         <View style={styles.bottomSheet}>
-                            <Text style={styles.sheetPreTitle}>INICIAR LOOP</Text>
-                            <Text style={styles.sheetTitle}>Qual trajeto hoje?</Text>
+                            <Text style={styles.sheetPreTitle}>CONFIRMAÇÃO</Text>
+                            <Text style={styles.sheetTitle}>Iniciar este trajeto?</Text>
 
                             <View style={styles.sheetCard}>
                                 <View style={styles.sheetCardHeader}>
-                                    <Text style={styles.sheetCardRoute}>Barra de Maricá</Text>
+                                    <Text style={styles.sheetCardRoute}>{nextLoop.origin}</Text>
                                     <Feather name="arrow-right" size={16} color={colors.PRIMARY} style={{ marginHorizontal: 8 }} />
-                                    <Text style={styles.sheetCardRoute}>Centro RJ</Text>
+                                    <Text style={styles.sheetCardRoute}>{nextLoop.destination}</Text>
                                 </View>
-                                <Text style={styles.sheetCardDetails}>Média: 2h10m Chegada prevista: 7h22m</Text>
+                                <Text style={styles.sheetCardDetails}>
+                                    {isColdStart 
+                                        ? "Primeira viagem. Pressione iniciar para o Loopi começar a aprender seu ritmo!" 
+                                        : "Média: 2h10m  ·  Chegada prevista: 7h22m"}
+                                </Text>
                             </View>
 
                             <View style={{ marginBottom: 16 }}>
                                 <LoopiButton 
-                                    textButton="INICIAR LOOP" 
+                                    textButton="INICIAR AGORA" 
                                     variant="secondary"
                                     icon="navigation"
                                     onPress={() => {
@@ -172,16 +177,7 @@ export default function HomeScreen({ userName = "Beatriz", navigation }) {
                                 />
                             </View>
 
-                            <TouchableOpacity 
-                                style={styles.secondaryButtonSheet}
-                                onPress={() => {
-                                    setBottomSheetVisible(false);
-                                    navigation.navigate("create_loop");
-                                }} 
-                            >
-                                <Feather name="edit-2" size={16} color={colors.FADED_TEXT_COLOR} style={{ marginRight: 8 }} />
-                                <Text style={styles.secondaryButtonText}>Alterar trajeto de hoje</Text>
-                            </TouchableOpacity>
+                            {/* REMOVIDO: O link de "Alterar trajeto" */}
 
                             <View style={{ marginTop: 8 }}>
                                 <LoopiButton 
@@ -203,7 +199,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.DARK_PRIMARY,
     },
-
     header: {
         flexDirection: "row",
         justifyContent: "space-between",
@@ -212,20 +207,17 @@ const styles = StyleSheet.create({
         paddingTop: 30, 
         paddingBottom: 24,
     },
-
     greetingText: {
         color: colors.FADED_TEXT_COLOR,
         fontSize: 16, 
         fontFamily: "DMSans_400Regular",
         marginBottom: 4, 
     },
-
     nameText: {
         color: colors.TEXT_COLOR,
         fontSize: 20, 
         fontFamily: "Unbounded_900Black",
     },
-
     notificationBtn: {
         width: 44, 
         height: 44,
@@ -236,12 +228,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-
     content: {
         flex: 1,
         paddingHorizontal: 30,
     },
-
     heroCard: {
         backgroundColor: colors.CARD,
         borderRadius: 24,
@@ -250,13 +240,11 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: colors.BORDER,
     },
-
     heroHeader: {
         flexDirection: "row",
         alignItems: "center",
         marginBottom: 16,
     },
-
     heroTag: {
         color: colors.PRIMARY,
         fontSize: 12,
@@ -264,14 +252,12 @@ const styles = StyleSheet.create({
         marginLeft: 8,
         letterSpacing: 1,
     },
-
     heroSubtitle: {
         color: colors.TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_400Regular",
         marginBottom: 8, 
     },
-
     heroTime: {
         color: "#e2e2e2",
         fontSize: 55,
@@ -279,35 +265,30 @@ const styles = StyleSheet.create({
         marginBottom: 16, 
         alignSelf: 'flex-start',
         textShadowColor: colors.SECONDARY,
-        textShadowOffset: { width: 0, height: 4 }, // Joga a sombra pra baixo
-        textShadowRadius: 12, // Esfumaça
+        textShadowOffset: { width: 0, height: 4 }, 
+        textShadowRadius: 12, 
     },
-
     routeSection: {
         marginBottom: 24,
     },
-
     routeDotsRow: {
         flexDirection: "row",
         alignItems: "center",
         marginBottom: 8,
         paddingHorizontal: 4, 
     },
-
     dotGreen: {
         width: 8,
         height: 8,
         borderRadius: 4,
         backgroundColor: colors.PRIMARY,
     },
-
     dotPurple: {
         width: 8,
         height: 8,
         borderRadius: 4,
         backgroundColor: colors.SECONDARY,
     },
-
     dashedLine: {
         flex: 1,
         marginHorizontal: 12,
@@ -316,31 +297,26 @@ const styles = StyleSheet.create({
         borderColor: colors.PRIMARY,
         borderStyle: "dashed",
     },
-
     routeTextRow: {
         flexDirection: "row",
         justifyContent: "space-between",
     },
-
     routeText: {
         color: colors.FADED_TEXT_COLOR,
         fontSize: 13,
         fontFamily: "DMSans_700Bold",
     },
-
     orText: {
         color: colors.FADED_TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_700Bold",
         textAlign: "center",
     },
-
     metricsRow: {
         flexDirection: "row",
         justifyContent: "space-between",
         marginBottom: 24,
     },
-
     metricCard: {
         width: "48%",
         backgroundColor: colors.CARD,
@@ -348,7 +324,6 @@ const styles = StyleSheet.create({
         padding: 20, 
         alignItems: "flex-start",
     },
-
     metricLabel: {
         color: colors.FADED_TEXT_COLOR,
         fontSize: 12, 
@@ -356,35 +331,30 @@ const styles = StyleSheet.create({
         letterSpacing: 1,
         marginBottom: 12,
     },
-
     metricValue: {
         color: colors.PRIMARY,
         fontSize: 28,
         fontFamily: "Nunito_900Black",
     },
-
     SecondMetricValue:{
         color: colors.TEXT_COLOR,
         fontSize: 28,
         fontFamily: "Nunito_900Black",
     },
-
     helperText: {
         color: colors.PRIMARY, 
         fontSize: 12, 
         fontFamily: "DMSans_400Regular", 
         marginTop: 4 
     },
-
     loopCard: {
         flexDirection: "row",
         alignItems: "center",
         backgroundColor: colors.CARD,
         borderRadius: 16,
         padding: 16,
-        marginBottom: 100, // Espaço para o FAB não cobrir
+        marginBottom: 100, 
     },
-
     loopIconContainer: {
         width: 48, 
         height: 48,
@@ -396,20 +366,17 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginRight: 16,
     },
-
     loopTitle: {
         color: colors.TEXT_COLOR,
         fontSize: 18,
         fontFamily: "DMSans_700Bold",
         marginBottom: 4,
     },
-
     loopSubtitle: {
         color: colors.FADED_TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_400Regular",
     },
-
     fab: {
         position: "absolute",
         bottom: 100, 
@@ -426,13 +393,11 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 8,
     },
-
     modalOverlay: {
         flex: 1,
         backgroundColor: "rgba(0, 0, 0, 0.6)",
         justifyContent: "flex-end",
     },
-
     bottomSheet: {
         backgroundColor: colors.DARK_PRIMARY,
         borderTopLeftRadius: 32,
@@ -443,7 +408,6 @@ const styles = StyleSheet.create({
         borderColor: colors.BORDER,
         borderBottomWidth: 0,
     },
-
     sheetPreTitle: {
         color: colors.PRIMARY,
         fontSize: 16,
@@ -451,14 +415,12 @@ const styles = StyleSheet.create({
         letterSpacing: 1,
         marginBottom: 8,
     },
-
     sheetTitle: {
         color: colors.TEXT_COLOR,
         fontSize: 28,
         fontFamily: "Nunito_900Black",
         marginBottom: 24,
     },
-
     sheetCard: {
         backgroundColor: "rgba(200, 241, 53, 0.05)",
         borderWidth: 1,
@@ -467,57 +429,20 @@ const styles = StyleSheet.create({
         padding: 20,
         marginBottom: 24,
     },
-
     sheetCardHeader: {
         flexDirection: "row",
         alignItems: "center",
         marginBottom: 8,
     },
-
     sheetCardRoute: {
         color: colors.PRIMARY,
         fontSize: 16,
         fontFamily: "DMSans_700Bold",
     },
-
     sheetCardDetails: {
         color: colors.FADED_TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_400Regular",
         lineHeight: 18,
-    },
-
-    primaryButtonSheet: {
-        backgroundColor: colors.PRIMARY,
-        borderRadius: 24,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        paddingVertical: 16,
-        marginBottom: 16,
-    },
-
-    secondaryButtonSheet: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        paddingVertical: 12,
-        marginBottom: 8,
-    },
-    secondaryButtonText: {
-        color: colors.FADED_TEXT_COLOR,
-        fontSize: 16,
-        fontFamily: "DMSans_700Bold",
-    },
-
-    cancelButton: {
-        alignItems: "center",
-        paddingVertical: 12,
-    },
-
-    cancelButtonText: {
-        color: colors.FADED_TEXT_COLOR,
-        fontSize: 16,
-        fontFamily: "DMSans_700Bold",
-    },
+    }
 });

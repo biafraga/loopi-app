@@ -8,7 +8,11 @@ import colors from "../theme/colors";
 export default function LoginScreen ({ navigation }){
     return(
         <SafeAreaView style={styles.safeArea}>
-            <ScrollView contentContainerStyle={styles.scrollContainer}>
+            <ScrollView 
+                contentContainerStyle={styles.scrollContainer}
+                keyboardShouldPersistTaps="handled"
+                showsVerticalScrollIndicator={false}
+            >
                 <View style={styles.form}>
                 <Image 
                     source={require("../assets/images/loopi_logo.png")} 

@@ -8,7 +8,11 @@ import colors from '../theme/colors';
 export default function RegisterScreen({navigation}){
     return(
         <SafeAreaView style={styles.safeArea}> 
-            <ScrollView contentContainerStyle={styles.scrollContainer}>
+            <ScrollView 
+                contentContainerStyle={styles.scrollContainer}
+                keyboardShouldPersistTaps="handled"
+                showsVerticalScrollIndicator={false}
+            >
                 
                 <View style={styles.headerContainer}>
                     <View style={styles.headerTop}>

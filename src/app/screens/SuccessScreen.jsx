@@ -30,7 +30,7 @@ export default function SuccessScreen({ userName = "Usuário", navigation }){
                 <View style={styles.footer}>
                     <LoopiButton
                         textButton="Cadastrar meu trajeto"
-                        onPress={() => navigation.navigate("route_origin")}
+                        onPress={() => navigation.navigate("create_loop")}
                     />
 
                     <TouchableOpacity style={styles.skipButton} onPress={() => navigation.navigate("main")}>

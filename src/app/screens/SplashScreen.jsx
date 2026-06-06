@@ -24,7 +24,6 @@ export default function SplashScreen({ navigation }){
                 <LoopiButton
                     textButton="Já tenho conta"
                     variant="outline"
-                    textButton="Já tenho conta"
                     onPress={() => navigation.navigate("login")}
                 />
 

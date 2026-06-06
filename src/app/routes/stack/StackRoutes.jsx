@@ -10,8 +10,6 @@ import LoopStartedScreen from '../../screens/LoopStartedScreen';
 import OnboardingScreen from '../../screens/OnboardingScreen';
 import RegisterScreen from '../../screens/RegisterScreen';
 import RouteConfirmationScreen from '../../screens/RouteConfirmationScreen';
-import RouteDestinationScreen from '../../screens/RouteDestinationScreen';
-import RouteOriginScreen from '../../screens/RouteOriginScreen';
 import SplashScreen from '../../screens/SplashScreen';
 import StatusScreen from '../../screens/StatusScreen';
 import SuccessScreen from '../../screens/SuccessScreen';
@@ -31,8 +29,6 @@ export default function StackRoutes() {
             <Stack.Screen name="terms" component={TermsScreen} />
             <Stack.Screen name="success" component={SuccessScreen} />
             <Stack.Screen name="main" component={TabRoutes} />
-            <Stack.Screen name="route_origin" component={RouteOriginScreen} />
-            <Stack.Screen name="route_destination" component={RouteDestinationScreen} />
             <Stack.Screen name="route_confirmation" component={RouteConfirmationScreen} />
             <Stack.Screen name="loop_started" component={LoopStartedScreen} />
             <Stack.Screen name="active_loop" component={ActiveLoopScreen} />

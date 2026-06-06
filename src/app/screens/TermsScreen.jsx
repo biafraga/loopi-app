@@ -11,6 +11,18 @@ export default function TermsScreen({navigation}){
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [notificationsAccepted, setNotificationsAccepted] = useState(false);
 
+    // Função de validação antes de navegar
+    const handleNext = () => {
+        if (!termsAccepted) {
+            Alert.alert(
+                "Termos de Uso", 
+                "Você precisa aceitar os Termos de Uso e a Política de Privacidade para criar sua conta."
+            );
+            return;
+        }
+        navigation.navigate("success");
+    };
+
     return(
         <SafeAreaView style={styles.safeArea}>
             <ScrollView contentContainerStyle={styles.scrollContainer}>

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiButton from "../components/LoopiButton";
 import LoopiMascot from "../components/LoopiMascot";
@@ -48,6 +48,13 @@ export default function ArrivalScreen({navigation}) {
                     textButton="Ver histórico" 
                     onPress={() => navigation.navigate("main", { screen: "history_tab" })} 
                 />
+
+                <TouchableOpacity 
+                    style={styles.homeLink}
+                    onPress={() => navigation.navigate("main", { screen: "home_tab" })}
+                >
+                    <Text style={styles.homeLinkText}>Voltar para o início</Text>
+                </TouchableOpacity>
             </View>
 
         </SafeAreaView>
@@ -135,5 +142,17 @@ const styles = StyleSheet.create({
     footer: {
         paddingHorizontal: 30,
         paddingBottom: 40,
+    },
+
+    homeLink: {
+        marginTop: 20,
+        alignItems: "center",
+        paddingVertical: 8,
+    },
+
+    homeLinkText: {
+        color: colors.FADED_TEXT_COLOR,
+        fontSize: 14,
+        fontFamily: "DMSans_700Bold",
     }
 });

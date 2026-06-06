@@ -24,7 +24,7 @@ export default function EmptyStateScreen({navigation}){
                 <View style={styles.buttonContainer}>
                     <LoopiButton
                         textButton="+ Adicionar trajeto" 
-                        onPress={() => navigation.navigate("route_origin")}
+                        onPress={() => navigation.navigate("create_loop")}
                     />
                 </View>
             </View>

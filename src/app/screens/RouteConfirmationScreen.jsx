@@ -15,17 +15,9 @@ export default function RouteConfirmationScreen({
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.header}>
-                <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-                    <Feather name="chevron-left" size={24} color={colors.FADED_TEXT_COLOR} />
-                    <Text style={styles.backText}>NOVO TRAJETO</Text>
+                <TouchableOpacity style={styles.backButton} onPress={() => navigation.navigate("main")}>
+                    <Feather name="x" size={24} color={colors.FADED_TEXT_COLOR} />
                 </TouchableOpacity>
-
-                <View style={styles.progressContainer}>
-                    <View style={styles.PreviousProgressDot} />
-                    <View style={styles.PreviousProgressDot} />
-                    <View style={[styles.progressDot, styles.activeDot]} />
-                </View>
-                <Text style={styles.stepText}>PASSO 3 DE 3</Text>
             </View>
 
             <ScrollView 
@@ -66,7 +58,7 @@ export default function RouteConfirmationScreen({
 
             <View style={styles.footer}>
                 <LoopiButton 
-                    textButton="Próximo" 
+                    textButton="Concluir" 
                     onPress={() => navigation.navigate("main", { screen: "home_tab" })}
                 />
             </View>
@@ -79,16 +71,21 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.DARK_PRIMARY,
     },
+
     header: {
         paddingHorizontal: 30,
         paddingTop: 20,
         paddingBottom: 20,
     },
+    
     backButton: {
         flexDirection: "row",
         alignItems: "center",
         marginBottom: 30,
+        flexDirection: "row",
+        justifyContent: "flex-end",
     },
+
     backText: {
         color: colors.FADED_TEXT_COLOR,
         fontSize: 16,
@@ -96,6 +93,7 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         letterSpacing: 0.5,
     },
+
     progressContainer: {
         flexDirection: "row",
         gap: 8,
@@ -115,28 +113,34 @@ const styles = StyleSheet.create({
         backgroundColor: colors.BORDER,
         borderRadius: 4,
     },
+
     activeDot: {
         width: 32,
         backgroundColor: colors.PRIMARY,
     },
+
     stepText: {
         color: colors.PRIMARY,
         fontSize: 14,
         fontFamily: "DMSans_700Bold",
         letterSpacing: 1,
     },
+
     content: {
         flex: 1,
         paddingHorizontal: 30,
     },
+
     scrollContent: {
         alignItems: "center",
         paddingBottom: 40,
     },
+
     mascotContainer: {
         marginTop: 20,
         marginBottom: 40,
     },
+
     title: {
         color: colors.TEXT_COLOR,
         fontSize: 28,
@@ -144,6 +148,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
         marginBottom: 12,
     },
+
     subtitle: {
         color: colors.FADED_TEXT_COLOR,
         fontSize: 16,
@@ -152,53 +157,62 @@ const styles = StyleSheet.create({
         lineHeight: 24,
         marginBottom: 40,
     },
+
     summaryCard: {
         width: "100%",
         backgroundColor: colors.CARD,
         borderRadius: 16,
         padding: 20,
     },
+
     rowLabels: {
         flexDirection: "row",
         justifyContent: "space-between",
         marginBottom: 8,
     },
+
     labelText: {
         color: colors.FADED_TEXT_COLOR,
         fontSize: 12,
         fontFamily: "DMSans_700Bold",
         letterSpacing: 0.5,
     },
+
     rowValues: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
         marginBottom: 24,
     },
+
     valueText: {
         color: colors.TEXT_COLOR,
         fontSize: 14,
         fontFamily: "DMSans_700Bold",
-        maxWidth: "40%", // Evita que textos longos batam um no outro
+        maxWidth: "40%",
     },
+
     dashedLineContainer: {
         flex: 1,
         marginHorizontal: 12,
         height: 1,
         overflow: "hidden",
     },
+
     dashedLine: {
         height: 2,
         borderWidth: 1,
         borderColor: colors.PRIMARY,
         borderStyle: "dashed",
     },
+
     timeInfoText: {
         color: colors.FADED_TEXT_COLOR,
         fontSize: 12,
         fontFamily: "DMSans_400Regular",
         textAlign: "center",
     },
+
     footer: {
         paddingHorizontal: 30,
         paddingBottom: 30,

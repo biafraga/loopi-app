@@ -9,8 +9,10 @@ export default function ProfileScreen({navigation}) {
         name: "Beatriz Fraga",
         email: "bia@email.com",
         initial: "B",
-        loopsCount: 1
+        loopsCount: 0
     };
+
+    const isColdStart = user.loopsCount === 0;
 
     return (
         <SafeAreaView style={styles.safeArea}>
@@ -45,11 +47,11 @@ export default function ProfileScreen({navigation}) {
                         <Feather name="smile" size={24} color={colors.PRIMARY} />
                         <View style={styles.loopsCardText}>
                             <Text style={styles.loopsCardTitle}>Meus loops</Text>
-                            <Text style={styles.loopsCardSubtitle}>{user.loopsCount} trajeto cadastrado</Text>
+                            <Text style={styles.loopsCardSubtitle}>{isColdStart ? "Nenhum trajeto cadastrado" : `${user.loopsCount} trajeto cadastrado`}</Text>
                         </View>
                     </View>
                     <TouchableOpacity>
-                        <Text style={styles.newLoopText} onPress={() => navigation.navigate("route_origin")}>+ Novo</Text>
+                        <Text style={styles.newLoopText} onPress={() => navigation.navigate("create_loop")}>+ Novo</Text>
                     </TouchableOpacity>
                 </View>
 
