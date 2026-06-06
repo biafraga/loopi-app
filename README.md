@@ -40,16 +40,16 @@ O Loopi resolve um problema cotidiano: saber exatamente quando sair de casa para
     <td><img src="src/app/assets/screenshots/estado_vazio.png" width="180"/></td>
   </tr>
   <tr>
-    <td align="center"><b>Origem</b></td>
-    <td align="center"><b>Destino</b></td>
-    <td align="center"><b>Trajeto Cadastrado</b></td>
-    <td></td>
+    <td align="center"><b>Criar Trajeto</b></td>
+    <td align="center"><b>Splash</b></td>
+    <td align="center"><b>Loop Ativo</b></td>
+    <td align="center"><b>Chegada</b></td>
   </tr>
   <tr>
-    <td><img src="src/app/assets/screenshots/origem.png" width="180"/></td>
-    <td><img src="src/app/assets/screenshots/destino.png" width="180"/></td>
-    <td><img src="src/app/assets/screenshots/rota_cadastrada.png" width="180"/></td>
-    <td></td>
+    <td><img src="src/app/assets/screenshots/criar_loop.png" width="180"/></td>
+    <td><img src="src/app/assets/screenshots/splash.png" width="180"/></td>
+    <td><img src="src/app/assets/screenshots/loop_ativo.png" width="180"/></td>
+    <td><img src="src/app/assets/screenshots/arrival.png" width="180"/></td>
   </tr>
 </table>
 
