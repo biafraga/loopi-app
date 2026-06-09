@@ -4,8 +4,23 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import LabeledInput from "../components/LabeledInput";
 import LoopiButton from "../components/LoopiButton";
 import colors from '../theme/colors';
+import { isValidEmail } from '../utils/masks';
 
 export default function RegisterScreen({navigation}){
+
+    // ESTADOS DO FORMULÁRIO
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
+    // VALIDAÇÃO ROBUSTA: Tudo deve estar correto para prosseguir
+    const isFormValid = 
+        name.length > 0 && 
+        isValidEmail(email) && 
+        password.length >= 8 && 
+        password === confirmPassword;
+
     return(
         <SafeAreaView style={styles.safeArea}> 
             <ScrollView 
@@ -38,6 +53,8 @@ export default function RegisterScreen({navigation}){
                             label="Nome"
                             iconName="user"
                             placeholder="Insira seu nome"
+                            value={name}
+                            onChangeText={setName}
                         />
 
                         <LabeledInput
@@ -45,6 +62,8 @@ export default function RegisterScreen({navigation}){
                             iconName="mail" 
                             placeholder="seu@email.com" 
                             keyboardType="email-address"
+                            value={email}
+                            onChangeText={setEmail}
                         />
 
                         <LabeledInput 
@@ -52,6 +71,8 @@ export default function RegisterScreen({navigation}){
                             iconName="lock" 
                             placeholder="Min. 8 caracteres" 
                             secureTextEntry={true}
+                            value={password}
+                            onChangeText={setPassword}
                         />
 
                         <LabeledInput
@@ -59,10 +80,13 @@ export default function RegisterScreen({navigation}){
                             iconName="lock"
                             placeholder="Insira sua senha"
                             secureTextEntry={true}
+                            value={confirmPassword}
+                            onChangeText={setConfirmPassword}
                         />
-                    <View style={styles.buttonWrapper}> 
+                    <View style={[styles.buttonWrapper, { opacity: isFormValid ? 1 : 0.5 }]}> 
                         <LoopiButton
                             textButton="Próximo" 
+                            disabled={!isFormValid}
                             onPress={() => navigation.navigate("terms")}
                         />
                     </View>  

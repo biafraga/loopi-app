@@ -1,10 +1,15 @@
 import { Feather } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { KeyboardAvoidingView, Modal, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import colors from "../theme/colors";
+import { isValidTime, maskTime } from "../utils/masks";
 
 export default function ActiveLoopScreen({navigation}) {
+    // ESTADOS DO MODAL E INPUT
+    const [modalVisible, setModalVisible] = useState(false);
+    const [arrivalTime, setArrivalTime] = useState("");
+
     // MOCK DA TELA: Centralizando os dados para manter a coerência
     const activeTrip = {
         startTime: "05:10",
@@ -37,6 +42,20 @@ export default function ActiveLoopScreen({navigation}) {
 
     // Barra de progresso (Limitado a 100% para não vazar a barra)
     const progressPercentage = Math.min((seconds / estimatedTotalSeconds) * 100, 100);
+
+    // FUNÇÃO PARA MÁSCARA DO HORÁRIO (00:00)
+    const handleTimeChange = (text) => {
+        const formatted = maskTime(text);
+        setArrivalTime(formatted);
+    }
+
+    // FUNÇÃO DE CONFIRMAÇÃO DO MODAL
+    const handleConfirmArrival = () => {
+        setModalVisible(false);
+        setArrivalTime(""); // Limpa o input para a próxima vez
+        // TODO: Aqui entrará o Axios para enviar o 'arrivalTime' pro Spring Boot
+        navigation.navigate("arrival");
+    };
 
     return (
         <SafeAreaView style={styles.safeArea}>
@@ -99,7 +118,7 @@ export default function ActiveLoopScreen({navigation}) {
                 {/* BOTÃO MANUAL */}
                 <TouchableOpacity 
                     style={styles.primaryButton} 
-                    onPress={() => navigation.navigate("arrival")}
+                    onPress={() => setModalVisible(true)}
                 >
                     <Text style={styles.primaryButtonText}>Registrar chegada manualmente</Text>
                 </TouchableOpacity>
@@ -112,6 +131,65 @@ export default function ActiveLoopScreen({navigation}) {
                 </TouchableOpacity>
 
             </ScrollView>
+
+            {/* MODAL(CARD FLUTUANTE) */}
+            <Modal
+                animationType="fade"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => setModalVisible(false)}
+            >
+                <KeyboardAvoidingView 
+                    behavior={Platform.OS === "ios" ? "padding" : "height"}
+                    style={styles.modalOverlay}
+                >
+                    {/* Área escura que fecha o modal ao clicar fora */}
+                    <TouchableOpacity 
+                        style={styles.modalDismiss} 
+                        activeOpacity={1} 
+                        onPress={() => setModalVisible(false)} 
+                    />
+                    
+                    <View style={styles.modalCard}>
+                        
+                        <View style={styles.modalHeader}>
+                            <Text style={styles.modalTitle}>Chegou mais cedo?</Text>
+                            <TouchableOpacity onPress={() => setModalVisible(false)}>
+                                <Feather name="x" size={24} color={colors.FADED_TEXT_COLOR} />
+                            </TouchableOpacity>
+                        </View>
+
+                        <Text style={styles.modalSubtitle}>
+                            Informe o horário exato que você chegou no seu destino para o Loopi aprender sua rotina.
+                        </Text>
+
+                        <View style={styles.inputContainer}>
+                            <Feather name="clock" size={20} color={colors.FADED_TEXT_COLOR} style={styles.inputIcon} />
+                            <TextInput
+                                style={styles.timeInput}
+                                placeholder="00:00"
+                                placeholderTextColor={colors.FADED_TEXT_COLOR}
+                                keyboardType="numeric"
+                                maxLength={5}
+                                value={arrivalTime}
+                                onChangeText={handleTimeChange}
+                            />
+                        </View>
+
+                        <TouchableOpacity 
+                            style={[
+                                styles.confirmButton, 
+                                !isValidTime(arrivalTime) && styles.confirmButtonDisabled
+                            ]}
+                            disabled={!isValidTime(arrivalTime)}
+                            onPress={handleConfirmArrival}
+                        >
+                            <Text style={styles.confirmButtonText}>Confirmar horário</Text>
+                        </TouchableOpacity>
+
+                    </View>
+                </KeyboardAvoidingView>
+            </Modal>
 
         </SafeAreaView>
     );
@@ -298,5 +376,92 @@ const styles = StyleSheet.create({
         color: colors.DANGER,
         fontSize: 16,
         fontFamily: "DMSans_700Bold",
-    }
+    },
+
+   modalOverlay: {
+        flex: 1,
+        backgroundColor: "rgba(0, 0, 0, 0.6)",
+        justifyContent: "center",
+        paddingHorizontal: 20,
+    },
+
+    modalDismiss: {
+        position: "absolute",
+        top: 0, 
+        bottom: 0, 
+        left: 0, 
+        right: 0,
+    },
+
+    modalCard: {
+        backgroundColor: colors.DARK_PRIMARY,
+        borderRadius: 24,
+        padding: 24,
+        width: "100%",
+        borderWidth: 1,
+        borderColor: colors.BORDER,
+    },
+
+    modalHeader: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: 16,
+    },
+
+    modalTitle: {
+        color: colors.TEXT_COLOR,
+        fontSize: 24,
+        fontFamily: "Nunito_900Black",
+    },
+
+    modalSubtitle: {
+        color: colors.FADED_TEXT_COLOR,
+        fontSize: 16,
+        fontFamily: "DMSans_400Regular",
+        lineHeight: 24,
+        marginBottom: 32,
+    },
+
+    inputContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        backgroundColor: colors.CARD,
+        borderWidth: 1,
+        borderColor: colors.BORDER,
+        borderRadius: 16,
+        paddingHorizontal: 16,
+        height: 60,
+        marginBottom: 32,
+    },
+
+    inputIcon: {
+        marginRight: 12,
+    },
+
+    timeInput: {
+        flex: 1,
+        color: colors.TEXT_COLOR,
+        fontSize: 18,
+        fontFamily: "DMSans_700Bold",
+    },
+
+    confirmButton: {
+        backgroundColor: colors.PRIMARY,
+        borderRadius: 24,
+        height: 56,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+
+    confirmButtonDisabled: {
+        backgroundColor: colors.SECONDARY,
+        opacity: 0.6, 
+    },
+
+    confirmButtonText: {
+        color: colors.DARK_PRIMARY,
+        fontSize: 16,
+        fontFamily: "DMSans_700Bold",
+    },
 });

@@ -3,9 +3,17 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import LabeledInput from "../components/LabeledInput";
 import LoopiButton from "../components/LoopiButton";
 import colors from "../theme/colors";
-
+import { isValidEmail } from "../utils/masks";
 
 export default function LoginScreen ({ navigation }){
+
+    // ESTADOS PARA CAPTURAR O QUE O USUÁRIO DIGITA
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    // VALIDAÇÃO: E-mail deve ser válido e senha não pode estar vazia
+    const isFormValid = isValidEmail(email) && password.length > 0;
+
     return(
         <SafeAreaView style={styles.safeArea}>
             <ScrollView 
@@ -28,23 +36,30 @@ export default function LoginScreen ({ navigation }){
                         iconName="mail" 
                         placeholder="Insira seu email" 
                         keyboardType="email-address"
+                        value={email}
+                        onChangeText={setEmail}
                     />
                     <LabeledInput 
                         label="Senha" 
                         iconName="lock" 
                         placeholder="Insira sua senha" 
                         isPassword={true}
+                        value={password}
+                        onChangeText={setPassword}
                     />
                     
                     <TouchableOpacity style={styles.forgetButton}>
                         <Text style={styles.forgetText}>Esqueci a senha</Text>
                     </TouchableOpacity>
 
-                    <LoopiButton
-                        textButton="Entrar"
-                        onPress={() => navigation.navigate("main")}
-                    />
-                </View>
+                    <View style={{ opacity: isFormValid ? 1 : 0.5 }}>
+                            <LoopiButton
+                                textButton="Entrar"
+                                disabled={!isFormValid}
+                                onPress={() => navigation.navigate("main")}
+                            />
+                    </View>
+                 </View>
                 </View>
 
                 <View style={styles.footer}>
