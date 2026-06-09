@@ -7,6 +7,7 @@ import ArrivalScreen from '../../screens/ArrivalScreen';
 import CreateLoopScreen from '../../screens/CreateLoopScreen';
 import LoginScreen from '../../screens/LoginScreen';
 import LoopStartedScreen from '../../screens/LoopStartedScreen';
+import MyLoopsScreen from '../../screens/MyLoopsScreen';
 import OnboardingScreen from '../../screens/OnboardingScreen';
 import RegisterScreen from '../../screens/RegisterScreen';
 import RouteConfirmationScreen from '../../screens/RouteConfirmationScreen';
@@ -37,6 +38,7 @@ export default function StackRoutes() {
             <Stack.Screen name="create_loop" component={CreateLoopScreen} />
             <Stack.Screen name="onboarding" component={OnboardingScreen} />
             <Stack.Screen name="status" component={StatusScreen} />
+            <Stack.Screen name="meus_loops" component={MyLoopsScreen} />
         </Stack.Navigator>
     );
 }

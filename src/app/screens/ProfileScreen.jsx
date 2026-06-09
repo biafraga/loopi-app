@@ -14,6 +14,16 @@ export default function ProfileScreen({navigation}) {
 
     const isColdStart = user.loopsCount === 0;
 
+    const handleWorkInProgress = () => {
+        navigation.navigate("status", {
+            mascotState: "construcao",
+            title: "Página em Obras",
+            description: "Ainda estamos martelando os códigos por aqui. Volte em breve!",
+            buttonText: "Entendi",
+            action: "goBack"
+        });
+    };
+
     return (
         <SafeAreaView style={styles.safeArea}>
             
@@ -43,41 +53,48 @@ export default function ProfileScreen({navigation}) {
 
                 {/* CARD "MEUS LOOPS" */}
                 <View style={styles.loopsCard}>
-                    <View style={styles.loopsCardLeft}>
+                    <TouchableOpacity 
+                        style={styles.loopsCardLeft}
+                        onPress={() => navigation.navigate("meus_loops")}
+                    >
                         <Feather name="smile" size={24} color={colors.PRIMARY} />
                         <View style={styles.loopsCardText}>
                             <Text style={styles.loopsCardTitle}>Meus loops</Text>
-                            <Text style={styles.loopsCardSubtitle}>{isColdStart ? "Nenhum trajeto cadastrado" : `${user.loopsCount} trajeto cadastrado`}</Text>
+                            <Text style={styles.loopsCardSubtitle}>
+                                {isColdStart ? "Nenhum trajeto cadastrado" : `${user.loopsCount} trajeto cadastrado`}
+                            </Text>
                         </View>
-                    </View>
-                    <TouchableOpacity>
-                        <Text style={styles.newLoopText} onPress={() => navigation.navigate("create_loop")}>+ Novo</Text>
                     </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => navigation.navigate("create_loop")}>
+                        <Text style={styles.newLoopText}>+ Novo</Text>
+                    </TouchableOpacity>
+
                 </View>
 
                 {/* LISTA DE OPÇÕES (MENU) */}
                 <View style={styles.optionsList}>
                     
-                    <TouchableOpacity style={styles.optionItem}>
+                    <TouchableOpacity style={styles.optionItem} onPress={handleWorkInProgress}>
                         <Feather name="bell" size={20} color={colors.FADED_TEXT_COLOR} style={styles.optionIcon} />
                         <Text style={styles.optionText}>Notificações</Text>
                         <Feather name="chevron-right" size={20} color={colors.FADED_TEXT_COLOR} />
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.optionItem}>
+                    <TouchableOpacity style={styles.optionItem} onPress={handleWorkInProgress}>
                         <Feather name="shield" size={20} color={colors.FADED_TEXT_COLOR} style={styles.optionIcon} />
                         <Text style={styles.optionText}>Privacidade</Text>
                         <Feather name="chevron-right" size={20} color={colors.FADED_TEXT_COLOR} />
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.optionItem}>
+                    <TouchableOpacity style={styles.optionItem} onPress={handleWorkInProgress}>
                         <Feather name="help-circle" size={20} color={colors.FADED_TEXT_COLOR} style={styles.optionIcon} />
                         <Text style={styles.optionText}>Ajuda</Text>
                         <Feather name="chevron-right" size={20} color={colors.FADED_TEXT_COLOR} />
                     </TouchableOpacity>
 
                     {/* BOTÃO DE SAIR */}
-                    <TouchableOpacity style={[styles.optionItem, { borderBottomWidth: 0 }]}>
+                    <TouchableOpacity style={[styles.optionItem, { borderBottomWidth: 0 }]} onPress={handleWorkInProgress}>
                         <Feather name="log-out" size={20} color={colors.DANGER} style={styles.optionIcon} />
                         <Text style={[styles.optionText, { color: colors.DANGER }]}>Sair</Text>
                     </TouchableOpacity>

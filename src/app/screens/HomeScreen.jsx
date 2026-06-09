@@ -1,6 +1,6 @@
 import { Feather } from "@expo/vector-icons";
 import { useState } from "react";
-import { Modal, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
+import { Alert, Modal, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiButton from "../components/LoopiButton";
 import colors from "../theme/colors";
@@ -48,7 +48,10 @@ export default function HomeScreen({ userName = "Beatriz", navigation }) {
                     <Text style={styles.greetingText}>{getGreeting()}</Text>
                     <Text style={styles.nameText}>{userName}</Text>
                 </View>
-                <TouchableOpacity style={styles.notificationBtn}>
+                <TouchableOpacity 
+                    style={styles.notificationBtn}
+                    onPress={() => Alert.alert("Notificações", "Você não tem novos avisos no momento.")}
+                    >
                     <Feather name="bell" size={20} color={colors.TEXT_COLOR} />
                 </TouchableOpacity>
             </View>
@@ -117,7 +120,7 @@ export default function HomeScreen({ userName = "Beatriz", navigation }) {
 
                 {/* MEUS LOOPS */}
                 {myLoops.map(loop => (
-                    <TouchableOpacity key={loop.id} style={styles.loopCard}>
+                    <TouchableOpacity key={loop.id} style={styles.loopCard} onPress={() => navigation.navigate("meus_loops")}>
                         <View style={styles.loopIconContainer}>
                             <Feather name="clock" size={20} color={colors.PRIMARY} />
                         </View>
@@ -176,8 +179,6 @@ export default function HomeScreen({ userName = "Beatriz", navigation }) {
                                     }} 
                                 />
                             </View>
-
-                            {/* REMOVIDO: O link de "Alterar trajeto" */}
 
                             <View style={{ marginTop: 8 }}>
                                 <LoopiButton 

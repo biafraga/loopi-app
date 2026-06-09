@@ -4,6 +4,7 @@ import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 
 import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiButton from "../components/LoopiButton";
 import colors from "../theme/colors";
+import { isValidTime, maskTime } from "../utils/masks";
 
 export default function CreateLoopScreen({ navigation }) {
     const [origem, setOrigem] = useState("");
@@ -16,14 +17,12 @@ export default function CreateLoopScreen({ navigation }) {
     const allLocations = ["Barra de Maricá", "Centro RJ", "Terminal Menezes Cortes", "Rodoviária Novo Rio", "Botafogo"];
     const [suggestions, setSuggestions] = useState({ field: "", list: [] });
 
+    // VALIDAÇÃO DO FORMULÁRIO INTEIRO
+    const isFormValid = origem.trim().length > 0 && destino.trim().length > 0 && isValidTime(horaChegada);
+
+    // MÁSCARA DE HORÁRIO
     const handleTimeChange = (text) => {
-        let cleaned = text.replace(/[^0-9]/g, '');
-        if (cleaned.length > 4) cleaned = cleaned.slice(0, 4);
-        let formatted = cleaned;
-        if (cleaned.length > 2) {
-            formatted = cleaned.slice(0, 2) + ':' + cleaned.slice(2, 4);
-        }
-        setHoraChegada(formatted);
+        setHoraChegada(maskTime(text));
     };
 
     const handleSearch = (text, field) => {
@@ -74,7 +73,7 @@ export default function CreateLoopScreen({ navigation }) {
                     <View style={styles.row}>
                         <TextInput style={[styles.input, {flex: 1}]} placeholder="Ex: Terminal Menezes" placeholderTextColor="#4A4D66" value={tempBaldeacao} onChangeText={(t) => handleSearch(t, "baldeacao")} />
                         <TouchableOpacity style={styles.addButton} onPress={addBaldeacao}>
-                            <Feather name="plus-circle" size={32} color={colors.PRIMARY} />
+                            <Feather name="plus-circle" size={32} color={colors.SECONDARY} />
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -149,8 +148,13 @@ export default function CreateLoopScreen({ navigation }) {
                 <View style={{height: 100}} />
             </ScrollView>
 
-            <View style={styles.footer}>
-                <LoopiButton textButton="CRIAR LOOP" variant="secondary" icon="navigation" onPress={() => navigation.navigate("route_confirmation")} />
+            <View style={[styles.footer, { opacity: isFormValid ? 1 : 0.5 }]}>
+                <LoopiButton 
+                    textButton="Criar Loop"  
+                    icon="navigation" 
+                    disabled={!isFormValid}
+                    onPress={() => navigation.navigate("route_confirmation")} 
+                />
             </View>
         </SafeAreaView>
     );
