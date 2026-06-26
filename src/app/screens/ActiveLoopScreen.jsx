@@ -73,8 +73,8 @@ export default function ActiveLoopScreen({navigation}) {
                         </View>
                         
                         {/* BOTÃO PARA MINIMIZAR E VOLTAR PARA A HOME */}
-                        <TouchableOpacity onPress={() => navigation.goBack()}>
-                            <Feather name="x" size={28} color={colors.FADED_TEXT_COLOR} />
+                        <TouchableOpacity style={styles.backButton} onPress={() => navigation.navigate("main", { screen: "home_tab" })}>
+                            <Feather name="x" size={24} color={colors.FADED_TEXT_COLOR} />
                         </TouchableOpacity>
                     </View>
                     <Text style={styles.title}>Em trânsito</Text>
