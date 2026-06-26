@@ -4,6 +4,7 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-nati
 import { SafeAreaView } from "react-native-safe-area-context";
 import LabeledInput from "../components/LabeledInput";
 import LoopiButton from "../components/LoopiButton";
+//import { AuthContext } from "../context/AuthContext";
 import colors from '../theme/colors';
 import { isValidEmail } from '../utils/masks';
 
@@ -14,6 +15,9 @@ export default function RegisterScreen({navigation}){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    //const [isLoading, setIsLoading] = useState(false);
+    
+    //const { register } = useContext(AuthContext);
 
     // VALIDAÇÃO ROBUSTA: Tudo deve estar correto para prosseguir
     const isFormValid = 
@@ -21,6 +25,24 @@ export default function RegisterScreen({navigation}){
         isValidEmail(email) && 
         password.length >= 8 && 
         password === confirmPassword;
+
+    // Função que aciona o backend para criar a conta
+    // const handleRegister = async () => {
+    //     setIsLoading(true);
+    //     try {
+    //         // Vai lá no Spring Boot e cadastra o usuário no banco H2
+    //         await register(name, email, password);
+            
+    //         Alert.alert("Sucesso!", "Conta criada com sucesso no banco de dados! Agora faça o login.");
+            
+    //         // Joga o usuário para a tela de login para testarmos o fluxo
+    //         navigation.navigate("login");
+    //     } catch (error) {
+    //         Alert.alert("Erro", "Não foi possível criar a conta. O Spring Boot está rodando?");
+    //     } finally {
+    //         setIsLoading(false);
+    //     }
+    // };
 
     return(
         <SafeAreaView style={styles.safeArea}> 

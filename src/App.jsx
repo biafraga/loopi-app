@@ -17,6 +17,7 @@ import {
 import { useFonts } from "expo-font";
 
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { AuthProvider } from './app/context/AuthContext';
 import Routes from './app/routes';
 
 export default function App() {
@@ -39,7 +40,9 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <Routes />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </SafeAreaProvider>
   );
 }

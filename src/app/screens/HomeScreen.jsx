@@ -8,8 +8,9 @@ import EmptyStateScreen from "./EmptyStateScreen";
 
 export default function HomeScreen({ userName = "Beatriz", navigation }) {
 
+// === DADOS MOCKADOS PARA A APRESENTAÇÃO ===
     const [hasRoutes, setHasRoutes] = useState(true);
-    const [tripsCount, setTripsCount] = useState(0); 
+    const [tripsCount, setTripsCount] = useState(20); 
     const isColdStart = tripsCount === 0;
 
     const getGreeting = () => {
@@ -19,21 +20,29 @@ export default function HomeScreen({ userName = "Beatriz", navigation }) {
         return "Boa noite";
     };
 
-    // Controla o modal de confirmação
     const [isBottomSheetVisible, setBottomSheetVisible] = useState(false);
 
+    // Trajeto principal mockado
     const [nextLoop, setNextLoop] = useState({
-        time: isColdStart ? "--:--" : "05:18",
+        time: "05:10",
         origin: "Barra de Maricá",
         destination: "Centro, RJ"
     });
 
-    const metrics = { timeSaved: isColdStart ? "--" : "1h23m", totalTrips: tripsCount };
+    // Métricas realistas
+    const metrics = { timeSaved: "2h15m", totalTrips: tripsCount };
+    
+    // Lista de trajetos
     const myLoops = [
         {
             id: "1", 
-            title: "Meus loops", 
-            subtitle: isColdStart ? "Nenhuma viagem registrada" : `${tripsCount} viagens registradas`
+            title: "Faculdade Senac", 
+            subtitle: "Maricá → Centro, RJ · 6 viagens"
+        },
+        {
+            id: "2", 
+            title: "Trabalho", 
+            subtitle: "Centro, RJ → Botafogo · 14 viagens"
         }
     ];
 
@@ -58,7 +67,7 @@ export default function HomeScreen({ userName = "Beatriz", navigation }) {
 
             <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
                 
-                {/* HERO CARD (Astro Principal) */}
+                {/* HERO CARD */}
                 {nextLoop ? (
                     <View style={styles.heroCard}>
                         <View style={styles.heroHeader}>
@@ -87,7 +96,6 @@ export default function HomeScreen({ userName = "Beatriz", navigation }) {
                         </View>
 
                         <View style={{ width: "65%", alignSelf: "center", marginBottom: 8 }}>
-                            {/* O BOTÃO VERDE AGORA ABRE A CONFIRMAÇÃO */}
                             <LoopiButton 
                                 textButton="INICIAR LOOP" 
                                 icon="navigation"
@@ -133,7 +141,7 @@ export default function HomeScreen({ userName = "Beatriz", navigation }) {
 
             </ScrollView>
 
-            {/* O FAB AGORA É EXCLUSIVO PARA CRIAR ALGO NOVO */}
+            {/* FAB EXCLUSIVO PARA CRIAR ALGO NOVO */}
             <TouchableOpacity style={styles.fab} onPress={() => navigation.navigate("create_loop")}>
                 <Feather name="plus" size={28} color={colors.DARK_PRIMARY} />
             </TouchableOpacity>
@@ -354,7 +362,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.CARD,
         borderRadius: 16,
         padding: 16,
-        marginBottom: 100, 
+        marginBottom: 20, 
     },
     loopIconContainer: {
         width: 48, 

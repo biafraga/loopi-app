@@ -3,6 +3,7 @@ import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "rea
 import { SafeAreaView } from "react-native-safe-area-context";
 import LabeledInput from "../components/LabeledInput";
 import LoopiButton from "../components/LoopiButton";
+//import { AuthContext } from "../context/AuthContext";
 import colors from "../theme/colors";
 import { isValidEmail } from "../utils/masks";
 
@@ -11,9 +12,32 @@ export default function LoginScreen ({ navigation }){
     // ESTADOS PARA CAPTURAR O QUE O USUÁRIO DIGITA
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    //const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
 
-    // VALIDAÇÃO: E-mail deve ser válido e senha não pode estar vazia
+    // Extraímos a função login do nosso contexto
+    //const { login } = useContext(AuthContext);
+
     const isFormValid = isValidEmail(email) && password.length > 0;
+
+    // Função que vai gerir o clique do botão
+    // const handleLogin = async () => {
+    //     setIsLoading(true);
+    //     try {
+    //         // Chama o contexto, que chama o authService, que bate no Axios, que chega ao Spring Boot
+    //         await login(email, password);
+            
+    //         // Se OK, entramos na aplicação
+    //         navigation.navigate("main");
+    //     } catch (error) {
+    //         // Se o Java devolver erro 403 (Forbidden/Palavra-passe errada)
+    //         Alert.alert(
+    //             "Erro de Autenticação", 
+    //             "As credenciais estão incorretas ou o utilizador não existe. Tente novamente."
+    //         );
+    //     } finally {
+    //         setIsLoading(false); // Tira o estado de carregamento independentemente do resultado
+    //     }
+    // };
 
     return(
         <SafeAreaView style={styles.safeArea}>
