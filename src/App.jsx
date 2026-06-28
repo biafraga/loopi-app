@@ -17,7 +17,7 @@ import {
 import { useFonts } from "expo-font";
 
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { AuthProvider } from './app/context/AuthContext';
+import { AuthProvider } from './app/context/authContext';
 import Routes from './app/routes';
 
 export default function App() {

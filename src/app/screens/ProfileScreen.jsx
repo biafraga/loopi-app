@@ -1,14 +1,17 @@
 import { Feather } from "@expo/vector-icons";
+import { useContext } from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { AuthContext } from "../context/authContext";
 import colors from "../theme/colors";
 
 export default function ProfileScreen({navigation}) {
-    // MOCK DE DADOS DO USUÁRIO
+    const { usuario } = useContext(AuthContext);
+
     const user = {
-        name: "Beatriz Fraga",
-        email: "bia@email.com",
-        initial: "B",
+        name: usuario?.nome ?? "Visitante",
+        email: usuario?.email ?? "",
+        initial: usuario?.nome ? usuario.nome[0].toUpperCase() : "?",
         loopsCount: 0
     };
 

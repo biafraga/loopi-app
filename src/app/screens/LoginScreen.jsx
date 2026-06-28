@@ -1,43 +1,31 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LabeledInput from "../components/LabeledInput";
 import LoopiButton from "../components/LoopiButton";
-//import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../context/authContext";
 import colors from "../theme/colors";
 import { isValidEmail } from "../utils/masks";
 
 export default function LoginScreen ({ navigation }){
 
-    // ESTADOS PARA CAPTURAR O QUE O USUÁRIO DIGITA
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    //const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
-
-    // Extraímos a função login do nosso contexto
-    //const { login } = useContext(AuthContext);
+    const [errorMessage, setErrorMessage] = useState("");
+    const { login } = useContext(AuthContext); // Puxa a função de login
 
     const isFormValid = isValidEmail(email) && password.length > 0;
 
-    // Função que vai gerir o clique do botão
-    // const handleLogin = async () => {
-    //     setIsLoading(true);
-    //     try {
-    //         // Chama o contexto, que chama o authService, que bate no Axios, que chega ao Spring Boot
-    //         await login(email, password);
-            
-    //         // Se OK, entramos na aplicação
-    //         navigation.navigate("main");
-    //     } catch (error) {
-    //         // Se o Java devolver erro 403 (Forbidden/Palavra-passe errada)
-    //         Alert.alert(
-    //             "Erro de Autenticação", 
-    //             "As credenciais estão incorretas ou o utilizador não existe. Tente novamente."
-    //         );
-    //     } finally {
-    //         setIsLoading(false); // Tira o estado de carregamento independentemente do resultado
-    //     }
-    // };
+    const handleLogin = async () => {
+        setErrorMessage("");
+        try {
+            await login(email, password); 
+            navigation.navigate("main"); // Se deu certo, vai pra Home!
+        } catch (error) {
+            console.log("Erro de login:", error);
+            setErrorMessage("E-mail ou senha inválidos. Tente novamente."); 
+        }
+    };
 
     return(
         <SafeAreaView style={styles.safeArea}>
@@ -77,11 +65,16 @@ export default function LoginScreen ({ navigation }){
                         <Text style={styles.forgetText}>Esqueci a senha</Text>
                     </TouchableOpacity>
 
+                    {/* Exibe a mensagem de erro se houver */}
+                    {errorMessage ? (
+                        <Text style={styles.errorText}>{errorMessage}</Text>
+                    ) : null}
+
                     <View style={{ opacity: isFormValid ? 1 : 0.5 }}>
                             <LoopiButton
                                 textButton="Entrar"
                                 disabled={!isFormValid}
-                                onPress={() => navigation.navigate("main")}
+                                onPress={handleLogin}
                             />
                     </View>
                  </View>
@@ -148,6 +141,15 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: "DMSans_400Regular",
     },
+
+    errorText: {
+        color: "#ff4d4d", 
+        fontFamily: "DMSans_700Bold", 
+        fontSize: 14, 
+        textAlign: "center", 
+        marginBottom: 15 
+    },
+
     footer: {
         flexDirection: "row", // Texto e link lado a lado
         justifyContent: "center",

@@ -1,48 +1,38 @@
 import { Feather } from '@expo/vector-icons';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LabeledInput from "../components/LabeledInput";
 import LoopiButton from "../components/LoopiButton";
-//import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../context/authContext";
 import colors from '../theme/colors';
-import { isValidEmail } from '../utils/masks';
+import { isValidEmail } from "../utils/masks";
 
 export default function RegisterScreen({navigation}){
 
-    // ESTADOS DO FORMULÁRIO
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    //const [isLoading, setIsLoading] = useState(false);
-    
-    //const { register } = useContext(AuthContext);
+    const [errorMessage, setErrorMessage] = useState("");
+    const { register } = useContext(AuthContext); 
 
-    // VALIDAÇÃO ROBUSTA: Tudo deve estar correto para prosseguir
     const isFormValid = 
         name.length > 0 && 
         isValidEmail(email) && 
         password.length >= 8 && 
         password === confirmPassword;
 
-    // Função que aciona o backend para criar a conta
-    // const handleRegister = async () => {
-    //     setIsLoading(true);
-    //     try {
-    //         // Vai lá no Spring Boot e cadastra o usuário no banco H2
-    //         await register(name, email, password);
-            
-    //         Alert.alert("Sucesso!", "Conta criada com sucesso no banco de dados! Agora faça o login.");
-            
-    //         // Joga o usuário para a tela de login para testarmos o fluxo
-    //         navigation.navigate("login");
-    //     } catch (error) {
-    //         Alert.alert("Erro", "Não foi possível criar a conta. O Spring Boot está rodando?");
-    //     } finally {
-    //         setIsLoading(false);
-    //     }
-    // };
+    const handleRegister = async () => {
+        setErrorMessage("");
+        try {
+            await register(name, email, password); // Chama o Spring Boot
+            navigation.navigate("terms"); 
+        } catch (error) {
+            console.log("Erro de cadastro:", error);
+            setErrorMessage("Não foi possível criar a conta.");
+        }
+    };
 
     return(
         <SafeAreaView style={styles.safeArea}> 
@@ -93,7 +83,7 @@ export default function RegisterScreen({navigation}){
                             label="Senha" 
                             iconName="lock" 
                             placeholder="Min. 8 caracteres" 
-                            secureTextEntry={true}
+                            isPassword={true}
                             value={password}
                             onChangeText={setPassword}
                         />
@@ -102,15 +92,22 @@ export default function RegisterScreen({navigation}){
                             label="Repita a senha"
                             iconName="lock"
                             placeholder="Insira sua senha"
-                            secureTextEntry={true}
+                            isPassword={true}
                             value={confirmPassword}
                             onChangeText={setConfirmPassword}
                         />
+
+                        {/* Exibe a mensagem de erro se houver */}
+                    {errorMessage ? (
+                        <Text style={styles.errorText}>{errorMessage}</Text>
+                    ) : null}
+
+
                     <View style={[styles.buttonWrapper, { opacity: isFormValid ? 1 : 0.5 }]}> 
                         <LoopiButton
                             textButton="Próximo" 
                             disabled={!isFormValid}
-                            onPress={() => navigation.navigate("terms")}
+                            onPress={handleRegister}
                         />
                     </View>  
 
@@ -171,7 +168,7 @@ const styles= StyleSheet.create({
     progressDot: {
         height: 8,
         width: 16,
-        backgroundColor: colors.BORDER, // Cor das bolinhas inativas
+        backgroundColor: colors.BORDER,
         borderRadius: 4,
     },
 
@@ -206,6 +203,14 @@ const styles= StyleSheet.create({
 
     buttonWrapper: {
         marginTop: 20,
+    },
+
+    errorText: {
+        color: "#ff4d4d", 
+        fontFamily: "DMSans_700Bold", 
+        fontSize: 14, 
+        textAlign: "center", 
+        marginBottom: 15 
     },
 
     footer: {

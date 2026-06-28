@@ -1,13 +1,13 @@
 import axios from "axios";
 
 // ATENÇÃO: Troque "localhost" pelo IP da máquina na sua rede Wi-Fi!
-const api = axios.create({
-    baseURL:'192.168.1.17',
+export const api = axios.create ({
+    baseURL:'http://127.0.0.1:8080',
     timeout: 8000,
     headers: {'Content-Type': 'application/json'},
 })
 
-api.interceptors.request.use( config => {
+api.interceptors.request.use(config => {
     console.log(`[AXIOS]  ${config.method.toUpperCase()} ${config.url}`)
     return config;
 });
@@ -27,17 +27,15 @@ export async function request(method, path, body = null) {
             url: path,
             data: body
         });
-        return response.data; // Retorna só os dados limpos do backend
+        return response.data;
     } catch (error) {
         throw error;
     }
 }
 
-// Constante responsável por montar os métodos disponíveis na API
 export const api_metodos = {
-    get: (path) => request('GET', path), 
+    get: (path) => request('GET', path),
     post: (path, body) => request('POST', path, body),
     put: (path, body) => request('PUT', path, body),
     delete: (path) => request('DELETE', path),
 };
-

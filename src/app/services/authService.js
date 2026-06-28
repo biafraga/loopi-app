@@ -1,40 +1,9 @@
-import api from './api';
+import { api } from './api';
 
-const authService = {
-    // LOGIN
-    login: async (email, password) => {
-        try {
-            const response = await api.post('/auth/login', { 
-                email: email, 
-                password: password 
-            });
-            
-            // Retorna os dados que o Spring Boot devolve (ex: token JWT, nome do usuário)
-            return response.data; 
-            
-        } catch (error) {
-            // caso o java retorne algum erro
-            console.error("Erro no serviço de login:", error);
-            throw error; 
-        }
-    },
+export async function loginUsuario(email, senha) {
+    return api.post('/api/usuarios/login', { email, senha });
+}
 
-    // CADASTRO
-    register: async (name, email, password) => {
-        try {
-            const response = await api.post('/users/register', {
-                name: name,
-                email: email,
-                password: password
-            });
-            
-            return response.data;
-            
-        } catch (error) {
-            console.error("Erro no serviço de cadastro:", error);
-            throw error;
-        }
-    }
-};
-
-export default authService;
+export async function cadastrarUsuario(nome, email, senha) {
+    return api.post('/api/usuarios', { nome, email, senha });
+}

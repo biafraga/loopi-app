@@ -44,6 +44,10 @@ export default function CreateLoopScreen({ navigation }) {
         }
     };
 
+    const removeBaldeacao = (index) => {
+    setBaldeacoes(baldeacoes.filter((_, i) => i !== index));
+};
+
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.header}>
@@ -101,7 +105,10 @@ export default function CreateLoopScreen({ navigation }) {
                             <View key={i}>
                                 <View style={styles.routePoint}>
                                     <View style={[styles.dot, { backgroundColor: "#4A4D66" }]} />
-                                    <Text style={styles.pointValue}>{b}</Text>
+                                    <Text style={[styles.pointValue, { flex: 1 }]}>{b}</Text>
+                                    <TouchableOpacity onPress={() => removeBaldeacao(i)} hitSlop={10}>
+                                        <Feather name="x" size={18} color={colors.FADED_TEXT_COLOR} />
+                                    </TouchableOpacity>
                                 </View>
                                 <View style={styles.verticalLine} />
                             </View>

@@ -1,14 +1,18 @@
 import { Feather } from "@expo/vector-icons";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Alert, Modal, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiButton from "../components/LoopiButton";
+import { AuthContext } from "../context/authContext";
 import colors from "../theme/colors";
 import EmptyStateScreen from "./EmptyStateScreen";
 
-export default function HomeScreen({ userName = "Beatriz", navigation }) {
 
-// === DADOS MOCKADOS PARA A APRESENTAÇÃO ===
+export default function HomeScreen({ navigation }) {
+
+// DADOS MOCKADOS
+    const { usuario } = useContext(AuthContext);
+    const userName = usuario?.nome ?? "Visitante";
     const [hasRoutes, setHasRoutes] = useState(true);
     const [tripsCount, setTripsCount] = useState(20); 
     const isColdStart = tripsCount === 0;

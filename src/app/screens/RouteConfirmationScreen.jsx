@@ -6,9 +6,9 @@ import LoopiMascot from "../components/LoopiMascot";
 import colors from "../theme/colors";
 
 export default function RouteConfirmationScreen({ 
-    origin = "Não informado", 
-    destination = "Não informado", 
-    arrivalTime = "00:00", 
+    origin = "Barra de Maricá", 
+    destination = "Centro, RJ", 
+    arrivalTime = "07:20", 
     days = "Dias úteis",
     navigation
 }) {
