@@ -7,6 +7,7 @@ import colors from "../theme/colors";
 import { isValidTime, maskTime } from "../utils/masks";
 
 export default function CreateLoopScreen({ navigation }) {
+    const [apelido, setApelido] = useState("");
     const [origem, setOrigem] = useState("");
     const [destino, setDestino] = useState("");
     const [baldeacoes, setBaldeacoes] = useState([]); 
@@ -58,6 +59,18 @@ export default function CreateLoopScreen({ navigation }) {
             </View>
 
             <ScrollView style={styles.content} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
+                
+                {/* NOME DO LOOP */}
+                <View style={styles.formGroup}>
+                    <Text style={styles.label}>Nome do loop</Text>
+                    <TextInput 
+                        style={styles.input} 
+                        placeholder="Ex: Faculdade, Trabalho..." 
+                        placeholderTextColor="#4A4D66" 
+                        value={apelido} 
+                        onChangeText={setApelido} 
+                    />
+                </View>
                 
                 {/* ORIGEM */}
                 <View style={styles.formGroup}>

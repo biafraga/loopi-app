@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LabeledInput from "../components/LabeledInput";
 import LoopiButton from "../components/LoopiButton";
@@ -12,6 +12,8 @@ export default function LoginScreen ({ navigation }){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    
     const { login } = useContext(AuthContext); // Puxa a função de login
 
     const isFormValid = isValidEmail(email) && password.length > 0;
@@ -19,11 +21,15 @@ export default function LoginScreen ({ navigation }){
     const handleLogin = async () => {
         setErrorMessage("");
         try {
-            await login(email, password); 
-            navigation.navigate("main"); // Se deu certo, vai pra Home!
+            await login(email, password);
+            navigation.navigate("main");
         } catch (error) {
-            console.log("Erro de login:", error);
-            setErrorMessage("E-mail ou senha inválidos. Tente novamente."); 
+            Alert.alert(
+                "Erro ao entrar",
+                "E-mail ou senha incorretos. Verifique e tente novamente."
+            );
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -72,8 +78,8 @@ export default function LoginScreen ({ navigation }){
 
                     <View style={{ opacity: isFormValid ? 1 : 0.5 }}>
                             <LoopiButton
-                                textButton="Entrar"
-                                disabled={!isFormValid}
+                                textButton={isLoading ? "Entrando..." : "Entrar"}
+                                disabled={!isFormValid || isLoading}
                                 onPress={handleLogin}
                             />
                     </View>

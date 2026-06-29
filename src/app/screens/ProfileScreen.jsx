@@ -6,7 +6,7 @@ import { AuthContext } from "../context/authContext";
 import colors from "../theme/colors";
 
 export default function ProfileScreen({navigation}) {
-    const { usuario } = useContext(AuthContext);
+    const { usuario, logout } = useContext(AuthContext);
 
     const user = {
         name: usuario?.nome ?? "Visitante",
@@ -24,6 +24,14 @@ export default function ProfileScreen({navigation}) {
             description: "Ainda estamos martelando os códigos por aqui. Volte em breve!",
             buttonText: "Entendi",
             action: "goBack"
+        });
+    };
+
+    const handleLogout = () => {
+        logout();
+        navigation.reset({
+            index: 0,
+            routes: [{ name: "login" }],
         });
     };
 
@@ -97,11 +105,10 @@ export default function ProfileScreen({navigation}) {
                     </TouchableOpacity>
 
                     {/* BOTÃO DE SAIR */}
-                    <TouchableOpacity style={[styles.optionItem, { borderBottomWidth: 0 }]} onPress={handleWorkInProgress}>
+                    <TouchableOpacity style={[styles.optionItem, { borderBottomWidth: 0 }]} onPress={handleLogout}>
                         <Feather name="log-out" size={20} color={colors.DANGER} style={styles.optionIcon} />
                         <Text style={[styles.optionText, { color: colors.DANGER }]}>Sair</Text>
                     </TouchableOpacity>
-                    
                 </View>
 
                 <View style={{ height: 100 }} /> 

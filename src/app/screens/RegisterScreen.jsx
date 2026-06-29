@@ -1,10 +1,9 @@
 import { Feather } from '@expo/vector-icons';
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LabeledInput from "../components/LabeledInput";
 import LoopiButton from "../components/LoopiButton";
-import { AuthContext } from "../context/authContext";
 import colors from '../theme/colors';
 import { isValidEmail } from "../utils/masks";
 
@@ -14,8 +13,7 @@ export default function RegisterScreen({navigation}){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
-    const { register } = useContext(AuthContext); 
+    const [errorMessage, setErrorMessage] = useState(""); 
 
     const isFormValid = 
         name.length > 0 && 
@@ -23,15 +21,9 @@ export default function RegisterScreen({navigation}){
         password.length >= 8 && 
         password === confirmPassword;
 
-    const handleRegister = async () => {
-        setErrorMessage("");
-        try {
-            await register(name, email, password); // Chama o Spring Boot
-            navigation.navigate("terms"); 
-        } catch (error) {
-            console.log("Erro de cadastro:", error);
-            setErrorMessage("Não foi possível criar a conta.");
-        }
+    const handleNext = () => {
+        // Passa os dados para a tela de termos, que faz o cadastro no backend
+        navigation.navigate("terms", { name, email, password });
     };
 
     return(
@@ -103,13 +95,13 @@ export default function RegisterScreen({navigation}){
                     ) : null}
 
 
-                    <View style={[styles.buttonWrapper, { opacity: isFormValid ? 1 : 0.5 }]}> 
-                        <LoopiButton
-                            textButton="Próximo" 
-                            disabled={!isFormValid}
-                            onPress={handleRegister}
-                        />
-                    </View>  
+                    <View style={[styles.buttonWrapper, { opacity: isFormValid ? 1 : 0.5 }]}>
+                            <LoopiButton
+                                textButton="Próximo"
+                                disabled={!isFormValid}
+                                onPress={handleNext}
+                            />
+                        </View>  
 
                     </View>
 

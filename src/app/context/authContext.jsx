@@ -1,29 +1,53 @@
-import { createContext, useState } from 'react';
-import { api } from '../services/api';
-import { cadastrarUsuario, loginUsuario } from '../services/authService';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { createContext, useEffect, useState } from "react";
+import authService from "../services/authService";
+import { clearToken, setToken } from "../services/tokenStore";
 
-export const AuthContext = createContext({});
+export const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
     const [usuario, setUsuario] = useState(null);
 
-    async function login(email, senha) {
-        const response = await loginUsuario(email, senha);
-        const { token, id, nome, email: userEmail } = response.data;
+    // Restaura sessão salva ao abrir o app
+    useEffect(() => {
+        const restoreSession = async () => {
+            try {
+                const token = await AsyncStorage.getItem('@loopi_token');
+                const userData = await AsyncStorage.getItem('@loopi_usuario');
+                if (token && userData) {
+                    setToken(token);
+                    setUsuario(JSON.parse(userData));
+                }
+            } catch (e) {
+                console.warn('Erro ao restaurar sessão:', e);
+            }
+        };
+        restoreSession();
+    }, []);
 
-        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    const login = async (email, password) => {
+        const response = await authService.login(email, password);
 
-        setUsuario({ id, nome, email: userEmail, token });
-    }
+        if (response.token) {
+            setToken(response.token);
+            await AsyncStorage.setItem('@loopi_token', response.token);
+            await AsyncStorage.setItem('@loopi_usuario', JSON.stringify(response));
+        }
 
-    async function register(nome, email, senha) {
-        await cadastrarUsuario(nome, email, senha);
-    }
+        setUsuario(response);
+        return response;
+    };
 
-    function logout() {
+    const register = async (nome, email, password) => {
+        const response = await authService.register(nome, email, password);
+        return response;
+    };
+
+    const logout = async () => {
+        clearToken();
+        await AsyncStorage.multiRemove(['@loopi_token', '@loopi_usuario']);
         setUsuario(null);
-        api.defaults.headers.common['Authorization'] = '';
-    }
+    };
 
     return (
         <AuthContext.Provider value={{ usuario, login, register, logout }}>

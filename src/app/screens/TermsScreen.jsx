@@ -1,6 +1,6 @@
 import { Feather } from '@expo/vector-icons';
 import { useState } from "react";
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LoopiButton from "../components/LoopiButton";
 import LoopiCheckbox from "../components/LoopiCheckbox";
@@ -68,7 +68,7 @@ export default function TermsScreen({navigation}){
                     <View style={styles.buttonContainer}>
                         <LoopiButton 
                             textButton="Permitir e começar" 
-                            onPress={() => navigation.navigate("success")}
+                            onPress={handleNext}
                         />
                     </View>
                 </View>

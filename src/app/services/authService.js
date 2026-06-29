@@ -1,9 +1,15 @@
-import { api } from './api';
+import api from './api';
 
-export async function loginUsuario(email, senha) {
-    return api.post('/api/usuarios/login', { email, senha });
-}
+const authService = {
+    login: async (email, senha) => {
+        const response = await api.post('/auth/login', { email, senha });
+        return response.data;
+    },
 
-export async function cadastrarUsuario(nome, email, senha) {
-    return api.post('/api/usuarios', { nome, email, senha });
-}
+    register: async (nome, email, senha) => {
+        const response = await api.post('/usuarios', { nome, email, senha });
+        return response.data;
+    },
+};
+
+export default authService;
